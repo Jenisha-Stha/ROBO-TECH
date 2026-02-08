@@ -1,0 +1,14 @@
+.shuffle-wrapper {
+    display: inline-block;
+    width: 100%;
+}
+
+.shuffle-text-element {
+    display: inline;
+    margin: 0;
+}
+
+.shuffle-char-span {
+    display: inline-block;
+    will-change: transform, opacity, filter;
+}

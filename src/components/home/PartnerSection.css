@@ -1,0 +1,82 @@
+.partner-section {
+    background: linear-gradient(180deg, var(--white) 0%, #F5F9FF 100%);
+    padding: 2rem 1.5rem 6rem;
+    /* Reduced top padding significantly */
+    position: relative;
+    overflow: hidden;
+}
+
+.partner-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    /* Tighter gap */
+    text-align: center;
+}
+
+.partner-content {
+    max-width: 800px;
+    width: 100%;
+}
+
+.partner-image {
+    width: 100%;
+    max-width: 850px;
+    display: flex;
+    justify-content: center;
+    /* Add a subtle drop shadow to ground the image */
+    filter: drop-shadow(0 20px 40px rgba(0, 82, 204, 0.1));
+    min-height: 400px;
+    /* Prevent collapse on load */
+}
+
+.partner-title {
+    font-family: var(--font-heading);
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--dark-text);
+    letter-spacing: -0.5px;
+}
+
+.partner-subtitle {
+    font-size: 1.15rem;
+    color: var(--gray-text);
+    margin-bottom: 2rem;
+    line-height: 1.6;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Ensure the button looks great here too */
+.partner-btn {
+    font-size: 1.1rem;
+    padding: 1rem 2.8rem;
+    box-shadow: 0 4px 15px rgba(255, 30, 86, 0.3);
+}
+
+.partner-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(255, 30, 86, 0.4);
+}
+
+@media (max-width: 768px) {
+    .partner-section {
+        padding: 2rem 1.5rem 4rem;
+    }
+
+    .partner-title {
+        font-size: 2rem;
+    }
+
+    .partner-subtitle {
+        font-size: 1rem;
+    }
+}

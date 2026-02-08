@@ -1,0 +1,75 @@
+.missions-section {
+    padding: 100px 40px 80px;
+    background: #FFFFFF;
+    overflow: hidden;
+}
+
+.missions-container {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.missions-title {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.missions-title .shuffle-text-element {
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #0c3d7a 0%, #1565C0 40%, #1E88E5 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin: 0;
+}
+
+.missions-title .shuffle-char-span {
+    background: linear-gradient(135deg, #0c3d7a 0%, #1565C0 40%, #1E88E5 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.masonry-wrapper {
+    width: 100%;
+    height: 800px;
+    position: relative;
+    overflow: visible;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .masonry-wrapper {
+        height: 700px;
+    }
+}
+
+@media (max-width: 768px) {
+    .missions-section {
+        padding: 60px 24px;
+    }
+
+    .missions-title .shuffle-text-element {
+        font-size: 1.8rem;
+    }
+
+    .masonry-wrapper {
+        height: 600px;
+    }
+}
+
+@media (max-width: 480px) {
+    .missions-section {
+        padding: 40px 16px;
+    }
+
+    .missions-title .shuffle-text-element {
+        font-size: 1.5rem;
+    }
+
+    .masonry-wrapper {
+        height: 500px;
+    }
+}

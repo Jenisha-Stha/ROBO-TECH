@@ -1,0 +1,275 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Montserrat:wght@400;500;600;700;800&family=Orbitron:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+/* Dark-themed LMS Admin Dashboard Design System */
+
+@layer base {
+  :root {
+    /* Robo-Tech-Enhancements Colors */
+    --primary-blue: #0052CC;
+    --primary-red: #FF1E56;
+    --primary-red-hover: #E6164A;
+    --primary-red-glow: rgba(255, 30, 86, 0.4);
+    --primary-red-glow-strong: rgba(255, 30, 86, 0.6);
+    --white: #FFFFFF;
+    --light-gray: #F5F5F5;
+    --dark-text: #1A1A1A;
+    --gray-text: #666666;
+    --light-text: rgba(255, 255, 255, 0.9);
+
+    /* Robo-Tech-Enhancements Fonts */
+    --font-heading: 'Orbitron', 'Montserrat', 'Oswald', sans-serif;
+    --font-body: 'Poppins', 'Montserrat', system-ui, sans-serif;
+
+
+    /* Dark theme base colors - rich dark blues and grays */
+    --background: 222 47% 11%;
+    --foreground: 210 40% 98%;
+
+    --card: 223 47% 12%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 223 47% 12%;
+    --popover-foreground: 210 40% 98%;
+
+    /* Primary - Vibrant blue for admin actions */
+    --primary: 217 91% 60%;
+    --primary-foreground: 222 47% 11%;
+    --primary-hover: 217 91% 65%;
+
+    /* Secondary - Muted purple for secondary actions */
+    --secondary: 260 40% 15%;
+    --secondary-foreground: 210 40% 95%;
+
+    /* Muted - Dark gray for subtle elements */
+    --muted: 223 47% 15%;
+    --muted-foreground: 215 20% 65%;
+
+    /* Accent - Electric blue for highlights */
+    --accent: 200 98% 39%;
+    --accent-foreground: 210 40% 98%;
+
+    /* Success green for course completion */
+    --success: 142 76% 36%;
+    --success-foreground: 210 40% 98%;
+
+    /* Warning orange for pending actions */
+    --warning: 38 92% 50%;
+    --warning-foreground: 222 47% 11%;
+
+    /* Destructive red for delete actions */
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 210 40% 98%;
+
+    /* Borders and inputs */
+    --border: 223 47% 20%;
+    --input: 223 47% 18%;
+    --ring: 217 91% 60%;
+
+    /* Gradients for visual appeal */
+    --gradient-primary: linear-gradient(135deg, hsl(217 91% 60%), hsl(200 98% 39%));
+    --gradient-card: linear-gradient(145deg, hsl(223 47% 12%), hsl(223 47% 14%));
+    --gradient-subtle: linear-gradient(180deg, hsl(223 47% 11%), hsl(223 47% 13%));
+
+    /* Shadows for depth */
+    --shadow-card: 0 4px 6px -1px hsl(222 47% 8% / 0.3), 0 2px 4px -1px hsl(222 47% 8% / 0.2);
+    --shadow-elevated: 0 10px 15px -3px hsl(222 47% 8% / 0.4), 0 4px 6px -2px hsl(222 47% 8% / 0.3);
+    --shadow-glow: 0 0 20px hsl(217 91% 60% / 0.3);
+
+    /* Sidebar specific */
+    --sidebar-background: 222 47% 8%;
+    --sidebar-foreground: 210 40% 90%;
+    --sidebar-primary: 217 91% 60%;
+    --sidebar-primary-foreground: 222 47% 11%;
+    --sidebar-accent: 223 47% 15%;
+    --sidebar-accent-foreground: 210 40% 95%;
+    --sidebar-border: 223 47% 20%;
+    --sidebar-ring: 217 91% 60%;
+
+    /* Animation timings */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+    --radius: 0.75rem;
+  }
+
+  /* Force dark mode */
+  .light {
+    --background: 222 47% 11%;
+    --foreground: 210 40% 98%;
+    --card: 223 47% 12%;
+    --card-foreground: 210 40% 98%;
+    --popover: 223 47% 12%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 217 91% 60%;
+    --primary-foreground: 222 47% 11%;
+    --secondary: 260 40% 15%;
+    --secondary-foreground: 210 40% 95%;
+    --muted: 223 47% 15%;
+    --muted-foreground: 215 20% 65%;
+    --accent: 200 98% 39%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 223 47% 20%;
+    --input: 223 47% 18%;
+    --ring: 217 91% 60%;
+    --sidebar-background: 222 47% 8%;
+    --sidebar-foreground: 210 40% 90%;
+    --sidebar-primary: 217 91% 60%;
+    --sidebar-primary-foreground: 222 47% 11%;
+    --sidebar-accent: 223 47% 15%;
+    --sidebar-accent-foreground: 210 40% 95%;
+    --sidebar-border: 223 47% 20%;
+    --sidebar-ring: 217 91% 60%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans;
+    font-family: 'Poppins', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif;
+  }
+
+  .oswald {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+  }
+}
+
+.main-content {
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+
+}
+
+.main-content p {
+  margin-bottom: 1rem;
+}
+
+.main-content h1 {
+  font-size: 2rem;
+  margin-bottom: 0.4rem;
+}
+
+.main-content h2 {
+  font-size: 1.5rem;
+  margin-bottom: 0.4rem;
+}
+
+.main-content h3 {
+  font-size: 1.25rem;
+  margin-bottom: 0.4rem;
+}
+
+.main-content h4 {
+  font-size: 1.125rem;
+  margin-bottom: 0.4rem;
+}
+
+.main-content h5 {
+  font-size: 1rem;
+  margin-bottom: 0.4rem;
+}
+
+.main-content h6 {
+  font-size: 0.875rem;
+  margin-bottom: 0.4rem;
+}
+
+.main-content ul {
+  margin-bottom: 1rem;
+  list-style-type: disc;
+}
+
+.main-content ol {
+  margin-bottom: 1rem;
+}
+
+.main-content li {
+  margin-bottom: 0.5rem;
+  margin-left: 1rem;
+}
+
+.main-content li p {
+  margin-bottom: 0rem;
+
+}
+
+.main-content a {
+  color: #007bff;
+  text-decoration: underline;
+}
+
+.main-content a:hover {
+  color: #0056b3;
+}
+/* ------------------------------------------------------------ */
+/*      Robo-Tech-Enhancements Global Structural Styles         */
+/* ------------------------------------------------------------ */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  font-weight: 600;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--primary-red) 0%, #E6164A 100%);
+  color: var(--white);
+  box-shadow: 0 4px 20px var(--primary-red-glow);
+  padding: 14px 28px;
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 30px var(--primary-red-glow-strong);
+}
+
+.btn-primary span {
+  transition: transform 0.3s ease;
+}
+
+.btn-primary:hover span {
+  transform: translateX(4px);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--white);
+  border: 2px solid rgba(255, 255, 255, 0.8);
+  padding: 14px 28px;
+}
+
+.btn-outline:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: var(--white);
+  transform: translateY(-3px);
+}
+
+.btn-outline span {
+  transition: transform 0.3s ease;
+}
+
+.btn-outline:hover span {
+  transform: translateX(4px);
+}
