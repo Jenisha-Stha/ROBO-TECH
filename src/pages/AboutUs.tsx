@@ -19,6 +19,19 @@ import {
   Star,
   Trophy,
   MapPin,
+  Laptop,
+  Gamepad2,
+  Wifi,
+  Battery,
+  Plug,
+  Radio,
+  Brain,
+  Wrench,
+  Smartphone,
+  Search,
+  Ruler,
+  Telescope,
+  Microscope,
 } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { TeamMemberSlider } from "@/components/ui/team-member-slider";
@@ -340,8 +353,30 @@ const AboutUs = () => {
     target: heroRef,
     offset: ["start start", "end start"],
   });
-  const heroY = useTransform(scrollYProgress, [0, 1], [0, 150]);
   const heroOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
+
+  const backgroundIcons = [
+    { icon: Bot, x: '10%', y: '20%', size: 60, delay: 0 },
+    { icon: Rocket, x: '85%', y: '15%', size: 60, delay: 1 },
+    { icon: BookOpen, x: '15%', y: '70%', size: 60, delay: 2 },
+    { icon: Laptop, x: '80%', y: '65%', size: 60, delay: 0.5 },
+    { icon: Settings, x: '5%', y: '50%', size: 60, delay: 1.5 },
+    { icon: Zap, x: '90%', y: '80%', size: 60, delay: 2.5 },
+    { icon: Battery, x: '25%', y: '10%', size: 30, delay: 3 },
+    { icon: Plug, x: '70%', y: '5%', size: 60, delay: 1.2 },
+    { icon: Radio, x: '40%', y: '85%', size: 28, delay: 0.8 },
+    { icon: Brain, x: '60%', y: '75%', size: 50, delay: 1.8 },
+    { icon: Gamepad2, x: '12%', y: '40%', size: 66, delay: 2.2 },
+    { icon: Cpu, x: '88%', y: '35%', size: 60, delay: 0.3 },
+    { icon: Wrench, x: '35%', y: '25%', size: 20, delay: 1.1 },
+    { icon: Smartphone, x: '65%', y: '20%', size: 60, delay: 2.7 },
+    { icon: Wifi, x: '50%', y: '15%', size: 60, delay: 0.6 },
+    { icon: Search, x: '30%', y: '60%', size: 60, delay: 1.9 },
+    { icon: Ruler, x: '70%', y: '60%', size: 18, delay: 2.4 },
+    { icon: Telescope, x: '45%', y: '45%', size: 60, delay: 0.9 },
+    { icon: Microscope, x: '55%', y: '55%', size: 60, delay: 1.4 },
+    { icon: Lightbulb, x: '20%', y: '30%', size: 50, delay: 0.2 },
+  ];
 
   const features = [
     {
@@ -406,111 +441,49 @@ const AboutUs = () => {
                ═══════════════════════════════════════ */}
       <section
         ref={heroRef}
-        className="relative min-h-[75vh] flex items-center justify-center overflow-hidden"
+        className="relative min-h-[95vh] flex items-center justify-center overflow-hidden"
         style={{
           background:
             "linear-gradient(135deg, #0c3d7a 0%, #1565C0 30%, #1E88E5 60%, #42A5F5 100%)",
         }}
       >
-        {/* Parallax background layer */}
-        <motion.div className="absolute inset-0" style={{ y: heroY }}>
-          <div className="absolute top-[10%] left-[5%] w-96 h-96 bg-blue-400/10 rounded-full blur-3xl" />
-          <div className="absolute bottom-[10%] right-[10%] w-80 h-80 bg-cyan-400/10 rounded-full blur-3xl" />
-          <div className="absolute top-[40%] right-[30%] w-64 h-64 bg-indigo-400/8 rounded-full blur-2xl" />
-        </motion.div>
-
-        {/* Geometric decorations */}
-        <GeoShape
-          size={14}
-          color="bg-white/20"
-          shape="circle"
-          style={{ top: "15%", left: "8%" }}
-          duration={5}
-        />
-        <GeoShape
-          size={10}
-          color="bg-yellow-400/30"
-          shape="dot"
-          style={{ top: "25%", right: "12%" }}
-          duration={7}
-          delay={1}
-        />
-        <GeoShape
-          size={18}
-          color="border-white/15"
-          shape="ring"
-          style={{ bottom: "30%", left: "15%" }}
-          duration={8}
-          delay={0.5}
-        />
-        <GeoShape
-          size={12}
-          color="bg-cyan-300/20"
-          shape="square"
-          style={{ top: "20%", right: "25%" }}
-          duration={6}
-          delay={2}
-        />
-        <GeoShape
-          size={8}
-          color="bg-white/15"
-          shape="dot"
-          style={{ bottom: "25%", right: "8%" }}
-          duration={4}
-          delay={1.5}
-        />
-        <GeoShape
-          size={20}
-          color="border-white/10"
-          shape="ring"
-          style={{ top: "60%", left: "35%" }}
-          duration={9}
-          delay={3}
-        />
-        <GeoShape
-          size={6}
-          color="bg-yellow-300/25"
-          shape="circle"
-          style={{ top: "40%", left: "45%" }}
-          duration={5}
-          delay={0.8}
-        />
-        <GeoShape
-          size={16}
-          color="bg-white/8"
-          shape="square"
-          style={{ bottom: "20%", right: "35%" }}
-          duration={7}
-          delay={2.5}
-        />
-
-        {/* Twinkling sparkle stars */}
-        <motion.div
-          className="absolute top-[30%] left-[12%] z-10 text-yellow-300/50"
-          animate={{ scale: [0.7, 1.3, 0.7], opacity: [0.3, 0.9, 0.3] }}
-          transition={{ duration: 2.2, repeat: Infinity, ease: "easeInOut" }}
-        >
-          <Sparkles className="w-4 h-4" />
-        </motion.div>
-        <motion.div
-          className="absolute top-[18%] right-[18%] z-10 text-yellow-300/50"
-          animate={{ scale: [0.8, 1.2, 0.8], opacity: [0.4, 1, 0.4] }}
-          transition={{
-            duration: 1.8,
-            repeat: Infinity,
-            delay: 0.6,
-            ease: "easeInOut",
-          }}
-        >
-          <Sparkles className="w-3.5 h-3.5" />
-        </motion.div>
+        {/* Background Animated Pattern (from OurCourses) */}
+        <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
+          {backgroundIcons.map((item, index) => {
+            const IconComponent = item.icon;
+            return (
+              <motion.div
+                key={index}
+                style={{
+                  position: 'absolute',
+                  left: item.x,
+                  top: item.y,
+                  color: 'white',
+                  opacity: 0.15,
+                }}
+                animate={{
+                  y: [0, -30, 0],
+                  rotate: [-15, 15, -15],
+                }}
+                transition={{
+                  duration: 4 + Math.random() * 2,
+                  repeat: Infinity,
+                  delay: item.delay,
+                  ease: "easeInOut"
+                }}
+              >
+                <IconComponent size={item.size} strokeWidth={1.5} />
+              </motion.div>
+            );
+          })}
+        </div>
 
         {/* Content */}
         <motion.div
           className="container mx-auto px-4 relative z-10"
           style={{ opacity: heroOpacity }}
         >
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-9 items-center">
             {/* Left column — text content */}
             <div className="text-center lg:text-left">
               <motion.div
@@ -604,7 +577,7 @@ const AboutUs = () => {
                 transition={{ duration: 1, delay: 0.5, ease: "easeOut" }}
                 className="w-full relative"
                 style={{
-                  height: 620,
+                  height: 550,
                   marginBottom: -60,
                   filter:
                     "brightness(1.5) sepia(0.5) hue-rotate(185deg) saturate(2.5) contrast(1.1)",
