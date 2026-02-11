@@ -190,37 +190,37 @@ const FrontCourses: React.FC<FrontCoursesProps> = ({ headerSearchTerm }) => {
   };
 
   return (
-    <div className="container mx-auto px-4 py-8">
-      
+    <div className="container mx-auto px-4 py-8 bg-white min-h-screen">
+
       <div className="flex flex-col lg:flex-row gap-8 relative items-start justify-between">
 
         {/* LEFT COLUMN: Sticky Video - Always Visible */}
         <div className="hidden lg:block w-[400px] xl:w-[450px] sticky top-24 h-[500px] flex-shrink-0 rounded-[2.5rem] overflow-hidden shadow-2xl shadow-blue-900/20 border border-blue-100/50">
-           {/* 
+          {/* 
               Replaced robot image with the requested WhatsApp video.
               Video is set to autoplay, loop, and mute for background effect.
            */}
-           <div className="w-full h-full flex items-center justify-center">
-             <video
-               src="/images/WhatsApp Video 2026-02-05 at 21.10.46.mp4"
-               className="w-full h-full object-cover pointer-events-none mix-blend-multiply brightness-110 contrast-110"
-               autoPlay
-               loop
-               muted
-               playsInline
-               disablePictureInPicture
-               controlsList="nodownload nofullscreen noremoteplayback"
-             />
-           </div>
+          <div className="w-full h-full flex items-center justify-center">
+            <video
+              src="/images/WhatsApp Video 2026-02-05 at 21.10.46.mp4"
+              className="w-full h-full object-cover pointer-events-none mix-blend-multiply brightness-110 contrast-110"
+              autoPlay
+              loop
+              muted
+              playsInline
+              disablePictureInPicture
+              controlsList="nodownload nofullscreen noremoteplayback"
+            />
+          </div>
         </div>
 
         {/* RIGHT COLUMN: Header, Filters, Content */}
         <div className="flex-1 w-full min-w-0">
-          
+
           {/* Page Header */}
           <div className="mb-8">
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-2 oswald">Our Courses</h1>
-            <p className="text-cyan-400 text-lg">Explore our cutting-edge robotics curriculum</p>
+            <h1 className="text-4xl md:text-5xl font-bold text-blue-900 mb-2 oswald">Our Courses</h1>
+            <p className="text-blue-600 text-lg">Explore our cutting-edge robotics curriculum</p>
           </div>
 
           {/* Search & Filter Section Wrapper */}

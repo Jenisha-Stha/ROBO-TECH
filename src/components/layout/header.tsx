@@ -129,50 +129,50 @@ const Header = () => {
                     </Link>
                 </div>
 
-                {/* Search Bar (Desktop) */}
-                <div className="navbar-search" ref={searchRef}>
-                    <div className="search-input-wrapper">
-                        <Search className="search-icon w-4 h-4" />
-                        <input
-                            type="text"
-                            placeholder="Search courses..."
-                            value={searchTerm}
-                            onChange={handleSearchChange}
-                        />
-                    </div>
-                    
-                    {/* Search Results Dropdown */}
-                    {showResults && (
-                        <div className="search-results">
-                            {isSearching ? (
-                                <div className="p-4 text-center text-white/50">Searching...</div>
-                            ) : (
-                                <div>
-                                    {searchResults?.map(course => (
-                                        <div
-                                            key={course.id}
-                                            onClick={() => handleCourseClick(course.id)}
-                                            className="search-result-item"
-                                        >
-                                            <div className="w-10 h-10 bg-gradient-to-br from-[#4FC3F7] to-[#00BCD4] rounded-lg flex items-center justify-center flex-shrink-0">
-                                                <BookOpen className="w-5 h-5 text-white" />
-                                            </div>
-                                            <div className="result-info">
-                                                <span className="result-title">{course.title}</span>
-                                                <span className="result-meta">{course.course_type}</span>
-                                            </div>
-                                            <ArrowRight className="ml-auto w-4 h-4 text-white/30" />
-                                        </div>
-                                    ))}
-                                </div>
-                            )}
-                        </div>
-                    )}
-                </div>
-
                 {/* Auth Actions */}
                 <div className="navbar-actions">
-                    {user ? (
+                    {/* Search Bar (Desktop) */}
+                    <div className="navbar-search" ref={searchRef}>
+                        <div className="search-input-wrapper">
+                            <Search className="search-icon w-4 h-4" />
+                            <input
+                                type="text"
+                                placeholder="Search courses..."
+                                value={searchTerm}
+                                onChange={handleSearchChange}
+                            />
+                        </div>
+
+                        {/* Search Results Dropdown */}
+                        {showResults && (
+                            <div className="search-results">
+                                {isSearching ? (
+                                    <div className="p-4 text-center text-white/50">Searching...</div>
+                                ) : (
+                                    <div>
+                                        {searchResults?.map(course => (
+                                            <div
+                                                key={course.id}
+                                                onClick={() => handleCourseClick(course.id)}
+                                                className="search-result-item"
+                                            >
+                                                <div className="w-10 h-10 bg-gradient-to-br from-[#4FC3F7] to-[#00BCD4] rounded-lg flex items-center justify-center flex-shrink-0">
+                                                    <BookOpen className="w-5 h-5 text-white" />
+                                                </div>
+                                                <div className="result-info">
+                                                    <span className="result-title">{course.title}</span>
+                                                    <span className="result-meta">{course.course_type}</span>
+                                                </div>
+                                                <ArrowRight className="ml-auto w-4 h-4 text-white/30" />
+                                            </div>
+                                        ))}
+                                    </div>
+                                )}
+                            </div>
+                        )}
+                    </div>
+
+                    {user && (
                         <DropdownMenu>
                             <DropdownMenuTrigger asChild>
                                 <button className="user-profile-trigger">
@@ -196,13 +196,6 @@ const Header = () => {
                                 </DropdownMenuItem>
                             </DropdownMenuContent>
                         </DropdownMenu>
-                    ) : (
-                        <button 
-                            onClick={() => navigate('/login')}
-                            className="navbar-cta btn btn-primary"
-                        >
-                            Get Started <span>→</span>
-                        </button>
                     )}
 
                     <button onClick={toggleMobileMenu} className="mobile-toggle">
@@ -216,7 +209,7 @@ const Header = () => {
                 <button onClick={closeMobileMenu} className="mobile-menu-close">
                     <X className="w-8 h-8" />
                 </button>
-                
+
                 <div className="mobile-links">
                     <Link to="/" onClick={closeMobileMenu} className="mobile-nav-link">Home</Link>
                     <Link to="/about-us" onClick={closeMobileMenu} className="mobile-nav-link">About Us</Link>
@@ -225,7 +218,7 @@ const Header = () => {
                 </div>
 
                 <div className="mobile-search">
-                     <div className="search-input-wrapper">
+                    <div className="search-input-wrapper">
                         <Search className="search-icon w-4 h-4" />
                         <input
                             type="text"
@@ -238,7 +231,7 @@ const Header = () => {
                 </div>
 
                 {!user && (
-                    <button 
+                    <button
                         onClick={() => { navigate('/login'); closeMobileMenu(); }}
                         className="w-full btn btn-primary py-4 text-lg mt-auto"
                     >

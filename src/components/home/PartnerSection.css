@@ -1,7 +1,6 @@
 .partner-section {
-    background: linear-gradient(180deg, var(--white) 0%, #F5F9FF 100%);
-    padding: 2rem 1.5rem 6rem;
-    /* Reduced top padding significantly */
+    background: #FFFFFF;
+    padding: 100px 60px;
     position: relative;
     overflow: hidden;
 }
@@ -12,45 +11,50 @@
     position: relative;
     z-index: 1;
     display: flex;
-    flex-direction: column;
+    flex-direction: column-reverse;
+    /* Image on top, text below for better flow in stacked view */
     align-items: center;
     justify-content: center;
-    gap: 1.5rem;
-    /* Tighter gap */
+    gap: 40px;
     text-align: center;
 }
 
 .partner-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     max-width: 800px;
-    width: 100%;
 }
 
 .partner-image {
-    width: 100%;
-    max-width: 850px;
+    flex: 1;
+    max-width: 600px;
     display: flex;
     justify-content: center;
-    /* Add a subtle drop shadow to ground the image */
-    filter: drop-shadow(0 20px 40px rgba(0, 82, 204, 0.1));
-    min-height: 400px;
-    /* Prevent collapse on load */
+    filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.2));
 }
 
 .partner-title {
     font-family: var(--font-heading);
-    font-size: 3rem;
+    font-size: 3.5rem;
     font-weight: 700;
-    margin-bottom: 1rem;
-    color: var(--dark-text);
-    letter-spacing: -0.5px;
+    margin-bottom: 24px;
+    color: #1A1A1A;
+    line-height: 1.15;
+    letter-spacing: 0.5px;
 }
 
 .partner-subtitle {
-    font-size: 1.15rem;
-    color: var(--gray-text);
-    margin-bottom: 2rem;
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    font-weight: 300;
+    color: #4A4A4A;
+    margin-bottom: 44px;
     line-height: 1.6;
-    max-width: 600px;
+    letter-spacing: 0.3px;
+    text-transform: none;
+    max-width: 800px;
     margin-left: auto;
     margin-right: auto;
 }
@@ -67,16 +71,22 @@
     box-shadow: 0 8px 25px rgba(255, 30, 86, 0.4);
 }
 
+@media (max-width: 800px) {
+    .partner-title {
+        font-size: 2.5rem;
+    }
+}
+
 @media (max-width: 768px) {
     .partner-section {
-        padding: 2rem 1.5rem 4rem;
+        padding: 60px 20px;
     }
 
     .partner-title {
-        font-size: 2rem;
+        font-size: 2.2rem;
     }
 
     .partner-subtitle {
-        font-size: 1rem;
+        font-size: 1.2rem;
     }
 }

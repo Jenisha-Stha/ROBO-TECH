@@ -4,7 +4,7 @@
     left: 0;
     right: 0;
     z-index: 1000;
-    background: rgba(10, 22, 40, 0.95);
+    background: linear-gradient(180deg, rgba(21, 101, 192, 0.95) 0%, rgba(13, 71, 161, 0.95) 100%);
     backdrop-filter: blur(20px);
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     padding: 0 40px;
@@ -98,8 +98,8 @@
 /* Search Styles */
 .navbar-search {
     position: relative;
-    flex: 1;
-    max-width: 400px;
+    min-width: 350px;
+    max-width: 350px;
     margin: 0 20px;
 }
 

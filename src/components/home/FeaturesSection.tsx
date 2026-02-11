@@ -1,63 +1,64 @@
 import type { MouseEvent } from 'react';
 import './FeaturesSection.css';
 import Shuffle from './Shuffle';
-import ScrollStack, { ScrollStackItem } from './ScrollStack';
-import {
-    FaRobot,
-    FaGamepad,
-    FaTrophy,
-    FaHeart,
-    FaGlobeAmericas,
-    FaShieldAlt
-} from 'react-icons/fa';
-
-interface Feature {
-    icon: React.ReactNode;
-    title: string;
-    description: string;
-    emoji: string;
-}
-
-const features: Feature[] = [
-    {
-        icon: <FaRobot />,
-        title: "Fun Robot Building!",
-        description: "Build amazing robots step by step with easy-to-follow instructions!",
-        emoji: "🤖"
-    },
-    {
-        icon: <FaGamepad />,
-        title: "Learn Through Games!",
-        description: "Turn learning into playtime with exciting games and challenges!",
-        emoji: "🎮"
-    },
-    {
-        icon: <FaTrophy />,
-        title: "Earn Cool Badges!",
-        description: "Get awesome certificates and badges when you complete courses!",
-        emoji: "🏆"
-    },
-    {
-        icon: <FaHeart />,
-        title: "Learn at Your Speed!",
-        description: "Take your time and learn whenever you want - no pressure!",
-        emoji: "❤️"
-    },
-    {
-        icon: <FaGlobeAmericas />,
-        title: "Make New Friends!",
-        description: "Meet kids from all over the world who love robots too!",
-        emoji: "🌎"
-    },
-    {
-        icon: <FaShieldAlt />,
-        title: "Super Safe!",
-        description: "Your learning space is completely safe and protected!",
-        emoji: "🛡️"
-    }
-];
+import CourseCardNew from '../CourseCardNew';
+import { useSupabaseQuery } from '@/hooks/useSupabaseQuery';
+import { supabase } from '@/integrations/supabase/client';
+import { Course } from '@/hooks/useCoursesWithTags';
 
 function FeaturesSection() {
+    const { data: courses, isLoading: isLoadingItems } = useSupabaseQuery<Course[]>({
+        queryKey: ['courses-home-features'],
+        queryFn: async () => {
+            const { data, error } = await supabase
+                .from('courses')
+                .select(`
+              *,
+              course_tags (
+                id,
+                tag_id,
+                tags (
+                  id,
+                  title,
+                  slug,
+                  is_approved,
+                  tagtype_id,
+                  tag_types (
+                    id,
+                    name,
+                    slug
+                  )
+                )
+              ),
+              image_asset:assets!courses_image_asset_id_fkey(
+                id,
+                url,
+                file_name,
+                asset_type,
+                alt_text,
+                description
+              ),
+              lessons:lessons!lessons_course_id_fkey(
+                id,
+                is_erased,
+                is_active
+              )
+            `)
+                .eq('is_erased', false)
+                .eq('is_active', true)
+                .limit(6)
+                .order('created_at', { ascending: false });
+
+            if (error) throw error;
+
+            return data?.map(course => ({
+                ...course,
+                lesson_count: course.lessons?.filter(lesson => !lesson.is_erased && lesson.is_active).length || 0
+            })) || [];
+        },
+        staleTime: 10 * 60 * 1000,
+    });
+
     const handleMouseMove = (e: MouseEvent<HTMLDivElement>) => {
         const card = e.currentTarget;
         const rect = card.getBoundingClientRect();
@@ -87,37 +88,34 @@ function FeaturesSection() {
                 />
             </div>
 
-            <ScrollStack
-                className="features-scroll-stack"
-                itemDistance={120}
-                itemScale={0.01}
-                itemStackDistance={15}
-                stackPosition="30%"
-                useWindowScroll={true}
-            >
-                {features.map((feature, index) => (
-                    <ScrollStackItem
-                        key={index}
-                        itemClassName="feature-stack-card"
-                    >
-                        <div
-                            className="feature-card-content"
-                            onMouseMove={handleMouseMove}
-                        >
-                            <div className="feature-icon-wrapper">
-                                {feature.icon}
+            <div className="features-container container mx-auto px-4 text-center">
+                {isLoadingItems ? (
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+                        {[1, 2, 3].map((n) => (
+                            <div key={n} className="relative h-[500px] rounded-[2.5rem] bg-white/5 animate-pulse border border-white/10 overflow-hidden flex flex-col items-center justify-center">
+                                <div className="w-24 h-24 rounded-full bg-white/10 mb-8" />
+                                <div className="w-1/2 h-6 bg-white/10 rounded-full mb-4" />
+                                <div className="w-3/4 h-4 bg-white/10 rounded-full" />
+                                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -translate-x-full animate-[shimmer_2s_infinite]" />
                             </div>
-                            <h3 className="feature-title">
-                                {feature.title}
-                                <span className="feature-emoji">{feature.emoji}</span>
-                            </h3>
-                            <p className="feature-description">
-                                {feature.description}
-                            </p>
-                        </div>
-                    </ScrollStackItem>
-                ))}
-            </ScrollStack>
+                        ))}
+                    </div>
+                ) : courses && courses.length > 0 ? (
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 text-left">
+                        {courses.map((course, index) => (
+                            <CourseCardNew
+                                key={course.id}
+                                course={course}
+                                index={index}
+                            />
+                        ))}
+                    </div>
+                ) : (
+                    <div className="text-white/60 py-20 bg-white/5 rounded-[2.5rem] border border-dashed border-white/10">
+                        <p className="text-xl">No courses found matching your criteria.</p>
+                    </div>
+                )}
+            </div>
         </section>
     );
 }
