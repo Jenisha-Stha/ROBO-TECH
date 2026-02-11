@@ -17,6 +17,7 @@ const Header = () => {
     const [showResults, setShowResults] = useState(false)
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
     const searchRef = useRef<HTMLDivElement>(null)
+    const typingSoundRef = useRef<HTMLAudioElement | null>(null)
     const debouncedSearchTerm = useDebounce(searchTerm, 300)
 
     // Search courses query
@@ -84,11 +85,24 @@ const Header = () => {
     }, [])
 
     useEffect(() => {
+        typingSoundRef.current = new Audio('/sounds/typing.mp3')
+        typingSoundRef.current.volume = 0.4
+    }, [])
+
+    const playTypingSound = () => {
+        if (typingSoundRef.current) {
+            typingSoundRef.current.currentTime = 0
+            typingSoundRef.current.play().catch(err => console.debug('Audio play failed:', err))
+        }
+    }
+
+    useEffect(() => {
         setShowResults(debouncedSearchTerm.length > 0 && searchResults && searchResults.length > 0)
     }, [debouncedSearchTerm, searchResults])
 
     const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setSearchTerm(e.target.value)
+        playTypingSound()
     }
 
     const handleCourseClick = (courseId: string) => {
@@ -125,7 +139,7 @@ const Header = () => {
                         Our Courses
                     </Link>
                     <Link to="/become-our-partner-school" className={`nav-link ${location.pathname === '/become-our-partner-school' ? 'active' : ''}`}>
-                        Partners
+                        Become Our Partner
                     </Link>
                 </div>
 
@@ -214,7 +228,7 @@ const Header = () => {
                     <Link to="/" onClick={closeMobileMenu} className="mobile-nav-link">Home</Link>
                     <Link to="/about-us" onClick={closeMobileMenu} className="mobile-nav-link">About Us</Link>
                     <Link to="/our-courses" onClick={closeMobileMenu} className="mobile-nav-link">Our Courses</Link>
-                    <Link to="/become-our-partner-school" onClick={closeMobileMenu} className="mobile-nav-link">Partners</Link>
+                    <Link to="/become-our-partner-school" onClick={closeMobileMenu} className="mobile-nav-link">Become Our Partner</Link>
                 </div>
 
                 <div className="mobile-search">
