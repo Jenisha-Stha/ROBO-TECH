@@ -19,6 +19,19 @@ import {
   Star,
   Trophy,
   MapPin,
+  Laptop,
+  Gamepad2,
+  Wifi,
+  Battery,
+  Plug,
+  Radio,
+  Brain,
+  Wrench,
+  Smartphone,
+  Search,
+  Ruler,
+  Telescope,
+  Microscope,
 } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { TeamMemberSlider } from "@/components/ui/team-member-slider";
@@ -107,6 +120,30 @@ const GeoShape = ({
 
 // Shared viewport config
 const vp = { once: true, margin: "-80px" };
+
+// Shared animated background icons (OurCourses-style pattern)
+const backgroundIcons = [
+  { icon: Bot, x: '10%', y: '20%', size: 60, delay: 0 },
+  { icon: Rocket, x: '85%', y: '15%', size: 60, delay: 1 },
+  { icon: BookOpen, x: '15%', y: '70%', size: 60, delay: 2 },
+  { icon: Laptop, x: '80%', y: '65%', size: 60, delay: 0.5 },
+  { icon: Settings, x: '5%', y: '50%', size: 60, delay: 1.5 },
+  { icon: Zap, x: '90%', y: '80%', size: 60, delay: 2.5 },
+  { icon: Battery, x: '25%', y: '10%', size: 30, delay: 3 },
+  { icon: Plug, x: '70%', y: '5%', size: 60, delay: 1.2 },
+  { icon: Radio, x: '40%', y: '85%', size: 28, delay: 0.8 },
+  { icon: Brain, x: '60%', y: '75%', size: 50, delay: 1.8 },
+  { icon: Gamepad2, x: '12%', y: '40%', size: 66, delay: 2.2 },
+  { icon: Cpu, x: '88%', y: '35%', size: 60, delay: 0.3 },
+  { icon: Wrench, x: '35%', y: '25%', size: 20, delay: 1.1 },
+  { icon: Smartphone, x: '65%', y: '20%', size: 60, delay: 2.7 },
+  { icon: Wifi, x: '50%', y: '15%', size: 60, delay: 0.6 },
+  { icon: Search, x: '30%', y: '60%', size: 60, delay: 1.9 },
+  { icon: Ruler, x: '70%', y: '60%', size: 18, delay: 2.4 },
+  { icon: Telescope, x: '45%', y: '45%', size: 60, delay: 0.9 },
+  { icon: Microscope, x: '55%', y: '55%', size: 60, delay: 1.4 },
+  { icon: Lightbulb, x: '20%', y: '30%', size: 50, delay: 0.2 },
+];
 
 /* ──────────────────────────────────────────
    TRAIN / GAMIFICATION HELPERS
@@ -340,7 +377,6 @@ const AboutUs = () => {
     target: heroRef,
     offset: ["start start", "end start"],
   });
-  const heroY = useTransform(scrollYProgress, [0, 1], [0, 150]);
   const heroOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
 
   const features = [
@@ -406,111 +442,49 @@ const AboutUs = () => {
                ═══════════════════════════════════════ */}
       <section
         ref={heroRef}
-        className="relative min-h-[75vh] flex items-center justify-center overflow-hidden"
+        className="relative min-h-[95vh] flex items-center justify-center overflow-hidden"
         style={{
           background:
             "linear-gradient(135deg, #0c3d7a 0%, #1565C0 30%, #1E88E5 60%, #42A5F5 100%)",
         }}
       >
-        {/* Parallax background layer */}
-        <motion.div className="absolute inset-0" style={{ y: heroY }}>
-          <div className="absolute top-[10%] left-[5%] w-96 h-96 bg-blue-400/10 rounded-full blur-3xl" />
-          <div className="absolute bottom-[10%] right-[10%] w-80 h-80 bg-cyan-400/10 rounded-full blur-3xl" />
-          <div className="absolute top-[40%] right-[30%] w-64 h-64 bg-indigo-400/8 rounded-full blur-2xl" />
-        </motion.div>
-
-        {/* Geometric decorations */}
-        <GeoShape
-          size={14}
-          color="bg-white/20"
-          shape="circle"
-          style={{ top: "15%", left: "8%" }}
-          duration={5}
-        />
-        <GeoShape
-          size={10}
-          color="bg-yellow-400/30"
-          shape="dot"
-          style={{ top: "25%", right: "12%" }}
-          duration={7}
-          delay={1}
-        />
-        <GeoShape
-          size={18}
-          color="border-white/15"
-          shape="ring"
-          style={{ bottom: "30%", left: "15%" }}
-          duration={8}
-          delay={0.5}
-        />
-        <GeoShape
-          size={12}
-          color="bg-cyan-300/20"
-          shape="square"
-          style={{ top: "20%", right: "25%" }}
-          duration={6}
-          delay={2}
-        />
-        <GeoShape
-          size={8}
-          color="bg-white/15"
-          shape="dot"
-          style={{ bottom: "25%", right: "8%" }}
-          duration={4}
-          delay={1.5}
-        />
-        <GeoShape
-          size={20}
-          color="border-white/10"
-          shape="ring"
-          style={{ top: "60%", left: "35%" }}
-          duration={9}
-          delay={3}
-        />
-        <GeoShape
-          size={6}
-          color="bg-yellow-300/25"
-          shape="circle"
-          style={{ top: "40%", left: "45%" }}
-          duration={5}
-          delay={0.8}
-        />
-        <GeoShape
-          size={16}
-          color="bg-white/8"
-          shape="square"
-          style={{ bottom: "20%", right: "35%" }}
-          duration={7}
-          delay={2.5}
-        />
-
-        {/* Twinkling sparkle stars */}
-        <motion.div
-          className="absolute top-[30%] left-[12%] z-10 text-yellow-300/50"
-          animate={{ scale: [0.7, 1.3, 0.7], opacity: [0.3, 0.9, 0.3] }}
-          transition={{ duration: 2.2, repeat: Infinity, ease: "easeInOut" }}
-        >
-          <Sparkles className="w-4 h-4" />
-        </motion.div>
-        <motion.div
-          className="absolute top-[18%] right-[18%] z-10 text-yellow-300/50"
-          animate={{ scale: [0.8, 1.2, 0.8], opacity: [0.4, 1, 0.4] }}
-          transition={{
-            duration: 1.8,
-            repeat: Infinity,
-            delay: 0.6,
-            ease: "easeInOut",
-          }}
-        >
-          <Sparkles className="w-3.5 h-3.5" />
-        </motion.div>
+        {/* Background Animated Pattern (from OurCourses) */}
+        <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
+          {backgroundIcons.map((item, index) => {
+            const IconComponent = item.icon;
+            return (
+              <motion.div
+                key={index}
+                style={{
+                  position: 'absolute',
+                  left: item.x,
+                  top: item.y,
+                  color: 'white',
+                  opacity: 0.15,
+                }}
+                animate={{
+                  y: [0, -30, 0],
+                  rotate: [-15, 15, -15],
+                }}
+                transition={{
+                  duration: 4 + Math.random() * 2,
+                  repeat: Infinity,
+                  delay: item.delay,
+                  ease: "easeInOut"
+                }}
+              >
+                <IconComponent size={item.size} strokeWidth={1.5} />
+              </motion.div>
+            );
+          })}
+        </div>
 
         {/* Content */}
         <motion.div
           className="container mx-auto px-4 relative z-10"
           style={{ opacity: heroOpacity }}
         >
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-9 items-center">
             {/* Left column — text content */}
             <div className="text-center lg:text-left">
               <motion.div
@@ -545,7 +519,7 @@ const AboutUs = () => {
                     cursorCharacter="_"
                     cursorBlinkDuration={0.5}
                     className="text-4xl md:text-6xl lg:text-7xl font-bold mb-4 font-oswald leading-[1.1]"
-                    textColors={["#ffffff", "#ffffff", "#fbbf24", "#b01a1a"]}
+                    textColors={["#ffffff", "#ffffff", "#ffffff", "#ffffff"]}
                     loop
                   />
                 </motion.div>
@@ -604,7 +578,7 @@ const AboutUs = () => {
                 transition={{ duration: 1, delay: 0.5, ease: "easeOut" }}
                 className="w-full relative"
                 style={{
-                  height: 620,
+                  height: 550,
                   marginBottom: -60,
                   filter:
                     "brightness(1.5) sepia(0.5) hue-rotate(185deg) saturate(2.5) contrast(1.1)",
@@ -917,14 +891,6 @@ const MissionVisionSection = () => {
   const bannerOpacity = useTransform(scrollYProgress, [0.55, 0.65], [0, 1]);
   const bannerY = useTransform(scrollYProgress, [0.55, 0.65], [30, 0]);
 
-  // Sparkle star configs
-  const sparkleStars = [
-    { top: "12%", left: "6%", delay: 0 },
-    { top: "8%", right: "15%", delay: 0.8 },
-    { bottom: "20%", right: "6%", delay: 1.6 },
-    { bottom: "12%", left: "12%", delay: 2.4 },
-  ];
-
   return (
     <div
       ref={containerRef}
@@ -954,101 +920,36 @@ const MissionVisionSection = () => {
               "linear-gradient(135deg, #0c3d7a 0%, #1565C0 40%, #1E88E5 100%)",
           }}
         >
-          {/* Subtle accent shapes */}
-          <GeoShape
-            size={16}
-            color="border-white/8"
-            shape="ring"
-            style={{ top: "10%", right: "8%" }}
-            duration={10}
-          />
-          <GeoShape
-            size={10}
-            color="bg-white/5"
-            shape="circle"
-            style={{ bottom: "15%", left: "5%" }}
-            duration={7}
-            delay={2}
-          />
-          <GeoShape
-            size={8}
-            color="bg-cyan-400/10"
-            shape="dot"
-            style={{ top: "50%", left: "20%" }}
-            duration={5}
-            delay={1}
-          />
-
-          {/* Floating Robot Icon (top-right) */}
-          <motion.div
-            className="absolute top-8 right-8 md:top-12 md:right-12 z-20"
-            animate={{ y: [0, -12, 0] }}
-            transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-          >
-            <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-gradient-to-br from-cyan-400 via-blue-500 to-purple-600 flex items-center justify-center shadow-lg shadow-cyan-500/30">
-              <Bot className="w-8 h-8 md:w-10 md:h-10 text-white" />
-            </div>
-          </motion.div>
-
-          {/* Twinkling Sparkle Stars */}
-          {sparkleStars.map((pos, i) => (
-            <motion.div
-              key={i}
-              className="absolute z-10 text-yellow-300/60"
-              style={pos}
-              animate={{ scale: [0.7, 1.2, 0.7], opacity: [0.4, 1, 0.4] }}
-              transition={{
-                duration: 2,
-                repeat: Infinity,
-                delay: pos.delay,
-                ease: "easeInOut",
-              }}
-            >
-              <Sparkles className="w-4 h-4 md:w-5 md:h-5" />
-            </motion.div>
-          ))}
-
-          {/* Floating Particle Dots */}
-          <GeoShape
-            size={4}
-            color="bg-cyan-400/30"
-            shape="dot"
-            style={{ top: "25%", right: "20%" }}
-            duration={4}
-            delay={0.5}
-          />
-          <GeoShape
-            size={3}
-            color="bg-yellow-400/30"
-            shape="dot"
-            style={{ top: "60%", left: "8%" }}
-            duration={6}
-            delay={1}
-          />
-          <GeoShape
-            size={5}
-            color="bg-purple-400/30"
-            shape="dot"
-            style={{ bottom: "30%", right: "12%" }}
-            duration={5}
-            delay={2}
-          />
-          <GeoShape
-            size={3}
-            color="bg-cyan-300/25"
-            shape="dot"
-            style={{ top: "15%", left: "30%" }}
-            duration={7}
-            delay={0}
-          />
-          <GeoShape
-            size={4}
-            color="bg-yellow-300/25"
-            shape="dot"
-            style={{ bottom: "18%", left: "25%" }}
-            duration={4.5}
-            delay={1.5}
-          />
+          {/* Background Animated Pattern */}
+          <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
+            {backgroundIcons.map((item, index) => {
+              const IconComponent = item.icon;
+              return (
+                <motion.div
+                  key={index}
+                  style={{
+                    position: 'absolute',
+                    left: item.x,
+                    top: item.y,
+                    color: 'white',
+                    opacity: 0.15,
+                  }}
+                  animate={{
+                    y: [0, -30, 0],
+                    rotate: [-15, 15, -15],
+                  }}
+                  transition={{
+                    duration: 4 + Math.random() * 2,
+                    repeat: Infinity,
+                    delay: item.delay,
+                    ease: "easeInOut"
+                  }}
+                >
+                  <IconComponent size={item.size} strokeWidth={1.5} />
+                </motion.div>
+              );
+            })}
+          </div>
 
           <div className="container mx-auto px-4 relative z-10">
             {/* Station Badge */}
@@ -1559,69 +1460,36 @@ const CTASection = () => {
             "linear-gradient(135deg, #0c3d7a 0%, #1565C0 40%, #1E88E5 100%)",
         }}
       >
-        {/* Orbs */}
-        <div className="absolute top-0 left-[10%] w-72 h-72 bg-blue-400/8 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 right-[10%] w-60 h-60 bg-cyan-400/8 rounded-full blur-3xl" />
-
-        <GeoShape
-          size={10}
-          color="bg-white/10"
-          shape="dot"
-          style={{ top: "20%", left: "8%" }}
-          duration={5}
-        />
-        <GeoShape
-          size={14}
-          color="border-white/10"
-          shape="ring"
-          style={{ bottom: "20%", right: "12%" }}
-          duration={7}
-          delay={1}
-        />
-
-        {/* Floating Bot icon */}
-        <motion.div
-          className="absolute top-16 right-8 md:right-20 z-10"
-          animate={{ y: [0, -10, 0] }}
-          transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut" }}
-        >
-          <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-gradient-to-br from-cyan-400 via-blue-500 to-purple-600 flex items-center justify-center shadow-lg shadow-cyan-500/20 opacity-50">
-            <Bot className="w-5 h-5 md:w-6 md:h-6 text-white" />
-          </div>
-        </motion.div>
-
-        {/* Twinkling sparkle stars */}
-        <motion.div
-          className="absolute top-[15%] left-[12%] z-10 text-yellow-300/50"
-          animate={{ scale: [0.7, 1.3, 0.7], opacity: [0.3, 0.9, 0.3] }}
-          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-        >
-          <Sparkles className="w-4 h-4" />
-        </motion.div>
-        <motion.div
-          className="absolute bottom-[25%] right-[15%] z-10 text-yellow-300/40"
-          animate={{ scale: [0.8, 1.2, 0.8], opacity: [0.3, 0.8, 0.3] }}
-          transition={{
-            duration: 2.4,
-            repeat: Infinity,
-            delay: 0.9,
-            ease: "easeInOut",
-          }}
-        >
-          <Sparkles className="w-3.5 h-3.5" />
-        </motion.div>
-        <motion.div
-          className="absolute top-[50%] left-[30%] z-10 text-yellow-300/30"
-          animate={{ scale: [0.6, 1.1, 0.6], opacity: [0.2, 0.7, 0.2] }}
-          transition={{
-            duration: 2.6,
-            repeat: Infinity,
-            delay: 1.5,
-            ease: "easeInOut",
-          }}
-        >
-          <Sparkles className="w-3 h-3" />
-        </motion.div>
+        {/* Background Animated Pattern */}
+        <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
+          {backgroundIcons.map((item, index) => {
+            const IconComponent = item.icon;
+            return (
+              <motion.div
+                key={index}
+                style={{
+                  position: 'absolute',
+                  left: item.x,
+                  top: item.y,
+                  color: 'white',
+                  opacity: 0.15,
+                }}
+                animate={{
+                  y: [0, -30, 0],
+                  rotate: [-15, 15, -15],
+                }}
+                transition={{
+                  duration: 4 + Math.random() * 2,
+                  repeat: Infinity,
+                  delay: item.delay,
+                  ease: "easeInOut"
+                }}
+              >
+                <IconComponent size={item.size} strokeWidth={1.5} />
+              </motion.div>
+            );
+          })}
+        </div>
 
         <div className="container mx-auto px-4 text-center relative z-10">
           {/* Station Badge with Trophy */}
