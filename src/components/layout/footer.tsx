@@ -29,7 +29,7 @@ const Footer = () => {
     ]
 
     return (
-        <footer className="bg-white">
+        <footer style={{ background: 'linear-gradient(180deg, rgba(21, 101, 192, 0.95) 0%, rgba(13, 71, 161, 0.95) 100%)' }}>
             <div className="max-w-7xl mx-auto px-6 lg:px-8 pt-24 pb-12">
                 <div className="grid grid-cols-1 lg:grid-cols-2 justify-between ">
                     {/* Left — Brand */}
