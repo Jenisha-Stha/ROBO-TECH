@@ -43,6 +43,7 @@ import ViewCertificate from "./pages/admin/ViewCertificate";
 import Rank from "./pages/admin/rank/Rank";
 import Assessments from "./pages/admin/assessments/Assessment";
 import Notifications from "./pages/admin/notifications/Notifications";
+import ScrollToTop from "./components/layout/ScrollToTop";
 
 const queryClient = new QueryClient();
 // Auth wrapper using Supabase
@@ -70,6 +71,7 @@ const App = () => {
           <Toaster />
           <Sonner />
           <BrowserRouter>
+            <ScrollToTop />
             <Routes>
               {/* <Route path="/" element={<Index />} /> */}
               <Route path="/" element={<HomePage />} />

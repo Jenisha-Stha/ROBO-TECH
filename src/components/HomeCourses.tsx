@@ -130,17 +130,29 @@ const HomeCourses = () => {
 
 
       {/* Courses Grid */}
-      {!isLoadingItems && courses.length > 0 && (
+      {isLoadingItems ? (
+        <div className="grid grid-cols-1 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+          {[1, 2, 3, 4].map((n) => (
+            <div key={n} className="h-[500px] rounded-[2.5rem] bg-white/5 animate-pulse border border-white/10 flex flex-col items-center justify-center p-8">
+              <div className="w-24 h-24 rounded-full bg-white/10 mb-8" />
+              <div className="w-3/4 h-6 bg-white/10 rounded-full mb-4" />
+              <div className="w-full h-20 bg-white/10 rounded-2xl mb-6" />
+              <div className="w-1/2 h-4 bg-white/10 rounded-full" />
+            </div>
+          ))}
+        </div>
+      ) : courses && courses.length > 0 ? (
         <div className="grid grid-cols-1 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {courses.map((course: Course) => (
             <CourseCardNew
               key={course.id}
               course={course}
+              index={0}
               onEnroll={() => { }}
             />
           ))}
         </div>
-      )}
+      ) : null}
 
       <div className="flex justify-center items-center mt-10">
         <Button
