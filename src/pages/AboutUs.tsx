@@ -508,7 +508,7 @@ const AboutUs = () => {
                     text={[
                       "About RoboTech Learning Center",
                       "Inspiring Future Innovators",
-                      "Build Tomorrow's Leaders",
+                      "Build Tomorrow's Leaders", 
                       "Learn. Code. Innovate.",
                     ]}
                     as="h1"
