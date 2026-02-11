@@ -35,8 +35,9 @@
 }
 
 .logo-main {
-    font-family: var(--font-heading);
-    font-size: 1.4rem;
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.6rem;
+    /* Increased from 1.4rem */
     font-weight: 700;
     background: linear-gradient(135deg, #4FC3F7 0%, #00BCD4 100%);
     -webkit-background-clip: text;
@@ -46,10 +47,12 @@
 }
 
 .logo-subtext {
-    font-family: var(--font-heading);
-    font-size: 0.65rem;
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.75rem;
+    /* Increased from 0.65rem */
     font-weight: 500;
-    color: rgba(255, 255, 255, 0.6);
+    color: rgba(255, 255, 255, 0.7);
+    /* Slightly whiter */
     text-transform: uppercase;
     letter-spacing: 1.5px;
     line-height: 1;
@@ -62,10 +65,12 @@
 }
 
 .nav-link {
-    font-family: var(--font-heading);
-    font-size: 0.9rem;
+    font-family: 'Oswald', sans-serif;
+    font-size: 1rem;
+    /* Increased from 0.9rem */
     font-weight: 500;
-    color: rgba(255, 255, 255, 0.8);
+    color: rgba(255, 255, 255, 0.9);
+    /* Whiter */
     text-decoration: none;
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -111,27 +116,38 @@
 
 .search-icon {
     position: absolute;
-    left: 12px;
-    color: rgba(255, 255, 255, 0.4);
+    left: 14px;
+    color: rgba(255, 255, 255, 0.7);
+    /* Whiter icon */
     pointer-events: none;
+    z-index: 1;
 }
 
 .navbar-search input {
     width: 100%;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.15);
+    /* Slightly darker bg to make white border pop */
+    border: 1.5px solid rgba(255, 255, 255, 0.6);
+    /* Thicker and whiter border */
     border-radius: 50px;
-    padding: 10px 15px 10px 40px;
+    padding: 12px 15px 12px 48px;
     color: white;
-    font-size: 0.9rem;
+    font-size: 1.05rem;
+    /* Larger font */
     transition: all 0.3s ease;
 }
 
+.navbar-search input::placeholder {
+    color: rgba(255, 255, 255, 0.8);
+    /* Whiter placeholder */
+}
+
 .navbar-search input:focus {
-    background: rgba(255, 255, 255, 0.1);
-    border-color: #4FC3F7;
+    background: rgba(255, 255, 255, 0.25);
+    border-color: #FFFFFF;
+    /* Pure white on focus */
     outline: none;
-    box-shadow: 0 0 15px rgba(79, 195, 247, 0.2);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
 }
 
 .search-results {
@@ -297,7 +313,7 @@
 }
 
 .mobile-nav-link {
-    font-family: var(--font-heading);
+    font-family: 'Oswald', sans-serif;
     font-size: 1.1rem;
     color: white;
     text-decoration: none;

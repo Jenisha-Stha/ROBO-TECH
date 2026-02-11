@@ -5,6 +5,32 @@ import CourseCardNew from '../CourseCardNew';
 import { useSupabaseQuery } from '@/hooks/useSupabaseQuery';
 import { supabase } from '@/integrations/supabase/client';
 import { Course } from '@/hooks/useCoursesWithTags';
+import { motion } from 'framer-motion';
+import {
+    Bot,
+    Cpu,
+    BookOpen,
+    Laptop,
+    Zap,
+    Rocket,
+    Settings,
+    Brain,
+    GraduationCap,
+    Lightbulb
+} from 'lucide-react';
+
+const backgroundIcons = [
+    { icon: Bot, x: '5%', y: '10%', size: 40, delay: 0 },
+    { icon: Rocket, x: '90%', y: '15%', size: 45, delay: 1 },
+    { icon: BookOpen, x: '10%', y: '80%', size: 38, delay: 2 },
+    { icon: Laptop, x: '85%', y: '75%', size: 42, delay: 0.5 },
+    { icon: Settings, x: '3%', y: '45%', size: 35, delay: 1.5 },
+    { icon: Zap, x: '95%', y: '50%', size: 40, delay: 2.5 },
+    { icon: Brain, x: '60%', y: '10%', size: 36, delay: 1.8 },
+    { icon: GraduationCap, x: '40%', y: '85%', size: 40, delay: 0.8 },
+    { icon: Lightbulb, x: '75%', y: '20%', size: 38, delay: 2.7 },
+    { icon: Cpu, x: '25%', y: '15%', size: 42, delay: 0.3 },
+];
 
 function FeaturesSection() {
     const { data: courses, isLoading: isLoadingItems } = useSupabaseQuery<Course[]>({
@@ -70,6 +96,51 @@ function FeaturesSection() {
 
     return (
         <section className="features-section">
+            {/* Top Wave Curve SVG */}
+            <div className="features-wave-top">
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 1440 150"
+                    preserveAspectRatio="none"
+                >
+                    <path
+                        d="M0,80 C360,150 720,0 1080,80 C1260,120 1380,100 1440,80 L1440,150 L0,150 Z"
+                        className="shape-fill"
+                    ></path>
+                </svg>
+            </div>
+
+            {/* Animated Background Icons */}
+            <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
+                {backgroundIcons.map((item, index) => {
+                    const IconComponent = item.icon;
+                    return (
+                        <motion.div
+                            key={index}
+                            style={{
+                                position: 'absolute',
+                                left: item.x,
+                                top: item.y,
+                                color: 'white',
+                                opacity: 0.1,
+                            }}
+                            animate={{
+                                y: [0, -20, 0],
+                                rotate: [-10, 10, -10],
+                            }}
+                            transition={{
+                                duration: 5 + Math.random() * 3,
+                                repeat: Infinity,
+                                delay: item.delay,
+                                ease: "easeInOut"
+                            }}
+                        >
+                            <IconComponent size={item.size} strokeWidth={1.2} />
+                        </motion.div>
+                    );
+                })}
+            </div>
+
             <div className="features-header">
                 <Shuffle
                     text="Our Exciting Courses"
@@ -115,6 +186,20 @@ function FeaturesSection() {
                         <p className="text-xl">No courses found matching your criteria.</p>
                     </div>
                 )}
+            </div>
+
+            {/* Wave Curve SVG */}
+            <div className="features-wave">
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 1440 150"
+                    preserveAspectRatio="none"
+                >
+                    <path
+                        d="M0,80 C360,150 720,0 1080,80 C1260,120 1380,100 1440,80 L1440,150 L0,150 Z"
+                        className="shape-fill"
+                    ></path>
+                </svg>
             </div>
         </section>
     );

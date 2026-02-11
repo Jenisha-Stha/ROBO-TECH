@@ -14,10 +14,13 @@ import {
     Brain,
     Wrench,
     Smartphone,
-    Wifi
+    Wifi,
+    Sparkles,
+    ArrowRight
 } from 'lucide-react';
 import robotRiv from '../../assets/rive/16660-31346-robot.riv';
 import { useNavigate } from 'react-router';
+import TextType from '@/components/TextType';
 
 // Background animated icons for visual interest
 const backgroundIcons = [
@@ -95,18 +98,56 @@ const Hero = () => {
 
             <div className="hero-container">
                 <div className="hero-content">
-                    <h1 className="hero-title font-oswald">Welcome to ROBO-TECH Learning Centre</h1>
-                    <p className="hero-subtitle font-oswald text-lg md:text-xl text-blue-100/80 ">
-                        where learning robotics is fun, exciting, and full of cool adventures!
-                    </p>
-                    <div className="hero-buttons">
-                        <button className="btn btn-primary" onClick={() => navigate('/login')}>
-                            LogIn <span>→</span>
-                        </button>
-                        <button className="btn btn-outline" onClick={() => navigate('/login')}>
-                            Register Now <span>→</span>
-                        </button>
+
+                    <div className="overflow-hidden">
+                        <motion.div
+                            initial={{ y: 80 }}
+                            animate={{ y: 0 }}
+                            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+                        >
+                            <TextType
+                                text={[
+                                    "Welcome to ROBO-TECH Learning Centre",
+                                    "Learn Robotics the Fun Way",
+                                    "Build Tomorrow's Leaders Today",
+                                    "Where Tech Meets Creativity"
+                                ]}
+                                as="h1"
+                                typingSpeed={75}
+                                pauseDuration={1500}
+                                deletingSpeed={50}
+                                showCursor
+                                cursorCharacter="_"
+                                cursorBlinkDuration={0.5}
+                                className="hero-title font-oswald text-4xl md:text-6xl font-bold mb-6 text-white leading-tight"
+                                textColors={["#ffffff", "#ffffff", "#ffffff", "#ffffff"]}
+                                loop
+                            />
+                        </motion.div>
                     </div>
+
+                    <motion.p
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6, delay: 0.4 }}
+                        className="hero-subtitle font-oswald text-lg md:text-xl text-blue-100/80 mb-10"
+                    >
+                        where learning robotics is fun, exciting, and full of cool adventures!
+                    </motion.p>
+
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6, delay: 0.6 }}
+                        className="hero-buttons"
+                    >
+                        <button className="btn btn-primary group" onClick={() => navigate('/login')}>
+                            LogIn <ArrowRight className="w-5 h-5 ml-2 transition-transform group-hover:translate-x-1" />
+                        </button>
+                        <button className="btn btn-outline group" onClick={() => navigate('/login')}>
+                            Register Now <ArrowRight className="w-5 h-5 ml-2 transition-transform group-hover:translate-x-1" />
+                        </button>
+                    </motion.div>
                 </div>
                 <div className="hero-image">
                     <div className="hero-rive-container">

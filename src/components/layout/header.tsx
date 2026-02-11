@@ -225,7 +225,7 @@ const Header = () => {
                             placeholder="Search courses..."
                             value={searchTerm}
                             onChange={handleSearchChange}
-                            className="bg-white/10 border-white/10 text-white w-full rounded-full px-10 py-3"
+                            className="bg-white/10 border-[1.5px] border-white/60 text-white w-full rounded-full px-12 py-3.5 text-lg"
                         />
                     </div>
                 </div>

@@ -29,18 +29,32 @@
 
 .partner-image {
     flex: 1;
-    max-width: 600px;
+    width: 100%;
+    max-width: 900px;
+    /* Increased from 600px */
     display: flex;
     justify-content: center;
     filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.2));
 }
 
+.partner-image>div {
+    width: 100% !important;
+    height: auto !important;
+}
+
+.partner-image canvas {
+    width: 100% !important;
+    height: auto !important;
+}
+
 .partner-title {
-    font-family: var(--font-heading);
-    font-size: 3.5rem;
+    font-family: 'Oswald', sans-serif;
+    font-size: 4rem;
+    /* Increased size */
     font-weight: 700;
     margin-bottom: 24px;
-    color: #1A1A1A;
+    color: #0c3d7a;
+    /* Main brand blue */
     line-height: 1.15;
     letter-spacing: 0.5px;
 }

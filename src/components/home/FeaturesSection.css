@@ -1,6 +1,7 @@
 .features-section {
-    background: linear-gradient(180deg, rgba(21, 101, 192, 0.95) 0%, rgba(13, 71, 161, 0.95) 100%);
-    padding: 100px 60px;
+    background: linear-gradient(135deg, #0c3d7a 0%, #1565C0 40%, #1E88E5 100%);
+    padding: 180px 60px 220px;
+    /* Increased top and bottom padding for waves and height */
     position: relative;
     overflow: hidden;
 }
@@ -16,6 +17,49 @@
     background-size: 60px 60px;
     mask-image: radial-gradient(circle at center, black 40%, transparent 80%);
     pointer-events: none;
+    z-index: 1;
+}
+
+/* S-Wave curve for the bottom */
+.features-wave {
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    z-index: 10;
+}
+
+.features-wave svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 150px;
+}
+
+.features-wave .shape-fill,
+.features-wave-top .shape-fill {
+    fill: #FFFFFF;
+}
+
+/* S-Wave curve for the top */
+.features-wave-top {
+    position: absolute;
+    top: -1px;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    z-index: 10;
+    transform: rotate(180deg);
+}
+
+.features-wave-top svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 150px;
 }
 
 .features-header {
@@ -26,11 +70,13 @@
 }
 
 .features-title {
-    font-family: var(--font-heading);
-    font-size: 3rem;
+    font-family: 'Oswald', sans-serif;
+    font-size: 3.5rem;
+    /* Slightly increased for more impact */
     color: #FFFFFF;
     margin-bottom: 16px;
-    text-shadow: 0 0 30px rgba(255, 23, 68, 0.5);
+    text-shadow: 0 0 30px rgba(0, 82, 204, 0.5);
+    /* Blue glow to match theme */
     letter-spacing: 1px;
 }
 

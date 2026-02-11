@@ -736,7 +736,8 @@ const BecomeOurPartnerSchool = () => {
             </section>
 
             {/* Partner Schools Section */}
-            <section ref={partnersRef} className="partners-section py-12 sm:py-16 md:py-24 relative overflow-hidden bg-gradient-to-b from-[#1565C0]/95 to-[#0D47A1]/95">
+            <section ref={partnersRef} className="partners-section py-12 sm:py-16 md:py-24 relative overflow-hidden"
+                style={{ background: 'linear-gradient(180deg, rgba(21, 101, 192, 0.95) 0%, rgba(13, 71, 161, 0.95) 100%)' }}>
 
                 {/* Background grid pattern similar to FeaturesSection */}
                 <div className="absolute inset-0 z-0 pointer-events-none bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:60px_60px] [mask-image:radial-gradient(circle_at_center,black_40%,transparent_80%)]" />
