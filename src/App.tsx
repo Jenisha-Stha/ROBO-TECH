@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -63,6 +64,19 @@ const RequireAuth = ({ children }: { children: React.ReactNode }) => {
 const App = () => {
   // Initialize connection monitoring
   // useSupabaseConnection();
+
+  useEffect(() => {
+    const clickSound = new Audio('/sounds/clicking.mp3');
+    clickSound.volume = 0.4;
+
+    const handleGlobalClick = () => {
+      clickSound.currentTime = 0;
+      clickSound.play().catch(err => console.debug('Audio play failed:', err));
+    };
+
+    window.addEventListener('click', handleGlobalClick, true);
+    return () => window.removeEventListener('click', handleGlobalClick, true);
+  }, []);
 
   return (
     <div className="dark min-h-screen bg-background text-foreground">

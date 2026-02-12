@@ -1,28 +1,65 @@
 .missions-section {
-    padding: 100px 40px 80px;
+    padding: 2.5rem 1rem;
+    /* 40px 16px */
     background: #FFFFFF;
     overflow: hidden;
 }
 
+@media (min-width: 768px) {
+    .missions-section {
+        padding: 3.75rem 1.5rem;
+        /* 60px 24px */
+    }
+}
+
+@media (min-width: 1024px) {
+    .missions-section {
+        padding: 6.25rem 2.5rem 5rem;
+        /* 100px 40px 80px */
+    }
+}
+
 .missions-container {
-    max-width: 1400px;
+    width: 100%;
+    max-width: 87.5rem;
+    /* 1400px */
     margin: 0 auto;
 }
 
 .missions-title {
     text-align: center;
-    margin-bottom: 50px;
+    margin-bottom: 2rem;
+}
+
+@media (min-width: 768px) {
+    .missions-title {
+        margin-bottom: 3.125rem;
+        /* 50px */
+    }
 }
 
 .missions-title .shuffle-text-element {
     font-family: 'Oswald', sans-serif;
-    font-size: 3.5rem;
+    font-size: 1.5rem;
     font-weight: 700;
     background: linear-gradient(135deg, #0c3d7a 0%, #1565C0 40%, #1E88E5 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
     margin: 0;
+    line-height: 1.2;
+}
+
+@media (min-width: 768px) {
+    .missions-title .shuffle-text-element {
+        font-size: 2.5rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .missions-title .shuffle-text-element {
+        font-size: 3.5rem;
+    }
 }
 
 .missions-title .shuffle-char-span {
@@ -34,42 +71,31 @@
 
 .masonry-wrapper {
     width: 100%;
-    height: 800px;
+    height: 31.25rem;
+    /* 500px */
     position: relative;
     overflow: visible;
 }
 
-/* Responsive */
-@media (max-width: 1024px) {
+@media (min-width: 768px) {
     .masonry-wrapper {
-        height: 700px;
+        height: 37.5rem;
+        /* 600px */
     }
 }
 
-@media (max-width: 768px) {
-    .missions-section {
-        padding: 60px 24px;
-    }
-
-    .missions-title .shuffle-text-element {
-        font-size: 1.8rem;
-    }
-
+@media (min-width: 1024px) {
     .masonry-wrapper {
-        height: 600px;
+        height: 43.75rem;
+        /* 700px */
     }
 }
 
-@media (max-width: 480px) {
-    .missions-section {
-        padding: 40px 16px;
-    }
-
-    .missions-title .shuffle-text-element {
-        font-size: 1.5rem;
-    }
-
+@media (min-width: 1280px) {
     .masonry-wrapper {
-        height: 500px;
+        height: 50rem;
+        /* 800px */
     }
 }
+
+/* Responsive media queries removed as they are now mobile-first above */
