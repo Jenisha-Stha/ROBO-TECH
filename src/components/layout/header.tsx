@@ -115,6 +115,18 @@ const Header = () => {
     const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen)
     const closeMobileMenu = () => setIsMobileMenuOpen(false)
 
+    // Handle body scroll lock
+    useEffect(() => {
+        if (isMobileMenuOpen) {
+            document.body.style.overflow = 'hidden'
+        } else {
+            document.body.style.overflow = 'unset'
+        }
+        return () => {
+            document.body.style.overflow = 'unset'
+        }
+    }, [isMobileMenuOpen])
+
     return (
         <nav className="navbar">
             <div className="navbar-container">

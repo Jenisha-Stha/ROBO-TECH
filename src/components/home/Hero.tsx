@@ -141,11 +141,11 @@ const Hero = () => {
                         transition={{ duration: 0.6, delay: 0.6 }}
                         className="hero-buttons"
                     >
-                        <button className="btn btn-primary group" onClick={() => navigate('/login')}>
-                            LogIn <ArrowRight className="w-5 h-5 ml-2 transition-transform group-hover:translate-x-1" />
+                        <button className="btn btn-primary" onClick={() => navigate('/login')}>
+                            LogIn <ArrowRight className="w-5 h-5 ml-2" />
                         </button>
-                        <button className="btn btn-outline group" onClick={() => navigate('/login')}>
-                            Register Now <ArrowRight className="w-5 h-5 ml-2 transition-transform group-hover:translate-x-1" />
+                        <button className="btn btn-outline" onClick={() => navigate('/register')}>
+                            Register Now <ArrowRight className="w-5 h-5 ml-2" />
                         </button>
                     </motion.div>
                 </div>
