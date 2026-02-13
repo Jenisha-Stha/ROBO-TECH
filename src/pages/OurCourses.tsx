@@ -2,6 +2,7 @@ import React, { CSSProperties } from 'react';
 import { motion, MotionStyle, HTMLMotionProps } from 'framer-motion';
 import FrontCourses from '@/components/FrontCourses';
 import Header from '../components/layout/header';
+import TextType from '@/components/TextType';
 import Footer from '@/components/layout/footer';
 import {
   Bot,
@@ -136,6 +137,33 @@ const HomePage: React.FC = () => {
             z-index: 5;
             pointer-events: none;
           }
+          .hero-wave {
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 100%;
+            overflow: hidden;
+            line-height: 0;
+            z-index: 5;
+          }
+          .hero-wave svg {
+            position: relative;
+            display: block;
+            width: calc(100% + 1.3px);
+            height: 150px;
+          }
+          .hero-wave .shape-fill {
+            fill: #FFFFFF;
+          }
+          @media (max-width: 1024px) {
+            .hero-wave svg { height: 120px; }
+          }
+          @media (max-width: 768px) {
+            .hero-wave svg { height: 100px; }
+          }
+          @media (max-width: 480px) {
+            .hero-wave svg { height: 80px; }
+          }
         `}</style>
 
         {/* Brand Quote - Left Side */}
@@ -145,48 +173,110 @@ const HomePage: React.FC = () => {
           transition={{ duration: 1, ease: "easeOut" }}
           style={styles.textWrapper}
         >
-          <h1 className="oswald text-white text-5xl lg:text-7xl leading-[1.1] mb-6 drop-shadow-lg">
-            From Curiosity to<br />
-            <span style={{ color: '#E31E24' }}>Cool Robots.</span>
-          </h1>
-          <p className="text-white/90 text-2xl lg:text-3xl font-bold tracking-tight">
-            Learn. Create. <span className="oswald italic" style={{ color: '#E31E24' }}>Shine.</span>
-          </p>
+          <TextType
+            text={[
+              "From Curiosity to Cool Robots",
+              "Learn. Create. Shine.",
+              "Building Future Innovators",
+            ]}
+            as="h1"
+            typingSpeed={75}
+            pauseDuration={1500}
+            deletingSpeed={50}
+            showCursor
+            cursorCharacter="_"
+            cursorBlinkDuration={0.5}
+            className="oswald text-white text-5xl lg:text-7xl leading-[1.1] mb-6 drop-shadow-lg font-bold"
+            textColors={["#ffffff", "#E31E24", "#fbbf24"]}
+            loop
+          />
         </motion.div>
 
-        {/* Animated Mascots - Right Side */}
         <motion.div
           animate={floatingAnimation}
-          style={styles.imageWrapper}
+          style={{
+            position: 'absolute',
+            right: '2%',
+            top: '4%',
+            width: '750px',
+            zIndex: 10,
+          }}
         >
-          {/* Shinchan Mascot Only */}
-          <div style={styles.shinchanContainer}>
-            <div className="shinchan-wrapper">
-              <motion.img
-                src="/images/shinchan_red_1.webp"
-                alt="Shinchan learning with laptop"
-                style={styles.shinchanImage}
-                animate={{
-                  rotate: [-2, 2, -2],
-                }}
-                transition={{
-                  duration: 3,
-                  repeat: Infinity,
-                  repeatType: "reverse",
-                  ease: "easeInOut"
-                }}
-              />
-              <div className="hand-wave"></div>
+          {/* Thought Bubble - Refined, Smaller & Centered */}
+          <div
+            style={{
+              position: 'absolute',
+              left: '12%',
+              top: '8%',
+              zIndex: 35,
+              width: '180px', // Smaller size
+              pointerEvents: 'none',
+            }}
+          >
+            <div className="relative flex items-center justify-center">
+              <svg 
+                viewBox="0 0 200 200" 
+                className="w-full h-auto drop-shadow-xl"
+              >
+                {/* Clean, symmetrical hand-drawn style cloud */}
+                <path
+                  d="M50,70 C50,50 80,40 100,40 C120,40 140,45 155,60 C175,55 190,70 185,95 C195,120 180,145 155,150 C145,170 120,175 100,170 C80,175 55,170 45,150 C20,145 5,120 15,95 C10,70 25,55 50,70 Z"
+                  fill="white"
+                  stroke="#1b3664"
+                  strokeWidth="6"
+                  strokeLinejoin="round"
+                />
+                {/* Connector bubbles */}
+                <circle cx="145" cy="170" r="10" fill="white" stroke="#1b3664" strokeWidth="3" />
+                <circle cx="165" cy="185" r="6" fill="white" stroke="#1b3664" strokeWidth="2" />
+              </svg>
+              {/* Perfectly centered text overlay */}
+              <div className="absolute inset-0 flex items-center justify-center pt-2">
+                <span className="text-[#1b3664] oswald font-black text-center text-lg leading-[1.0] uppercase tracking-tighter">
+                  hello,<br />future<br />innovator!
+                </span>
+              </div>
             </div>
           </div>
+
+          <div
+            className="relative overflow-hidden rounded-full"
+            style={{
+              width: '100%',
+              aspectRatio: '1/1',
+              background: 'linear-gradient(135deg, #0c3d7a 0%, #1565C0 40%, #1E88E5 100%)', // Logo Blue Gradient
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              WebkitMaskImage: 'radial-gradient(circle, black 40%, transparent 70%)',
+              maskImage: 'radial-gradient(circle, black 40%, transparent 70%)',
+            }}
+          >
+            <video
+              src="/images/WhatsApp Video 2026-02-05 at 21.10.46.mp4"
+              className="w-[140%] max-w-none transform scale-125 object-cover pointer-events-none"
+              autoPlay
+              loop
+              muted
+              playsInline
+              disablePictureInPicture
+              controlsList="nodownload nofullscreen noremoteplayback"
+              style={{
+                mixBlendMode: 'multiply',
+                filter: 'brightness(1.1) contrast(140%) saturate(160%)'
+              }}
+            />
+          </div>
         </motion.div>
+
+
 
         {/* Centered Bunny Mascot - Perfectly Isolated White Bunny */}
         <motion.div
           style={{
             position: 'absolute',
             left: '35%',
-            top: '40%',
+            top: '32%',
             transform: 'translate(-50%, -50%)',
             zIndex: 15,
             width: '450px',
@@ -225,7 +315,64 @@ const HomePage: React.FC = () => {
             />
           </div>
         </motion.div>
+
+        {/* Sync Wave Curve SVG from Home Page */}
+        <div className="hero-wave">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 1440 150"
+            preserveAspectRatio="none"
+          >
+            <path
+              d="M0,80 C360,150 720,0 1080,80 C1260,120 1380,100 1440,80 L1440,150 L0,150 Z"
+              className="shape-fill"
+            ></path>
+          </svg>
+        </div>
       </div>
+
+      <section className="px-6 py-16 text-slate-900 container mx-auto">
+
+
+
+        <div className="flex flex-col md:flex-row items-center md:items-start justify-between gap-12">
+          {/* Left Side: PROGRAMS Text */}
+          <div className="w-full md:w-1/2 text-slate-900">
+            <h1 className="text-4xl font-black tracking-tight oswald text-[#1b3664] mb-6">PROGRAMS</h1>
+            <p className="text-xl text-slate-700 leading-relaxed font-medium">
+              Our carefully structured programs introduce students to robotics, artificial intelligence, drones, and modern technology in a safe and engaging way. Through project-based learning and guided mentorship, children not only understand technology — they learn how to create with it.
+            </p>
+          </div>
+
+          {/* Right Side: Shinchan Mascot */}
+          <motion.div
+            animate={floatingAnimation}
+            style={{ ...styles.imageWrapper, maxWidth: '500px' }}
+            className="w-full md:w-1/2 flex justify-center md:justify-end"
+          >
+            {/* Shinchan Mascot Only */}
+            <div style={styles.shinchanContainer}>
+              <div className="shinchan-wrapper">
+                <motion.img
+                  src="/images/shinchan_red_1.webp"
+                  alt="Shinchan learning with laptop"
+                  style={styles.shinchanImage}
+                  animate={{
+                    rotate: [-2, 2, -2],
+                  }}
+                  transition={{
+                    duration: 3,
+                    repeat: Infinity,
+                    repeatType: "reverse",
+                    ease: "easeInOut"
+                  }}
+                />
+                <div className="hand-wave"></div>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
 
       <section className="bg-white py-20">
         <FrontCourses headerSearchTerm={""} />
@@ -240,14 +387,14 @@ const HomePage: React.FC = () => {
 const styles: PageStyles = {
   heroContainer: {
     background: 'linear-gradient(135deg, #0c3d7a 0%, #1565C0 40%, #1E88E5 100%)',
-    padding: '80px 8%',
+    padding: '120px 8% 160px',
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
     position: 'relative',
     overflow: 'hidden',
-    minHeight: '600px',
+    minHeight: '800px',
     gap: '40px',
   },
   textWrapper: {
