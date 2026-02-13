@@ -141,10 +141,10 @@ const Hero = () => {
                         transition={{ duration: 0.6, delay: 0.6 }}
                         className="hero-buttons"
                     >
-                        <button className="btn btn-primary" onClick={() => navigate('/login')}>
+                        <button className="btn btn-primary font-oswald" onClick={() => navigate('/login')}>
                             LogIn <ArrowRight className="w-5 h-5 ml-2" />
                         </button>
-                        <button className="btn btn-outline" onClick={() => navigate('/register')}>
+                        <button className="btn btn-outline font-oswald" onClick={() => navigate('/register')}>
                             Register Now <ArrowRight className="w-5 h-5 ml-2" />
                         </button>
                     </motion.div>

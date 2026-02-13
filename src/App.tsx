@@ -38,6 +38,9 @@ import CompletedCoursesPage from "./pages/admin/CompletedCoursesPage";
 import LessonDetails from "./pages/admin/LessonDetails";
 import AboutUs from "./pages/AboutUs";
 import BecomeOurPartnerSchool from "./pages/become-our-partner-school";
+import RegistrationTypePage from './pages/RegistrationTypePage';
+import IndividualRegistrationPage from './pages/IndividualRegistrationPage';
+import SchoolRegistrationPage from './pages/SchoolRegistrationPage';
 import { useSessionRefresh } from "./hooks/useSessionRefresh";
 import Certificates from "./pages/admin/Certificates";
 import ViewCertificate from "./pages/admin/ViewCertificate";
@@ -94,6 +97,9 @@ const App = () => {
               <Route path="/become-our-partner-school" element={<BecomeOurPartnerSchool />} />
               <Route path="/our-courses/:courseId" element={<ViewCourse />} />
               <Route path="/login" element={<AuthPage />} />
+              <Route path="/register" element={<RegistrationTypePage />} />
+              <Route path="/register/individual" element={<IndividualRegistrationPage />} />
+              <Route path="/register/school" element={<SchoolRegistrationPage />} />
               <Route path="/auth/callback" element={<AuthCallback />} />
               <Route path="/admin/my-rank" element={<Rank />} />
               <Route path="/admin/assessments" element={<Assessments />} />

@@ -22,25 +22,24 @@
 
 .partner-container {
     width: 100%;
-    max-width: 75rem;
-    /* 1200px */
+    max-width: 80rem;
+    /* 1280px */
     margin: 0 auto;
     position: relative;
     z-index: 1;
     display: flex;
-    flex-direction: column-reverse;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 2rem;
+    gap: 1.5rem;
     text-align: center;
 }
 
 @media (min-width: 1024px) {
     .partner-container {
-        flex-direction: row;
-        text-align: left;
-        gap: 3.75rem;
-        /* 60px */
+        flex-direction: column;
+        text-align: center;
+        gap: 2rem;
     }
 }
 
@@ -55,23 +54,26 @@
 
 @media (min-width: 1024px) {
     .partner-content {
-        flex: 1;
-        align-items: flex-start;
+        flex: none;
+        align-items: center;
     }
 }
 
 .partner-image {
     width: 100%;
-    max-width: 56.25rem;
-    /* 900px */
+    max-width: 50rem;
+    /* Reduced to make it "little smaller" */
     display: flex;
     justify-content: center;
     filter: drop-shadow(0 1.25rem 2.5rem rgba(0, 0, 0, 0.2));
+    margin-bottom: 0rem;
 }
 
 @media (min-width: 1024px) {
     .partner-image {
-        flex: 1;
+        flex: none;
+        max-width: 60rem;
+        /* Adjusted for desktop refinement */
     }
 }
 
@@ -139,6 +141,7 @@
 
 /* Ensure the button looks great here too */
 .partner-btn {
+    font-family: 'Oswald', sans-serif;
     font-size: 1.1rem;
     padding: 1rem 2.8rem;
     box-shadow: 0 4px 15px rgba(255, 30, 86, 0.3);

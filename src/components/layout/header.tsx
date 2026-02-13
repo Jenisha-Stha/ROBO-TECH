@@ -170,6 +170,15 @@ const Header = () => {
     };
   }, [isMobileMenuOpen]);
 
+apeksha
+    return (
+        <nav className="navbar">
+            <div className="navbar-container">
+                {/* Logo Section */}
+                <Link to="/" className="navbar-logo">
+                    <img src="/images/robo-tech.jpg" alt="RoboTech" className="h-16 w-auto object-contain" />
+                </Link>
+
   return (
     <nav className="navbar">
       <div className="navbar-container">
@@ -185,6 +194,7 @@ const Header = () => {
             <span className="logo-subtext">Learning Centre</span>
           </div>
         </Link>
+main
 
         {/* Navigation Links (Desktop) */}
         <div className="navbar-links">

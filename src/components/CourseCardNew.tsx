@@ -75,16 +75,16 @@ const CourseCardNew: React.FC<CourseCardNewProps> = ({ course, index }) => {
                     {/* The "Sliding Box" Content - Now part of the group */}
                     <div className="w-full bg-white rounded-[2.5rem] p-8 pb-10 flex flex-col shadow-2xl pointer-events-auto min-h-[180px]">
                         <div className="flex-1">
-                            <h3 className="text-xl font-black text-[#1A1A2E] leading-tight mb-4 transition-colors">
+                            <h3 className="text-xl font-black text-[#1A1A2E] leading-tight mb-4 transition-colors font-oswald">
                                 {course.title}
                             </h3>
 
                             <div className="flex flex-col">
-                                <p className="text-gray-500 text-sm leading-relaxed mb-6 line-clamp-2">
+                                <p className="text-gray-500 text-sm leading-relaxed mb-6 line-clamp-2 font-oswald">
                                     {course.detail}
                                 </p>
 
-                                <div className="flex items-center justify-between pt-4 border-t border-gray-100">
+                                <div className="flex items-center justify-between pt-4 border-t border-gray-100 font-oswald">
                                     <span className="text-xs font-bold text-[#E31E24] uppercase tracking-widest">View Details</span>
                                     <div className="w-10 h-10 rounded-xl bg-[#E31E24] flex items-center justify-center text-white shadow-lg shadow-red-600/20">
                                         <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -99,7 +99,7 @@ const CourseCardNew: React.FC<CourseCardNewProps> = ({ course, index }) => {
 
                 {/* Badge - Always on top */}
                 <div className="absolute top-6 right-6 z-[50]">
-                    <Badge className="bg-white/20 backdrop-blur-md text-white border-white/30 px-2 py-0.5 font-bold text-[9px] uppercase tracking-wider">
+                    <Badge className="bg-white/20 backdrop-blur-md text-white border-white/30 px-2 py-0.5 font-bold text-[9px] uppercase tracking-wider font-oswald">
                         {course.course_type || "Free"}
                     </Badge>
                 </div>
