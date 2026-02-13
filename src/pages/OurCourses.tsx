@@ -175,7 +175,7 @@ const HomePage: React.FC = () => {
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 1, ease: "easeOut" }}
-          className="relative z-20 w-full lg:w-1/2 flex flex-col items-center lg:items-start text-center lg:text-left mb-16 lg:mb-0 max-w-[600px]"
+          className="relative z-20 w-full lg:w-1/2 flex flex-col items-center lg:items-start text-center lg:text-left mb-16 lg:mb-0 max-w-[600px] lg:-translate-y-28"
         >
           <TextType
             text={[
@@ -200,69 +200,44 @@ const HomePage: React.FC = () => {
           animate={floatingAnimation}
           className="absolute -right-20 lg:right-[2%] -top-10 lg:top-[4%] w-[450px] md:w-[600px] lg:w-[750px] z-30 pointer-events-none lg:pointer-events-auto"
         >
-          {/* Thought Bubble - Refined, Smaller & Centered */}
-          <div className="absolute left-[10%] lg:left-[12%] top-[5%] lg:top-[8%] z-35 w-[110px] md:w-[140px] lg:w-[180px] pointer-events-none">
-            <div className="relative flex items-center justify-center">
-              <svg
-                viewBox="0 0 200 200"
-                className="w-full h-auto drop-shadow-xl"
-              >
-                {/* Clean, symmetrical hand-drawn style cloud */}
-                <path
-                  d="M50,70 C50,50 80,40 100,40 C120,40 140,45 155,60 C175,55 190,70 185,95 C195,120 180,145 155,150 C145,170 120,175 100,170 C80,175 55,170 45,150 C20,145 5,120 15,95 C10,70 25,55 50,70 Z"
-                  fill="white"
-                  stroke="#1b3664"
-                  strokeWidth="6"
-                  strokeLinejoin="round"
-                />
-                {/* Connector bubbles */}
-                <circle cx="145" cy="170" r="10" fill="white" stroke="#1b3664" strokeWidth="3" />
-                <circle cx="165" cy="185" r="6" fill="white" stroke="#1b3664" strokeWidth="2" />
-              </svg>
-              {/* Perfectly centered text overlay */}
-              <div className="absolute inset-0 flex items-center justify-center pt-2">
-                <span className="text-[#1b3664] oswald font-black text-center text-lg leading-[1.0] uppercase tracking-tighter">
-                  hello,<br />future<br />innovator!
-                </span>
-              </div>
-            </div>
-          </div>
 
           <div
-            className="relative overflow-hidden rounded-full opacity-50 lg:opacity-100"
+            className="relative overflow-hidden rounded-full opacity-100"
             style={{
               width: '100%',
               aspectRatio: '1/1',
-              background: 'linear-gradient(135deg, #0c3d7a 0%, #1565C0 40%, #1E88E5 100%)', // Logo Blue Gradient
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              WebkitMaskImage: 'radial-gradient(circle, black 40%, transparent 70%)',
-              maskImage: 'radial-gradient(circle, black 40%, transparent 70%)',
+              WebkitMaskImage: 'radial-gradient(circle, black 50%, transparent 72%)',
+              maskImage: 'radial-gradient(circle, black 50%, transparent 72%)',
             }}
           >
-            <video
-              src="/images/WhatsApp Video 2026-02-05 at 21.10.46.mp4"
-              className="w-[140%] max-w-none transform scale-125 object-cover pointer-events-none"
-              autoPlay
-              loop
-              muted
-              playsInline
-              disablePictureInPicture
-              controlsList="nodownload nofullscreen noremoteplayback"
-              style={{
-                mixBlendMode: 'multiply',
-                filter: 'brightness(1.1) contrast(140%) saturate(160%)'
-              }}
-            />
+            <div className="shinchan-wrapper scale-110 translate-y-[-5%]">
+              <motion.img
+                src="/images/shinchan_red_1.webp"
+                alt="Shinchan Mascot"
+                style={styles.shinchanImage}
+                animate={{
+                  rotate: [-2, 2, -2],
+                }}
+                transition={{
+                  duration: 3,
+                  repeat: Infinity,
+                  repeatType: "reverse",
+                  ease: "easeInOut"
+                }}
+              />
+              <div className="hand-wave"></div>
+            </div>
           </div>
         </motion.div>
 
 
 
-        {/* Centered Bunny Mascot - Perfectly Isolated White Bunny */}
+        {/* Centered Bunny Mascot - Hidden or smaller on mobile */}
         <motion.div
-          className="absolute left-[15%] lg:left-[35%] top-[72%] lg:top-[32%] -translate-x-1/2 -translate-y-1/2 w-[280px] md:w-[350px] lg:w-[450px] z-15 pointer-events-none"
+          className="absolute left-[85%] lg:left-[35%] top-[85%] lg:top-[32%] -translate-x-1/2 -translate-y-1/2 w-[180px] md:w-[350px] lg:w-[450px] z-15 pointer-events-none opacity-30 lg:opacity-100"
           animate={{
             y: ["-20px", "20px"],
           }}
@@ -278,7 +253,6 @@ const HomePage: React.FC = () => {
             style={{
               width: '100%',
               aspectRatio: '1/1',
-              background: 'linear-gradient(135deg, #0c3d7a 0%, #1565C0 40%, #1E88E5 100%)', // Logo Blue Gradient
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
@@ -317,9 +291,9 @@ const HomePage: React.FC = () => {
 
 
 
-        <div className="flex flex-col md:flex-row items-center md:items-start justify-between gap-12">
+        <div className="flex flex-col md:flex-row items-center md:items-center justify-between gap-12">
           {/* Left Side: PROGRAMS Text */}
-          <div className="w-full md:w-[45%] text-slate-900">
+          <div className="w-full md:w-[45%] text-slate-900 md:translate-y-12">
             <h1 className="text-3xl md:text-4xl font-bold text-[#1b3664] mb-6 font-oswald uppercase leading-tight">PROGRAMS</h1>
             <p className="text-lg text-slate-600 leading-relaxed mb-8">
               Our carefully structured programs introduce students to robotics, artificial intelligence, drones, and modern technology in a safe and engaging way. Through project-based learning and guided mentorship, children not only understand technology — they learn how to create with it.
@@ -329,30 +303,63 @@ const HomePage: React.FC = () => {
             </button>
           </div>
 
-          {/* Right Side: Shinchan Mascot */}
+          {/* Right Side: Mascot Video */}
           <motion.div
             animate={floatingAnimation}
-            style={{ ...styles.imageWrapper, maxWidth: '650px' }}
-            className="w-full md:w-[55%] flex justify-center md:justify-end"
+            style={{ ...styles.imageWrapper, maxWidth: '800px' }}
+            className="w-full md:w-[60%] flex justify-center md:justify-end relative md:-translate-y-12"
           >
-            {/* Shinchan Mascot Only */}
-            <div style={styles.shinchanContainer}>
-              <div className="shinchan-wrapper">
-                <motion.img
-                  src="/images/shinchan_red_1.webp"
-                  alt="Shinchan learning with laptop"
-                  style={styles.shinchanImage}
-                  animate={{
-                    rotate: [-2, 2, -2],
-                  }}
-                  transition={{
-                    duration: 3,
-                    repeat: Infinity,
-                    repeatType: "reverse",
-                    ease: "easeInOut"
-                  }}
+            {/* Thought Bubble - Responsive sizing and position */}
+            <div className="absolute -top-16 -right-2 lg:-top-20 lg:-right-10 z-35 w-[110px] md:w-[160px] lg:w-[200px] pointer-events-none">
+              <div className="relative flex items-center justify-center">
+                <svg
+                  viewBox="0 0 200 200"
+                  className="w-full h-auto drop-shadow-xl transform scale-x-[-1]"
+                >
+                  {/* Flipped clean, symmetrical hand-drawn style cloud */}
+                  <path
+                    d="M50,70 C50,50 80,40 100,40 C120,40 140,45 155,60 C175,55 190,70 185,95 C195,120 180,145 155,150 C145,170 120,175 100,170 C80,175 55,170 45,150 C20,145 5,120 15,95 C10,70 25,55 50,70 Z"
+                    fill="white"
+                    stroke="#1b3664"
+                    strokeWidth="6"
+                    strokeLinejoin="round"
+                  />
+                  {/* Flipped connector bubbles */}
+                  <circle cx="145" cy="170" r="10" fill="white" stroke="#1b3664" strokeWidth="3" />
+                  <circle cx="165" cy="185" r="6" fill="white" stroke="#1b3664" strokeWidth="2" />
+                </svg>
+                {/* Perfectly centered text overlay */}
+                <div className="absolute inset-0 flex items-center justify-center pt-2">
+                  <span className="text-[#1b3664] oswald font-black text-center text-sm md:text-lg lg:text-xl leading-[1.0] uppercase tracking-tighter">
+                    hello,<br />future<br />innovator!
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <div style={{ ...styles.shinchanContainer, maxWidth: '800px' }}>
+              <div
+                className="relative overflow-hidden rounded-full"
+                style={{
+                  width: '100%',
+                  aspectRatio: '1/1',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  WebkitMaskImage: 'radial-gradient(circle, black 40%, transparent 70%)',
+                  maskImage: 'radial-gradient(circle, black 40%, transparent 70%)',
+                }}
+              >
+                <video
+                  src="/images/WhatsApp Video 2026-02-05 at 21.10.46.mp4"
+                  className="w-[140%] max-w-none transform scale-[1.5] object-cover pointer-events-none"
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  disablePictureInPicture
+                  controlsList="nodownload nofullscreen noremoteplayback"
                 />
-                <div className="hand-wave"></div>
               </div>
             </div>
           </motion.div>
