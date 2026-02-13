@@ -578,7 +578,7 @@ const BecomeOurPartnerSchool = () => {
       {/* Hero Section */}
       <section
         ref={heroRef}
-        className="relative min-h-[60vh] flex items-center overflow-hidden pt-28 pb-12 "
+        className="relative min-h-[auto] md:min-h-[39rem] flex items-center overflow-hidden pt-24 pb-16 md:pt-20 md:pb-0"
         style={{
           background:
             "linear-gradient(135deg, #0c3d7a 0%, #1565C0 30%, #1E88E5 60%, #42A5F5 100%)",
@@ -623,7 +623,7 @@ const BecomeOurPartnerSchool = () => {
         </div>
 
         <div className="container mx-auto px-4 relative z-10">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-12 items-center">
             <div className="text-center md:text-left">
               <div className="mb-6">
                 <TextType
@@ -635,13 +635,13 @@ const BecomeOurPartnerSchool = () => {
                   showCursor={false}
                   cursorCharacter="_"
                   cursorBlinkDuration={0.5}
-                  className="text-4xl md:text-5xl lg:text-6xl font-bold font-oswald leading-[1.1] text-white tracking-tight block"
+                  className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold font-oswald leading-[1.1] text-white tracking-tight block"
                   textColors={["#ffffff"]}
                   loop
                 />
               </div>
 
-              <p className=" text-lg md:text-xl text-blue-100/80 mb-10 leading-relaxed max-w-xl mx-auto md:mx-0 font-light">
+              <p className="text-base sm:text-lg md:text-xl text-blue-100/80 mb-8 md:mb-10 leading-relaxed max-w-xl mx-auto md:mx-0 font-light">
                 Partner with us to bring cutting-edge{" "}
                 <span className="text-white font-semibold">STEM education</span>
                 , <span className="text-[#E31E24] font-semibold">robotics</span>
@@ -671,9 +671,9 @@ const BecomeOurPartnerSchool = () => {
               </div>
 
               {/* Stats */}
-              <div className="grid grid-cols-3 gap-6 mt-16 pt-10 border-t border-white/10">
+              <div className="grid grid-cols-3 gap-3 sm:gap-6 mt-10 md:mt-16 pt-8 md:pt-10 border-t border-white/10">
                 <div className="stat-item text-center md:text-left">
-                  <div className="text-3xl md:text-4xl font-bold mb-1 text-white font-oswald">
+                  <div className="text-2xl sm:text-3xl md:text-4xl font-bold mb-1 text-white font-oswald">
                     {counters.schools}+
                   </div>
                   <div className="text-blue-200/60 text-sm font-oswald uppercase tracking-wider">
@@ -681,7 +681,7 @@ const BecomeOurPartnerSchool = () => {
                   </div>
                 </div>
                 <div className="stat-item text-center md:text-left">
-                  <div className="text-3xl md:text-4xl font-bold mb-1 text-[#E31E24] font-oswald">
+                  <div className="text-2xl sm:text-3xl md:text-4xl font-bold mb-1 text-[#E31E24] font-oswald">
                     {counters.students >= 1000
                       ? `${Math.floor(counters.students / 1000)}K`
                       : counters.students}
@@ -692,7 +692,7 @@ const BecomeOurPartnerSchool = () => {
                   </div>
                 </div>
                 <div className="stat-item text-center md:text-left">
-                  <div className="text-3xl md:text-4xl font-bold mb-1 text-white font-oswald">
+                  <div className="text-2xl sm:text-3xl md:text-4xl font-bold mb-1 text-white font-oswald">
                     {counters.satisfaction}%
                   </div>
                   <div className="text-blue-200/60 text-sm font-oswald uppercase tracking-wider">
@@ -703,9 +703,9 @@ const BecomeOurPartnerSchool = () => {
             </div>
 
             {/* Right Side Image/Illustration Area */}
-            <div className="hidden md:flex items-center justify-center relative h-[600px]">
+            <div className="flex items-center justify-center relative h-[250px] sm:h-[320px] md:h-[450px] lg:h-[600px]">
               <motion.div
-                className="relative z-[15] w-[450px]"
+                className="relative z-[15] w-[220px] sm:w-[280px] md:w-[350px] lg:w-[450px]"
                 animate={{
                   y: ["-20px", "20px"],
                 }}
@@ -734,7 +734,7 @@ const BecomeOurPartnerSchool = () => {
         </div>
 
         {/* Scroll indicator with white theme */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 opacity-50">
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 opacity-50 hidden md:block">
           <div className="w-6 h-10 rounded-full border-2 border-white/30 flex items-start justify-center p-2">
             <div className="w-1.5 h-3 rounded-full bg-white animate-bounce" />
           </div>
