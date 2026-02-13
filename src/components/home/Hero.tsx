@@ -130,7 +130,7 @@ const Hero = () => {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6, delay: 0.4 }}
-                        className="hero-subtitle font-oswald text-lg md:text-xl text-blue-100/80 mb-10"
+                        className="hero-subtitle text-lg md:text-xl text-blue-100/80 mb-10"
                     >
                         where learning robotics is fun, exciting, and full of cool adventures!
                     </motion.p>
@@ -150,6 +150,20 @@ const Hero = () => {
                     </motion.div>
                 </div>
                 <div className="hero-image">
+                    <motion.div
+                        className="hero-greeting font-oswald"
+                        initial={{ opacity: 0, scale: 0.5, y: 20 }}
+                        animate={{ opacity: 1, scale: 1, y: 0 }}
+                        transition={{
+                            duration: 0.5,
+                            delay: 1.2,
+                            type: "spring",
+                            stiffness: 260,
+                            damping: 20
+                        }}
+                    >
+                        Hi Kids!
+                    </motion.div>
                     <div className="hero-rive-container">
                         <RiveComponent />
                     </div>

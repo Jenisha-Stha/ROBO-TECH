@@ -123,7 +123,7 @@ const PartnerSection = () => {
                     </p>
                     <div className="partner-cta">
                         <button
-                            className="btn btn-primary partner-btn"
+                            className="btn btn-primary partner-btn font-oswald"
                             onClick={() => navigate('/register/school')}
                         >
                             Become a Partner School

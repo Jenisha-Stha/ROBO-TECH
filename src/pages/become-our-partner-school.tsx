@@ -1,5 +1,6 @@
 import Footer from '@/components/layout/footer'
 import Header from '@/components/layout/header'
+import { useNavigate } from 'react-router'
 import { Button } from '@/components/ui/button'
 import { supabase } from '@/integrations/supabase/client'
 import { useQuery } from '@tanstack/react-query'
@@ -109,6 +110,7 @@ const backgroundIcons = [
 ];
 
 const BecomeOurPartnerSchool = () => {
+    const navigate = useNavigate();
     const heroRef = useRef<HTMLDivElement>(null);
     const benefitsRef = useRef<HTMLDivElement>(null);
     const partnersRef = useRef<HTMLDivElement>(null);
@@ -585,6 +587,7 @@ const BecomeOurPartnerSchool = () => {
                                     className="btn btn-primary w-full sm:w-auto px-8 py-4"
                                     onMouseEnter={handleButtonHover}
                                     onMouseLeave={handleButtonLeave}
+                                    onClick={() => navigate('/register/school')}
                                 >
                                     Start Partnership
                                     <ArrowRight className="w-5 h-5 ml-2" />
