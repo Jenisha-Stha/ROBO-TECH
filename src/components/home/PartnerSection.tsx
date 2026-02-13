@@ -2,8 +2,10 @@ import { useState, useEffect, useRef } from 'react';
 import './PartnerSection.css';
 import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 import schoolAnimation from '../../assets/images/campus library school building office mocca animation.lottie';
+import { useNavigate } from 'react-router';
 
 const PartnerSection = () => {
+    const navigate = useNavigate();
     const [dotLottie, setDotLottie] = useState<any>(null);
     const containerRef = useRef<HTMLDivElement>(null);
     const [hasPlayed, setHasPlayed] = useState(false);
@@ -107,20 +109,23 @@ const PartnerSection = () => {
                 <div className="partner-image">
                     <DotLottieReact
                         src={schoolAnimation}
-                        speed={0.5}
-                        loop={false}
-                        autoplay={false}
+                        speed={1}
+                        loop={true}
+                        autoplay={true}
                         dotLottieRefCallback={setDotLottie}
                     />
                 </div>
                 <div className="partner-content">
-                    <h2 className="partner-title">For Schools & Educators</h2>
-                    <p className="partner-subtitle">
+                    <h2 className="partner-title font-oswald mb-6">For Schools & Educators</h2>
+                    <p className="partner-subtitle font-oswald mb-10">
                         Partner with RoboTech Learning to bring hands on robotics and coding
                         experiences to your classrooms
                     </p>
                     <div className="partner-cta">
-                        <button className="btn btn-primary partner-btn">
+                        <button
+                            className="btn btn-primary partner-btn"
+                            onClick={() => navigate('/register/school')}
+                        >
                             Become a Partner School
                         </button>
                     </div>

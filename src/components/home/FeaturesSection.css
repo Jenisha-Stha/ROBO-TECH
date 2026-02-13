@@ -1,8 +1,23 @@
 .features-section {
-    background: linear-gradient(180deg, #1e293b 0%, #0f172a 100%);
-    padding: 100px 60px;
+    background: linear-gradient(135deg, #0c3d7a 0%, #1565C0 40%, #1E88E5 100%);
+    padding: 3.75rem 1.25rem;
+    /* 60px 20px */
     position: relative;
     overflow: hidden;
+}
+
+@media (min-width: 768px) {
+    .features-section {
+        padding: 6.25rem 2.5rem;
+        /* 100px 40px */
+    }
+}
+
+@media (min-width: 1024px) {
+    .features-section {
+        padding: 11.25rem 3.75rem 13.75rem;
+        /* 180px 60px 220px */
+    }
 }
 
 /* Background grid pattern */
@@ -16,22 +31,104 @@
     background-size: 60px 60px;
     mask-image: radial-gradient(circle at center, black 40%, transparent 80%);
     pointer-events: none;
+    z-index: 1;
+}
+
+/* S-Wave curve for the bottom */
+.features-wave {
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    z-index: 10;
+}
+
+.features-wave svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 80px;
+    /* Reduced */
+}
+
+@media (min-width: 768px) {
+    .features-wave svg {
+        height: 120px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .features-wave svg {
+        height: 150px;
+    }
+}
+
+.features-wave .shape-fill,
+.features-wave-top .shape-fill {
+    fill: #FFFFFF;
+}
+
+/* S-Wave curve for the top */
+.features-wave-top {
+    position: absolute;
+    top: -1px;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    z-index: 10;
+    transform: rotate(180deg);
+}
+
+.features-wave-top svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 80px;
+    /* Reduced */
+}
+
+@media (min-width: 768px) {
+    .features-wave-top svg {
+        height: 120px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .features-wave-top svg {
+        height: 150px;
+    }
 }
 
 .features-header {
     text-align: center;
-    margin-bottom: 60px;
+    margin-bottom: 2rem;
     position: relative;
     z-index: 2;
 }
 
+@media (min-width: 768px) {
+    .features-header {
+        margin-bottom: 3.75rem;
+        /* 60px */
+    }
+}
+
 .features-title {
-    font-family: var(--font-heading);
-    font-size: 3rem;
+    font-family: 'Oswald', sans-serif;
+    font-size: 2rem;
     color: #FFFFFF;
-    margin-bottom: 16px;
-    text-shadow: 0 0 30px rgba(255, 23, 68, 0.5);
+    margin-bottom: 1rem;
+    text-shadow: 0 0 30px rgba(0, 82, 204, 0.5);
     letter-spacing: 1px;
+}
+
+@media (min-width: 1024px) {
+    .features-title {
+        font-size: 3.5rem;
+    }
 }
 
 .features-subtitle {
@@ -45,12 +142,28 @@
 
 .features-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
-    max-width: 1200px;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    width: 100%;
+    max-width: 75rem;
+    /* 1200px */
     margin: 0 auto;
     position: relative;
     z-index: 2;
+}
+
+@media (min-width: 768px) {
+    .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    .features-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.875rem;
+        /* 30px */
+    }
 }
 
 .feature-card {
@@ -151,23 +264,4 @@
     font-size: 1.2rem;
 }
 
-/* Responsive */
-@media (max-width: 1024px) {
-    .features-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media (max-width: 640px) {
-    .features-section {
-        padding: 60px 20px;
-    }
-
-    .features-title {
-        font-size: 2rem;
-    }
-
-    .features-grid {
-        grid-template-columns: 1fr;
-    }
-}
+/* Responsive media queries removed as they are now mobile-first above */

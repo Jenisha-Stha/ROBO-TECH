@@ -1,13 +1,29 @@
 .partner-section {
-    background: linear-gradient(180deg, var(--white) 0%, #F5F9FF 100%);
-    padding: 2rem 1.5rem 6rem;
-    /* Reduced top padding significantly */
+    background: #FFFFFF;
+    padding: 2.5rem 1.25rem;
+    /* 40px 20px */
     position: relative;
     overflow: hidden;
 }
 
+@media (min-width: 768px) {
+    .partner-section {
+        padding: 3.75rem 2.5rem;
+        /* 60px 40px */
+    }
+}
+
+@media (min-width: 1024px) {
+    .partner-section {
+        padding: 6.25rem 3.75rem;
+        /* 100px 60px */
+    }
+}
+
 .partner-container {
-    max-width: 1200px;
+    width: 100%;
+    max-width: 80rem;
+    /* 1280px */
     margin: 0 auto;
     position: relative;
     z-index: 1;
@@ -16,47 +32,116 @@
     align-items: center;
     justify-content: center;
     gap: 1.5rem;
-    /* Tighter gap */
     text-align: center;
 }
 
+@media (min-width: 1024px) {
+    .partner-container {
+        flex-direction: column;
+        text-align: center;
+        gap: 2rem;
+    }
+}
+
 .partner-content {
-    max-width: 800px;
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 50rem;
+    /* 800px */
+}
+
+@media (min-width: 1024px) {
+    .partner-content {
+        flex: none;
+        align-items: center;
+    }
 }
 
 .partner-image {
     width: 100%;
-    max-width: 850px;
+    max-width: 50rem;
+    /* Reduced to make it "little smaller" */
     display: flex;
     justify-content: center;
-    /* Add a subtle drop shadow to ground the image */
-    filter: drop-shadow(0 20px 40px rgba(0, 82, 204, 0.1));
-    min-height: 400px;
-    /* Prevent collapse on load */
+    filter: drop-shadow(0 1.25rem 2.5rem rgba(0, 0, 0, 0.2));
+    margin-bottom: 0rem;
+}
+
+@media (min-width: 1024px) {
+    .partner-image {
+        flex: none;
+        max-width: 60rem;
+        /* Adjusted for desktop refinement */
+    }
+}
+
+.partner-image>div {
+    width: 100% !important;
+    height: auto !important;
+}
+
+.partner-image canvas {
+    width: 100% !important;
+    height: auto !important;
 }
 
 .partner-title {
-    font-family: var(--font-heading);
-    font-size: 3rem;
+    font-family: 'Oswald', sans-serif;
+    font-size: 2.2rem;
     font-weight: 700;
-    margin-bottom: 1rem;
-    color: var(--dark-text);
-    letter-spacing: -0.5px;
+    margin-bottom: 1.5rem;
+    color: #0c3d7a;
+    line-height: 1.15;
+    letter-spacing: 0.5px;
+}
+
+@media (min-width: 768px) {
+    .partner-title {
+        font-size: 3rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .partner-title {
+        font-size: 4rem;
+    }
 }
 
 .partner-subtitle {
-    font-size: 1.15rem;
-    color: var(--gray-text);
-    margin-bottom: 2rem;
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    font-weight: 300;
+    color: #4A4A4A;
+    margin-bottom: 2.75rem;
+    /* 44px */
     line-height: 1.6;
-    max-width: 600px;
+    letter-spacing: 0.3px;
+    text-transform: none;
+    max-width: 50rem;
+    /* 800px */
     margin-left: auto;
     margin-right: auto;
 }
 
+@media (min-width: 768px) {
+    .partner-subtitle {
+        font-size: 1.3rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .partner-subtitle {
+        font-size: 1.5rem;
+        margin-left: 0;
+        margin-right: 0;
+    }
+}
+
 /* Ensure the button looks great here too */
 .partner-btn {
+    font-family: 'Oswald', sans-serif;
     font-size: 1.1rem;
     padding: 1rem 2.8rem;
     box-shadow: 0 4px 15px rgba(255, 30, 86, 0.3);
@@ -67,16 +152,4 @@
     box-shadow: 0 8px 25px rgba(255, 30, 86, 0.4);
 }
 
-@media (max-width: 768px) {
-    .partner-section {
-        padding: 2rem 1.5rem 4rem;
-    }
-
-    .partner-title {
-        font-size: 2rem;
-    }
-
-    .partner-subtitle {
-        font-size: 1rem;
-    }
-}
+/* Responsive media queries removed as they are now mobile-first above */

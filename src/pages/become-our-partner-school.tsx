@@ -7,7 +7,7 @@ import { useRef, useLayoutEffect, useEffect, useState } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import {
-    School,
+    School as SchoolIcon,
     GraduationCap,
     Users,
     Award,
@@ -23,17 +23,19 @@ import {
     Star,
     Heart,
     Rocket,
-    CheckCircle2
+    CheckCircle2,
+    Bot
 } from 'lucide-react'
+import { motion } from 'framer-motion'
 
 // Register GSAP plugins
 gsap.registerPlugin(ScrollTrigger)
 
 // Brand Colors
 const BRAND = {
-    red: '#C41E3A',
+    red: '#FF1E56',
     redLight: '#ff6b6b',
-    blue: '#2E86AB',
+    blue: '#0052CC',
     blueLight: '#74b9ff',
 }
 
@@ -83,6 +85,27 @@ const benefits = [
         description: "Join a thriving network of partner schools and collaborative events.",
         color: BRAND.red,
     }
+];
+
+const backgroundIcons = [
+    { icon: Bot, x: '10%', y: '20%', size: 50, delay: 0 },
+    { icon: Rocket, x: '85%', y: '15%', size: 55, delay: 1 },
+    { icon: Globe, x: '15%', y: '70%', size: 48, delay: 2 },
+    { icon: GraduationCap, x: '80%', y: '65%', size: 52, delay: 0.5 },
+    { icon: Star, x: '5%', y: '50%', size: 45, delay: 1.5 },
+    { icon: Zap, x: '90%', y: '80%', size: 50, delay: 2.5 },
+    { icon: Zap, x: '25%', y: '10%', size: 40, delay: 3 },
+    { icon: SchoolIcon, x: '88%', y: '35%', size: 48, delay: 0.3 },
+    { icon: Users, x: '12%', y: '40%', size: 54, delay: 2.2 },
+    { icon: Lightbulb, x: '60%', y: '75%', size: 46, delay: 1.8 },
+    { icon: Mail, x: '35%', y: '25%', size: 42, delay: 1.1 },
+    { icon: MapPin, x: '65%', y: '20%', size: 48, delay: 2.7 },
+    { icon: Globe, x: '50%', y: '15%', size: 50, delay: 0.6 },
+    { icon: Bot, x: '70%', y: '85%', size: 44, delay: 1.9 },
+    { icon: Rocket, x: '30%', y: '60%', size: 50, delay: 2.4 },
+    { icon: SchoolIcon, x: '45%', y: '45%', size: 52, delay: 0.9 },
+    { icon: Zap, x: '20%', y: '85%', size: 46, delay: 1.4 },
+    { icon: Users, x: '75%', y: '50%', size: 44, delay: 0.2 },
 ];
 
 const BecomeOurPartnerSchool = () => {
@@ -496,152 +519,159 @@ const BecomeOurPartnerSchool = () => {
             <Header />
 
             {/* Hero Section */}
-            <section ref={heroRef} className="relative min-h-[auto] sm:min-h-screen flex items-center bg-white overflow-hidden py-20 sm:py-16 md:py-0 pt-20 sm:pt-16 md:pt-0">
-                {/* Subtle gradient overlay */}
-                <div className="absolute inset-0 bg-gradient-to-br from-blue-50/50 via-white to-red-50/30" />
-
-                {/* LEFT side decorative elements */}
-                <div className="pulse-bg absolute bottom-[15%] left-[3%] w-48 md:w-64 h-48 md:h-64 rounded-full hidden sm:block"
-                    style={{ background: `radial-gradient(circle, ${BRAND.red}20 0%, transparent 70%)`, animationDelay: '-2s' }} />
-                <div className="float-slow absolute top-[25%] left-[8%] w-20 md:w-28 h-20 md:h-28 rounded-full hidden md:block"
-                    style={{ background: `radial-gradient(circle, ${BRAND.blue}30 0%, transparent 70%)` }} />
-                <div className="pulse-ring absolute top-[40%] left-[5%] w-32 md:w-44 h-32 md:h-44 rounded-full border-2 hidden md:block"
-                    style={{ borderColor: `${BRAND.red}25` }} />
-                {/* Left floating icon */}
-                <div className="float-slow-delay absolute top-[55%] left-[12%] hidden lg:flex items-center justify-center w-11 h-11 rounded-lg shadow-md bg-white">
-                    <Star className="w-5 h-5" style={{ color: BRAND.red }} />
+            <section ref={heroRef} className="relative min-h-[60vh] flex items-center overflow-hidden pt-28 pb-12 bg-gradient-to-br from-[#0c3d7a] to-[#1E88E5]">
+                {/* Animated Background Icons from Hero section */}
+                <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden opacity-10">
+                    {backgroundIcons.map((item, index) => {
+                        const IconComponent = item.icon;
+                        return (
+                            <motion.div
+                                key={index}
+                                className="absolute text-white"
+                                style={{
+                                    left: item.x,
+                                    top: item.y,
+                                }}
+                                animate={{
+                                    y: [0, -30, 0],
+                                    rotate: [-15, 15, -15],
+                                }}
+                                transition={{
+                                    duration: 4 + Math.random() * 2,
+                                    repeat: Infinity,
+                                    delay: item.delay,
+                                    ease: "easeInOut"
+                                }}
+                            >
+                                <IconComponent size={item.size} strokeWidth={1.5} />
+                            </motion.div>
+                        );
+                    })}
                 </div>
 
-                {/* RIGHT side decorative elements - using calc for better positioning */}
-                {/* Large gradient blob - top right */}
-                <div className="pulse-bg absolute top-[10%] w-56 md:w-72 lg:w-80 h-56 md:h-72 lg:h-80 rounded-full hidden sm:block"
-                    style={{ background: `radial-gradient(circle, ${BRAND.blue}30 0%, transparent 70%)`, right: 'calc(0% - 40px)' }} />
-                {/* Medium red blob - middle right */}
-                <div className="pulse-bg absolute top-[45%] w-36 md:w-48 lg:w-56 h-36 md:h-48 lg:h-56 rounded-full hidden sm:block"
-                    style={{ background: `radial-gradient(circle, ${BRAND.red}35 0%, transparent 70%)`, animationDelay: '-1.5s', right: 'calc(5% + 20px)' }} />
-                {/* Floating blob shape - bottom right */}
-                <div className="float-right absolute bottom-[20%] w-28 md:w-36 h-28 md:h-36 blob hidden sm:block"
-                    style={{ background: `linear-gradient(135deg, ${BRAND.blue}30 0%, ${BRAND.red}30 100%)`, right: 'calc(3% + 10px)' }} />
-                {/* Small accent circles - more visible */}
-                <div className="shimmer absolute top-[20%] w-16 md:w-24 h-16 md:h-24 rounded-full hidden sm:block"
-                    style={{ background: BRAND.red, opacity: 0.18, right: 'calc(12% + 30px)' }} />
-                <div className="float-slow absolute top-[65%] w-12 md:w-16 h-12 md:h-16 rounded-full hidden sm:block"
-                    style={{ background: BRAND_GRADIENT, opacity: 0.2, animationDelay: '-2s', right: 'calc(8% + 20px)' }} />
-                <div className="float-slow-delay absolute bottom-[35%] w-18 md:w-28 h-18 md:h-28 rounded-full hidden md:block"
-                    style={{ background: `radial-gradient(circle, ${BRAND.red}40 0%, transparent 70%)`, right: 'calc(15% + 40px)' }} />
-                {/* Decorative rings - right */}
-                <div className="pulse-ring absolute top-[30%] w-44 md:w-56 h-44 md:h-56 rounded-full border-2 hidden md:block"
-                    style={{ borderColor: `${BRAND.blue}35`, right: 'calc(8% + 30px)' }} />
-                <div className="pulse-ring absolute bottom-[15%] w-32 md:w-40 h-32 md:h-40 rounded-full border-2 hidden lg:block"
-                    style={{ borderColor: `${BRAND.red}30`, animationDelay: '-1.5s', right: 'calc(12% + 50px)' }} />
-
-                {/* Floating icons - distributed on right */}
-                <div className="float-slow absolute top-[18%] hidden lg:flex items-center justify-center w-12 h-12 rounded-xl shadow-lg bg-white z-20"
-                    style={{ animationDelay: '-1s', right: 'calc(18% + 60px)' }}>
-                    <Rocket className="w-6 h-6" style={{ color: BRAND.red }} />
-                </div>
-                <div className="float-slow-delay absolute top-[50%] hidden lg:flex items-center justify-center w-11 h-11 rounded-xl shadow-lg bg-white z-20"
-                    style={{ right: 'calc(2% + 20px)' }}>
-                    <GraduationCap className="w-5 h-5" style={{ color: BRAND.blue }} />
-                </div>
-                <div className="float-right absolute bottom-[28%] hidden lg:flex items-center justify-center w-10 h-10 rounded-full shadow-md bg-white z-20"
-                    style={{ right: 'calc(20% + 80px)' }}>
-                    <Zap className="w-5 h-5" style={{ color: BRAND.blue }} />
-                </div>
-
-                {/* Orbiting elements */}
-                <div className="hidden lg:block absolute top-[40%]" style={{ right: 'calc(15% + 50px)' }}>
-                    <div className="orbit w-3 h-3 rounded-full" style={{ background: BRAND_GRADIENT, opacity: 0.5 }} />
-                </div>
-                <div className="hidden lg:block absolute bottom-[40%]" style={{ right: 'calc(22% + 70px)' }}>
-                    <div className="orbit w-2 h-2 rounded-full" style={{ background: BRAND.red, opacity: 0.4, animationDuration: '15s', animationDelay: '-5s' }} />
+                {/* Parallax background layer */}
+                <div className="absolute inset-0 opacity-40">
+                    <div className="absolute top-[10%] left-[5%] w-96 h-96 bg-blue-400/20 rounded-full blur-3xl animate-pulse" />
+                    <div className="absolute bottom-[10%] right-[10%] w-80 h-80 bg-cyan-400/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
                 </div>
 
                 <div className="container mx-auto px-4 relative z-10">
-                    <div className="max-w-4xl mx-auto text-center">
-                        {/* Badge */}
-                        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gray-100 mb-8">
-                            <Sparkles className="w-4 h-4" style={{ color: BRAND.blue }} />
-                            <span className="text-sm font-medium text-gray-600">Transform Education Together</span>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                        <div className="text-center md:text-left">
+
+                            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-[1.1] text-white font-oswald tracking-tight">
+                                <span className="inline-block overflow-hidden">
+                                    {'Become Our'.split('').map((char, i) => (
+                                        <span key={i} className="hero-char inline-block" style={{ display: 'inline-block' }}>
+                                            {char === ' ' ? '\u00A0' : char}
+                                        </span>
+                                    ))}
+                                </span>
+                                <span className="hero-accent block mt-2 text-[#E31E24]">
+                                    {'Partner School'.split('').map((char, i) => (
+                                        <span key={i} className="hero-char inline-block" style={{ display: 'inline-block', animationDelay: `${0.3 + i * 0.03}s` }}>
+                                            {char === ' ' ? '\u00A0' : char}
+                                        </span>
+                                    ))}
+                                </span>
+                            </h1>
+
+                            <p className="hero-subtitle text-lg md:text-xl text-blue-100/80 mb-10 leading-relaxed max-w-xl mx-auto md:mx-0 font-oswald font-light">
+                                Partner with us to bring cutting-edge <span className="text-white font-semibold">STEM education</span>, <span className="text-[#E31E24] font-semibold">robotics</span>, and <span className="text-white font-semibold">coding programs</span> to your students.
+                            </p>
+
+                            <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+                                <button
+                                    className="btn btn-primary w-full sm:w-auto px-8 py-4"
+                                    onMouseEnter={handleButtonHover}
+                                    onMouseLeave={handleButtonLeave}
+                                >
+                                    Start Partnership
+                                    <ArrowRight className="w-5 h-5 ml-2" />
+                                </button>
+                                <button
+                                    className="btn btn-outline w-full sm:w-auto px-8 py-4"
+                                    onMouseEnter={handleButtonHover}
+                                    onMouseLeave={handleButtonLeave}
+                                >
+                                    Learn More
+                                </button>
+                            </div>
+
+                            {/* Stats */}
+                            <div className="grid grid-cols-3 gap-6 mt-16 pt-10 border-t border-white/10">
+                                <div className="stat-item text-center md:text-left">
+                                    <div className="text-3xl md:text-4xl font-bold mb-1 text-white font-oswald">
+                                        {counters.schools}+
+                                    </div>
+                                    <div className="text-blue-200/60 text-sm font-oswald uppercase tracking-wider">Partner Schools</div>
+                                </div>
+                                <div className="stat-item text-center md:text-left">
+                                    <div className="text-3xl md:text-4xl font-bold mb-1 text-[#E31E24] font-oswald">
+                                        {counters.students >= 1000 ? `${Math.floor(counters.students / 1000)}K` : counters.students}+
+                                    </div>
+                                    <div className="text-blue-200/60 text-sm font-oswald uppercase tracking-wider">Students Trained</div>
+                                </div>
+                                <div className="stat-item text-center md:text-left">
+                                    <div className="text-3xl md:text-4xl font-bold mb-1 text-white font-oswald">
+                                        {counters.satisfaction}%
+                                    </div>
+                                    <div className="text-blue-200/60 text-sm font-oswald uppercase tracking-wider">Satisfaction Rate</div>
+                                </div>
+                            </div>
                         </div>
 
-                        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 sm:mb-6 leading-tight text-gray-900">
-                            <span className="inline-block overflow-hidden">
-                                {'Become Our'.split('').map((char, i) => (
-                                    <span key={i} className="hero-char inline-block" style={{ display: 'inline-block' }}>
-                                        {char === ' ' ? '\u00A0' : char}
-                                    </span>
-                                ))}
-                            </span>
-                            <span className="hero-accent block mt-1 sm:mt-2" style={{ color: BRAND.red }}>
-                                {'Partner School'.split('').map((char, i) => (
-                                    <span key={i} className="hero-char inline-block" style={{ display: 'inline-block', animationDelay: `${0.3 + i * 0.03}s` }}>
-                                        {char === ' ' ? '\u00A0' : char}
-                                    </span>
-                                ))}
-                            </span>
-                        </h1>
-
-                        <p className="hero-subtitle text-base sm:text-lg md:text-xl text-gray-600 mb-8 sm:mb-10 leading-relaxed max-w-2xl mx-auto px-4 sm:px-2">
-                            Partner with us to bring cutting-edge{' '}
-                            <span className="font-semibold" style={{ color: BRAND.blue }}>STEM education</span>,{' '}
-                            <span className="font-semibold" style={{ color: BRAND.red }}>robotics</span>, and{' '}
-                            <span className="font-semibold text-gray-900">coding programs</span>{' '}
-                            to your students.
-                        </p>
-
-                        <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center px-4 sm:px-0">
-                            <Button
-                                size="lg"
-                                className="hero-btn w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all text-white"
-                                style={{ background: BRAND.red }}
-                                onMouseEnter={handleButtonHover}
-                                onMouseLeave={handleButtonLeave}
+                        {/* Right Side Image/Illustration Area */}
+                        <div className="hidden md:flex items-center justify-center relative h-[600px]">
+                            <motion.div
+                                className="relative z-[15] w-[450px]"
+                                animate={{
+                                    y: ["-20px", "20px"],
+                                }}
+                                transition={{
+                                    duration: 3,
+                                    repeat: Infinity,
+                                    repeatType: "reverse",
+                                    ease: "easeInOut"
+                                }}
                             >
-                                Start Partnership
-                                <ArrowRight className="w-4 h-4 ml-2" />
-                            </Button>
-                            <Button
-                                size="lg"
-                                variant="outline"
-                                className="hero-btn w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base font-semibold rounded-xl border-2 transition-all"
-                                style={{ borderColor: BRAND.blue, color: BRAND.blue }}
-                                onMouseEnter={handleButtonHover}
-                                onMouseLeave={handleButtonLeave}
-                            >
-                                Learn More
-                            </Button>
-                        </div>
-
-                        {/* Stats */}
-                        <div className="grid grid-cols-3 gap-3 sm:gap-6 mt-10 sm:mt-16 pt-6 sm:pt-10 border-t border-gray-100">
-                            <div className="stat-item text-center">
-                                <div className="text-2xl sm:text-3xl md:text-4xl font-bold mb-0.5 sm:mb-1" style={{ color: BRAND.blue }}>
-                                    {counters.schools}+
+                                <div
+                                    className="relative overflow-hidden rounded-full w-full aspect-square flex items-center justify-center bg-gradient-to-br from-[#0c3d7a] via-[#1565C0] to-[#1E88E5] [mask-image:radial-gradient(circle,black_35%,transparent_68%)]"
+                                >
+                                    <img
+                                        src="https://cdn.svgator.com/images/2024/02/claymorphic-animated-bunny.gif"
+                                        alt="Animated Bunny Mascot"
+                                        className="w-[140%] max-w-none transform scale-125 translate-y-[-5%]"
+                                        style={{
+                                            filter: 'hue-rotate(200deg) brightness(0.55) saturate(1.2) contrast(1.1)',
+                                            mixBlendMode: 'normal',
+                                        }}
+                                    />
                                 </div>
-                                <div className="text-gray-500 text-xs sm:text-sm">Partner Schools</div>
-                            </div>
-                            <div className="stat-item text-center">
-                                <div className="text-2xl sm:text-3xl md:text-4xl font-bold mb-0.5 sm:mb-1" style={{ color: BRAND.red }}>
-                                    {counters.students >= 1000 ? `${Math.floor(counters.students / 1000)}K` : counters.students}+
-                                </div>
-                                <div className="text-gray-500 text-xs sm:text-sm">Students Trained</div>
-                            </div>
-                            <div className="stat-item text-center">
-                                <div className="text-2xl sm:text-3xl md:text-4xl font-bold mb-0.5 sm:mb-1 text-gray-900">
-                                    {counters.satisfaction}%
-                                </div>
-                                <div className="text-gray-500 text-xs sm:text-sm">Satisfaction Rate</div>
-                            </div>
+                            </motion.div>
                         </div>
                     </div>
                 </div>
 
-                {/* Scroll indicator */}
-                <div className="absolute bottom-8 left-1/2 -translate-x-1/2">
-                    <div className="w-6 h-10 rounded-full border-2 border-gray-300 flex items-start justify-center p-2">
-                        <div className="w-1.5 h-3 rounded-full bg-gray-400 animate-bounce" />
+                {/* Scroll indicator with white theme */}
+                <div className="absolute bottom-8 left-1/2 -translate-x-1/2 opacity-50">
+                    <div className="w-6 h-10 rounded-full border-2 border-white/30 flex items-start justify-center p-2">
+                        <div className="w-1.5 h-3 rounded-full bg-white animate-bounce" />
                     </div>
+                </div>
+
+                {/* Curved bottom edge */}
+                <div className="absolute -bottom-1 left-0 right-0 z-20">
+                    <svg
+                        viewBox="0 0 1440 100"
+                        preserveAspectRatio="none"
+                        className="w-full h-20 md:h-28"
+                    >
+                        <path
+                            d="M0,40 C480,100 960,0 1440,60 L1440,100 L0,100 Z"
+                            fill="#F9FAFB"
+                        />
+                    </svg>
                 </div>
             </section>
 
@@ -706,8 +736,13 @@ const BecomeOurPartnerSchool = () => {
             </section>
 
             {/* Partner Schools Section */}
-            <section ref={partnersRef} className="partners-section py-12 sm:py-16 md:py-24 bg-white relative overflow-hidden">
-                {/* Pulsating background shapes - hidden on mobile */}
+            <section ref={partnersRef} className="partners-section py-12 sm:py-16 md:py-24 relative overflow-hidden"
+                style={{ background: 'linear-gradient(180deg, rgba(21, 101, 192, 0.95) 0%, rgba(13, 71, 161, 0.95) 100%)' }}>
+
+                {/* Background grid pattern similar to FeaturesSection */}
+                <div className="absolute inset-0 z-0 pointer-events-none bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:60px_60px] [mask-image:radial-gradient(circle_at_center,black_40%,transparent_80%)]" />
+
+                {/* Pulsating background shapes */}
                 <div className="pulse-bg absolute top-20 right-[10%] w-56 sm:w-80 h-56 sm:h-80 rounded-full hidden sm:block"
                     style={{ background: `radial-gradient(circle, ${BRAND.blue}20 0%, transparent 70%)` }} />
                 <div className="pulse-bg absolute bottom-20 left-[10%] w-48 sm:w-64 h-48 sm:h-64 rounded-full hidden sm:block"
@@ -721,14 +756,14 @@ const BecomeOurPartnerSchool = () => {
 
                 <div className="container mx-auto px-4 relative z-10">
                     <div className="text-center mb-8 sm:mb-12 md:mb-16">
-                        <h2 className="partners-title text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-3 sm:mb-4" style={{ perspective: '1000px' }}>
+                        <h2 className="partners-title text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-3 sm:mb-4" style={{ perspective: '1000px' }}>
                             {'Our Partner Schools'.split('').map((char, i) => (
                                 <span key={i} className="partners-title-char inline-block" style={{ display: 'inline-block' }}>
                                     {char === ' ' ? '\u00A0' : char}
                                 </span>
                             ))}
                         </h2>
-                        <p className="partners-subtitle text-gray-600 max-w-xl mx-auto text-sm sm:text-base px-4">
+                        <p className="partners-subtitle text-white/90 max-w-xl mx-auto text-sm sm:text-base px-4">
                             Join the growing community of schools pioneering STEM education
                         </p>
                     </div>
@@ -752,7 +787,7 @@ const BecomeOurPartnerSchool = () => {
                             {allSchools.map((school: any) => (
                                 <div
                                     key={school.id}
-                                    className="partner-card group bg-white rounded-2xl p-5 shadow-sm border border-gray-100 cursor-pointer relative overflow-hidden transition-all duration-300 hover:shadow-lg hover:border-transparent"
+                                    className="partner-card group bg-black/40 backdrop-blur-md rounded-2xl p-5 shadow-xl border border-white/10 cursor-pointer relative overflow-hidden transition-all duration-300 hover:shadow-2xl hover:border-red-500/50 hover:-translate-y-1"
                                     style={{ transformStyle: 'preserve-3d' }}
                                     onMouseEnter={handleCardHover}
                                     onMouseLeave={(e) => { handleCardLeave(e); handleCardMoveLeave(e); }}
@@ -789,17 +824,17 @@ const BecomeOurPartnerSchool = () => {
                                                         className="w-full h-full object-cover"
                                                     />
                                                 ) : (
-                                                    <School className="w-6 h-6 text-gray-400" />
+                                                    <SchoolIcon className="w-6 h-6 text-gray-400" />
                                                 )}
                                             </div>
 
                                             {/* Info */}
                                             <div className="flex-1 min-w-0">
-                                                <h3 className="font-semibold text-gray-900 mb-1 truncate group-hover:text-gray-800 transition-colors">
+                                                <h3 className="font-semibold text-white mb-1 truncate group-hover:text-red-400 transition-colors">
                                                     {school.name}
                                                 </h3>
                                                 {school.address && (
-                                                    <p className="text-sm text-gray-500 flex items-center gap-1.5">
+                                                    <p className="text-sm text-gray-400 flex items-center gap-1.5">
                                                         <MapPin className="w-3.5 h-3.5 shrink-0" style={{ color: BRAND.red }} />
                                                         <span className="truncate">{school.address}</span>
                                                     </p>
@@ -808,13 +843,13 @@ const BecomeOurPartnerSchool = () => {
                                         </div>
 
                                         {school.description && (
-                                            <p className="text-sm text-gray-600 mt-4 line-clamp-2 leading-relaxed">
+                                            <p className="text-sm text-gray-300 mt-4 line-clamp-2 leading-relaxed">
                                                 {school.description}
                                             </p>
                                         )}
 
                                         {/* Actions */}
-                                        <div className="flex items-center gap-4 mt-4 pt-4 border-t border-gray-100">
+                                        <div className="flex items-center gap-4 mt-4 pt-4 border-t border-white/10">
                                             {school.website_url && (
                                                 <a
                                                     href={school.website_url}
@@ -831,7 +866,7 @@ const BecomeOurPartnerSchool = () => {
                                             {school.contact_email && (
                                                 <a
                                                     href={`mailto:${school.contact_email}`}
-                                                    className="inline-flex items-center gap-1.5 text-xs font-medium text-gray-500 hover:text-gray-700 transition-colors"
+                                                    className="inline-flex items-center gap-1.5 text-xs font-medium text-gray-400 hover:text-white transition-colors"
                                                     onClick={(e) => e.stopPropagation()}
                                                 >
                                                     <Mail className="w-3.5 h-3.5" />
@@ -841,7 +876,7 @@ const BecomeOurPartnerSchool = () => {
                                             {school.contact_number && (
                                                 <a
                                                     href={`tel:${school.contact_number}`}
-                                                    className="inline-flex items-center gap-1.5 text-xs font-medium text-gray-500 hover:text-gray-700 transition-colors"
+                                                    className="inline-flex items-center gap-1.5 text-xs font-medium text-gray-400 hover:text-white transition-colors"
                                                     onClick={(e) => e.stopPropagation()}
                                                 >
                                                     <Phone className="w-3.5 h-3.5" />
@@ -857,7 +892,7 @@ const BecomeOurPartnerSchool = () => {
                         <div className="partner-card max-w-md mx-auto text-center py-16 bg-gray-50 rounded-2xl">
                             <div className="w-16 h-16 mx-auto mb-4 rounded-xl flex items-center justify-center"
                                 style={{ background: `${BRAND.blue}15` }}>
-                                <School className="w-8 h-8" style={{ color: BRAND.blue }} />
+                                <SchoolIcon className="w-8 h-8" style={{ color: BRAND.blue }} />
                             </div>
                             <h3 className="text-xl font-semibold text-gray-900 mb-2">Be Our First Partner</h3>
                             <p className="text-gray-600 mb-6">

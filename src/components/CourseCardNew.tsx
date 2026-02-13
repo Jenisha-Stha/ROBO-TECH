@@ -97,7 +97,7 @@ const CourseCardNew: React.FC<CourseCardNewProps> = ({ course, index, onEnroll }
 
                 {/* Badge - Always on top */}
                 <div className="absolute top-6 right-6 z-[50]">
-                    <Badge className="bg-white/20 backdrop-blur-md text-white border-white/30 px-2 py-0.5 font-bold text-[9px] uppercase tracking-wider">
+                    <Badge className="bg-white/20 backdrop-blur-md text-white border-white/30 px-2 py-0.5 font-bold text-[9px] uppercase tracking-wider font-oswald">
                         {course.course_type || "Free"}
                     </Badge>
                 </div>

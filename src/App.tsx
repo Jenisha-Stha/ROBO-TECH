@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -37,12 +38,16 @@ import CompletedCoursesPage from "./pages/admin/CompletedCoursesPage";
 import LessonDetails from "./pages/admin/LessonDetails";
 import AboutUs from "./pages/AboutUs";
 import BecomeOurPartnerSchool from "./pages/become-our-partner-school";
+import RegistrationTypePage from './pages/RegistrationTypePage';
+import IndividualRegistrationPage from './pages/IndividualRegistrationPage';
+import SchoolRegistrationPage from './pages/SchoolRegistrationPage';
 import { useSessionRefresh } from "./hooks/useSessionRefresh";
 import Certificates from "./pages/admin/Certificates";
 import ViewCertificate from "./pages/admin/ViewCertificate";
 import Rank from "./pages/admin/rank/Rank";
 import Assessments from "./pages/admin/assessments/Assessment";
 import Notifications from "./pages/admin/notifications/Notifications";
+import ScrollToTop from "./components/layout/ScrollToTop";
 
 const queryClient = new QueryClient();
 // Auth wrapper using Supabase
@@ -63,6 +68,19 @@ const App = () => {
   // Initialize connection monitoring
   // useSupabaseConnection();
 
+  useEffect(() => {
+    const clickSound = new Audio('/sounds/clicking.mp3');
+    clickSound.volume = 0.4;
+
+    const handleGlobalClick = () => {
+      clickSound.currentTime = 0;
+      clickSound.play().catch(err => console.debug('Audio play failed:', err));
+    };
+
+    window.addEventListener('click', handleGlobalClick, true);
+    return () => window.removeEventListener('click', handleGlobalClick, true);
+  }, []);
+
   return (
     <div className="dark min-h-screen bg-background text-foreground">
       <QueryClientProvider client={queryClient}>
@@ -70,6 +88,7 @@ const App = () => {
           <Toaster />
           <Sonner />
           <BrowserRouter>
+            <ScrollToTop />
             <Routes>
               {/* <Route path="/" element={<Index />} /> */}
               <Route path="/" element={<HomePage />} />
@@ -78,6 +97,9 @@ const App = () => {
               <Route path="/become-our-partner-school" element={<BecomeOurPartnerSchool />} />
               <Route path="/our-courses/:courseId" element={<ViewCourse />} />
               <Route path="/login" element={<AuthPage />} />
+              <Route path="/register" element={<RegistrationTypePage />} />
+              <Route path="/register/individual" element={<IndividualRegistrationPage />} />
+              <Route path="/register/school" element={<SchoolRegistrationPage />} />
               <Route path="/auth/callback" element={<AuthCallback />} />
               <Route path="/admin/my-rank" element={<Rank />} />
               <Route path="/admin/assessments" element={<Assessments />} />
