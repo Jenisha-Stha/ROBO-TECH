@@ -190,297 +190,275 @@ const FrontCourses: React.FC<FrontCoursesProps> = ({ headerSearchTerm }) => {
   };
 
   return (
-    <div className="container mx-auto px-4 py-8 bg-white min-h-screen">
+    <div className="container mx-auto px-4 py-8">
+      <div className="w-full min-w-0">
 
-      <div className="flex flex-col lg:flex-row gap-8 relative items-start justify-between">
-
-        {/* LEFT COLUMN: Sticky Video - Always Visible */}
-        <div className="hidden lg:block w-[400px] xl:w-[450px] sticky top-24 h-[500px] flex-shrink-0 rounded-[2.5rem] overflow-hidden shadow-2xl shadow-blue-900/20 border border-blue-100/50">
-          {/* 
-              Replaced robot image with the requested WhatsApp video.
-              Video is set to autoplay, loop, and mute for background effect.
-           */}
-          <div className="w-full h-full flex items-center justify-center">
-            <video
-              src="/images/WhatsApp Video 2026-02-05 at 21.10.46.mp4"
-              className="w-full h-full object-cover pointer-events-none mix-blend-multiply brightness-110 contrast-110"
-              autoPlay
-              loop
-              muted
-              playsInline
-              disablePictureInPicture
-              controlsList="nodownload nofullscreen noremoteplayback"
-            />
-          </div>
+        {/* Page Header */}
+        <div className="mb-8">
+          <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-2 font-oswald uppercase leading-tight">Our Courses</h2>
+          <p className="text-slate-600 text-lg leading-relaxed">Explore our cutting-edge robotics curriculum</p>
         </div>
 
-        {/* RIGHT COLUMN: Header, Filters, Content */}
-        <div className="flex-1 w-full min-w-0">
+        {/* Search & Filter Section Wrapper */}
+        <div className="relative w-full mb-8">
+          <div
+            className="border border-cyan-400/30 rounded-2xl shadow-2xl shadow-cyan-500/10 p-3 relative overflow-hidden"
+            style={{ background: 'linear-gradient(135deg, #0c3d7a 0%, #1565C0 40%, #1E88E5 100%)' }}
+          >
+            <div className="absolute top-2 left-2 text-2xl opacity-20 animate-bounce text-cyan-400">Search</div>
+            <div className="absolute top-2 right-2 text-2xl opacity-20 animate-pulse text-pink-400">Gamepad</div>
+            <div className="absolute bottom-2 left-1/3 text-xl opacity-20 animate-bounce delay-1000 text-yellow-400">Robot</div>
+            <div className="absolute bottom-2 right-1/3 text-xl opacity-20 animate-pulse delay-500 text-green-400">Star</div>
 
-          {/* Page Header */}
-          <div className="mb-8">
-            <h1 className="text-4xl md:text-5xl font-bold text-blue-900 mb-2 oswald">Our Courses</h1>
-            <p className="text-blue-600 text-lg">Explore our cutting-edge robotics curriculum</p>
-          </div>
-
-          {/* Search & Filter Section Wrapper */}
-          <div className="relative w-full mb-8">
-            <div className="bg-blue-900 border border-cyan-400/30 rounded-2xl shadow-2xl shadow-cyan-500/10 p-3 relative overflow-hidden">
-              <div className="absolute top-2 left-2 text-2xl opacity-20 animate-bounce text-cyan-400">Search</div>
-              <div className="absolute top-2 right-2 text-2xl opacity-20 animate-pulse text-pink-400">Gamepad</div>
-              <div className="absolute bottom-2 left-1/3 text-xl opacity-20 animate-bounce delay-1000 text-yellow-400">Robot</div>
-              <div className="absolute bottom-2 right-1/3 text-xl opacity-20 animate-pulse delay-500 text-green-400">Star</div>
-
-              <div className="flex flex-col lg:flex-row gap-4 relative z-10 items-center">
-                {/* Search */}
-                <div className="flex-1 relative w-full">
-                  <div className="relative">
-                    <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-cyan-400 w-5 h-5" />
-                    <Input
-                      placeholder="Search for amazing robot courses..."
-                      value={searchTerm}
-                      onChange={(e) => setSearchTerm(e.target.value)}
-                      className="h-14 pl-10 bg-[#0F0F23] border-cyan-400/50 text-white placeholder:text-gray-400 focus:border-cyan-400 focus:ring-cyan-400/25 shadow-lg shadow-cyan-500/10"
-                    />
-                  </div>
+            <div className="flex flex-col lg:flex-row gap-4 relative z-10 items-center">
+              {/* Search */}
+              <div className="flex-1 relative w-full">
+                <div className="relative">
+                  <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-cyan-400 w-5 h-5" />
+                  <Input
+                    placeholder="Search for amazing robot courses..."
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                    className="h-14 pl-10 bg-[#E31E24] border-white/20 text-white placeholder:text-white/70 focus:border-white/40 focus:ring-white/10 shadow-lg"
+                  />
                 </div>
+              </div>
 
-                {/* Tag Type Filter */}
-                <div className="lg:w-48">
-                  <Select value={selectedTagType} onValueChange={handleTagTypeChange}>
-                    <SelectTrigger className="bg-[#0F0F23] h-14 border-cyan-400/50 text-white hover:border-cyan-400 focus:border-cyan-400 shadow-lg shadow-cyan-500/10">
-                      <Filter className="w-4 h-4 mr-2 text-cyan-400" />
-                      <SelectValue placeholder="Filter by category" />
-                    </SelectTrigger>
-                    <SelectContent className="bg-[#1A1A2E] border-cyan-400/30">
-                      <SelectItem value="all" className="text-white hover:bg-cyan-500/20">
-                        All Categories
+              {/* Tag Type Filter */}
+              <div className="lg:w-48">
+                <Select value={selectedTagType} onValueChange={handleTagTypeChange}>
+                  <SelectTrigger className="bg-[#E31E24] h-14 border-white/20 text-white hover:border-white/40 focus:border-white/40 shadow-lg">
+                    <Filter className="w-4 h-4 mr-2 text-white" />
+                    <SelectValue placeholder="Filter by category" />
+                  </SelectTrigger>
+                  <SelectContent className="bg-[#E31E24] border-white/20">
+                    <SelectItem value="all" className="text-white hover:bg-white/10">
+                      All Categories
+                    </SelectItem>
+                    {courseTagTypes.map((tagType) => (
+                      <SelectItem key={tagType.id} value={tagType.id} className="text-white hover:bg-white/10">
+                        {tagType.name}
                       </SelectItem>
-                      {courseTagTypes.map((tagType) => (
-                        <SelectItem key={tagType.id} value={tagType.id} className="text-white hover:bg-cyan-500/20">
-                          {tagType.name}
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
+
+              {/* Tag Filter */}
+              {selectedTagType !== 'all' && availableTags.length > 0 && (
+                <div className="lg:w-48">
+                  <Select value={selectedTag} onValueChange={handleTagChange}>
+                    <SelectTrigger className="bg-[#E31E24] border-white/20 text-white hover:border-white/40 focus:border-white/40 shadow-lg">
+                      <SelectValue placeholder="Select tag" />
+                    </SelectTrigger>
+                    <SelectContent className="bg-[#E31E24] border-white/20">
+                      <SelectItem value="all" className="text-white hover:bg-pink-500/20">
+                        All Tags
+                      </SelectItem>
+                      {availableTags.map((tag) => (
+                        <SelectItem key={tag.id} value={tag.id} className="text-white hover:bg-pink-500/20">
+                          {tag.title}
                         </SelectItem>
                       ))}
                     </SelectContent>
                   </Select>
                 </div>
+              )}
+            </div>
 
-                {/* Tag Filter */}
-                {selectedTagType !== 'all' && availableTags.length > 0 && (
-                  <div className="lg:w-48">
-                    <Select value={selectedTag} onValueChange={handleTagChange}>
-                      <SelectTrigger className="bg-[#0F0F23] border-pink-400/50 text-white hover:border-pink-400 focus:border-pink-400 shadow-lg shadow-pink-500/10">
-                        <SelectValue placeholder="Select tag" />
-                      </SelectTrigger>
-                      <SelectContent className="bg-[#1A1A2E] border-pink-400/30">
-                        <SelectItem value="all" className="text-white hover:bg-pink-500/20">
-                          All Tags
-                        </SelectItem>
-                        {availableTags.map((tag) => (
-                          <SelectItem key={tag.id} value={tag.id} className="text-white hover:bg-pink-500/20">
-                            {tag.title}
-                          </SelectItem>
-                        ))}
-                      </SelectContent>
-                    </Select>
-                  </div>
+            {/* Active Filters */}
+            {(searchTerm || selectedTagType !== 'all' || selectedTag !== 'all') && (
+              <div className="mt-4 flex flex-wrap gap-2">
+                <span className="text-cyan-400 text-xs font-bold uppercase tracking-[0.2em]">Active filters:</span>
+                {searchTerm && (
+                  <Badge className="flex items-center gap-1 bg-gradient-to-r from-cyan-500/20 to-blue-500/20 border border-cyan-400/50 text-cyan-300 hover:bg-cyan-500/30 transition-all duration-300">
+                    Search "{searchTerm}"
+                    <X
+                      className="w-3 h-3 cursor-pointer hover:text-red-400 transition-colors"
+                      onClick={() => setSearchTerm('')}
+                    />
+                  </Badge>
+                )}
+                {selectedTagType !== 'all' && (
+                  <Badge className="flex items-center gap-1 bg-gradient-to-r from-pink-500/20 to-purple-500/20 border border-pink-400/50 text-pink-300 hover:bg-pink-500/30 transition-all duration-300">
+                    {courseTagTypes.find((tt) => tt.id === selectedTagType)?.name}
+                    <X
+                      className="w-3 h-3 cursor-pointer hover:text-red-400 transition-colors"
+                      onClick={() => {
+                        setSelectedTagType('all');
+                        setSelectedTag('all');
+                      }}
+                    />
+                  </Badge>
+                )}
+                {selectedTag !== 'all' && (
+                  <Badge className="flex items-center gap-1 bg-gradient-to-r from-yellow-500/20 to-orange-500/20 border border-yellow-400/50 text-yellow-300 hover:bg-yellow-500/30 transition-all duration-300">
+                    {availableTags.find((t) => t.id === selectedTag)?.title}
+                    <X
+                      className="w-3 h-3 cursor-pointer hover:text-red-400 transition-colors"
+                      onClick={() => setSelectedTag('all')}
+                    />
+                  </Badge>
                 )}
               </div>
-
-              {/* Active Filters */}
-              {(searchTerm || selectedTagType !== 'all' || selectedTag !== 'all') && (
-                <div className="mt-4 flex flex-wrap gap-2">
-                  <span className="text-sm text-cyan-400 font-bold">Active filters:</span>
-                  {searchTerm && (
-                    <Badge className="flex items-center gap-1 bg-gradient-to-r from-cyan-500/20 to-blue-500/20 border border-cyan-400/50 text-cyan-300 hover:bg-cyan-500/30 transition-all duration-300">
-                      Search "{searchTerm}"
-                      <X
-                        className="w-3 h-3 cursor-pointer hover:text-red-400 transition-colors"
-                        onClick={() => setSearchTerm('')}
-                      />
-                    </Badge>
-                  )}
-                  {selectedTagType !== 'all' && (
-                    <Badge className="flex items-center gap-1 bg-gradient-to-r from-pink-500/20 to-purple-500/20 border border-pink-400/50 text-pink-300 hover:bg-pink-500/30 transition-all duration-300">
-                      {courseTagTypes.find((tt) => tt.id === selectedTagType)?.name}
-                      <X
-                        className="w-3 h-3 cursor-pointer hover:text-red-400 transition-colors"
-                        onClick={() => {
-                          setSelectedTagType('all');
-                          setSelectedTag('all');
-                        }}
-                      />
-                    </Badge>
-                  )}
-                  {selectedTag !== 'all' && (
-                    <Badge className="flex items-center gap-1 bg-gradient-to-r from-yellow-500/20 to-orange-500/20 border border-yellow-400/50 text-yellow-300 hover:bg-yellow-500/30 transition-all duration-300">
-                      {availableTags.find((t) => t.id === selectedTag)?.title}
-                      <X
-                        className="w-3 h-3 cursor-pointer hover:text-red-400 transition-colors"
-                        onClick={() => setSelectedTag('all')}
-                      />
-                    </Badge>
-                  )}
-                </div>
-              )}
-            </div>
+            )}
           </div>
+        </div>
 
-          {/* Loading State */}
-          {isLoading && (
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {[...Array(limit)].map((_, i) => (
-                <div
-                  key={i}
-                  className="bg-gradient-to-br from-[#1A1A2E] to-[#16213E] border border-cyan-400/30 rounded-2xl shadow-2xl shadow-cyan-500/10 p-6 animate-pulse"
-                >
-                  <div className="w-full h-48 bg-gradient-to-br from-cyan-500/20 to-blue-500/20 rounded-xl mb-4"></div>
-                  <div className="h-6 bg-gradient-to-r from-cyan-500/30 to-blue-500/30 rounded mb-2"></div>
-                  <div className="h-4 bg-gradient-to-r from-pink-500/30 to-purple-500/30 rounded mb-4"></div>
-                  <div className="h-10 bg-gradient-to-r from-yellow-500/30 to-orange-500/30 rounded"></div>
-                </div>
+        {/* Loading State */}
+        {isLoading && (
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {[...Array(limit)].map((_, i) => (
+              <div
+                key={i}
+                className="bg-gradient-to-br from-[#1A1A2E] to-[#16213E] border border-cyan-400/30 rounded-2xl shadow-2xl shadow-cyan-500/10 p-6 animate-pulse"
+              >
+                <div className="w-full h-48 bg-gradient-to-br from-cyan-500/20 to-blue-500/20 rounded-xl mb-4"></div>
+                <div className="h-6 bg-gradient-to-r from-cyan-500/30 to-blue-500/30 rounded mb-2"></div>
+                <div className="h-4 bg-gradient-to-r from-pink-500/30 to-purple-500/30 rounded mb-4"></div>
+                <div className="h-10 bg-gradient-to-r from-yellow-500/30 to-orange-500/30 rounded"></div>
+              </div>
+            ))}
+          </div>
+        )}
+
+        {/* Error State */}
+        {error && (
+          <div className="text-center py-12">
+            <div className="text-red-400 text-xl font-bold mb-4 bg-gradient-to-r from-red-500/20 to-pink-500/20 border border-red-400/50 rounded-xl p-4">
+              Error loading courses
+            </div>
+            <p className="text-gray-300 mb-6">
+              Please try refreshing the page or contact support.
+            </p>
+            <Button
+              onClick={() => window.location.reload()}
+              className="bg-gradient-to-r from-red-500 to-pink-500 hover:from-red-400 hover:to-pink-400 text-white"
+            >
+              Refresh Page
+            </Button>
+          </div>
+        )}
+
+        {/* No Results */}
+        {!isLoading && !error && courses.length === 0 && (
+          <div className="text-center py-12">
+            <div className="text-cyan-400 text-2xl font-bold mb-4 bg-gradient-to-r from-cyan-500/20 to-blue-500/20 border border-cyan-400/50 rounded-xl p-6">
+              No courses found
+            </div>
+            <p className="text-gray-300 mb-6 text-lg">
+              Try adjusting your search or filters.
+            </p>
+            <Button
+              onClick={clearFilters}
+              className="bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-400 hover:to-blue-400 text-white border border-cyan-400/50 shadow-lg shadow-cyan-500/25"
+            >
+              Clear all filters
+            </Button>
+          </div>
+        )}
+
+        {/* Course List & Pagination */}
+        {!isLoading && !error && courses.length > 0 && (
+          <>
+            <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3">
+              {courses.map((course, index) => (
+                <CourseCardNew key={course.id} course={course} index={index} onEnroll={handleEnroll} />
               ))}
             </div>
-          )}
 
-          {/* Error State */}
-          {error && (
-            <div className="text-center py-12">
-              <div className="text-red-400 text-xl font-bold mb-4 bg-gradient-to-r from-red-500/20 to-pink-500/20 border border-red-400/50 rounded-xl p-4">
-                Error loading courses
-              </div>
-              <p className="text-gray-300 mb-6">
-                Please try refreshing the page or contact support.
-              </p>
-              <Button
-                onClick={() => window.location.reload()}
-                className="bg-gradient-to-r from-red-500 to-pink-500 hover:from-red-400 hover:to-pink-400 text-white"
-              >
-                Refresh Page
-              </Button>
-            </div>
-          )}
+            {/* Pagination */}
+            {totalPages > 1 && (
+              <div className="mt-12 flex flex-col sm:flex-row items-center justify-between bg-gradient-to-r from-[#1A1A2E] to-[#16213E] border border-cyan-400/30 rounded-2xl p-6 shadow-2xl shadow-cyan-500/10">
+                <div className="text-xs text-cyan-400 font-bold uppercase tracking-[0.15em] mb-4 sm:mb-0">
+                  Showing {(currentPage - 1) * limit + 1} to{' '}
+                  {Math.min(currentPage * limit, totalData)} of {totalData} courses
+                </div>
 
-          {/* No Results */}
-          {!isLoading && !error && courses.length === 0 && (
-            <div className="text-center py-12">
-              <div className="text-cyan-400 text-2xl font-bold mb-4 bg-gradient-to-r from-cyan-500/20 to-blue-500/20 border border-cyan-400/50 rounded-xl p-6">
-                No courses found
-              </div>
-              <p className="text-gray-300 mb-6 text-lg">
-                Try adjusting your search or filters.
-              </p>
-              <Button
-                onClick={clearFilters}
-                className="bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-400 hover:to-blue-400 text-white border border-cyan-400/50 shadow-lg shadow-cyan-500/25"
-              >
-                Clear all filters
-              </Button>
-            </div>
-          )}
+                <div className="flex items-center space-x-2">
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={goToFirstPage}
+                    disabled={currentPage === 1}
+                    className="hidden sm:flex bg-[#0F0F23] border-cyan-400/50 text-cyan-400 hover:bg-cyan-500/20 hover:border-cyan-400 disabled:opacity-50 shadow-lg shadow-cyan-500/10"
+                  >
+                    <ChevronsLeft className="w-4 h-4" />
+                  </Button>
 
-          {/* Course List & Pagination */}
-          {!isLoading && !error && courses.length > 0 && (
-            <>
-              <div className="flex flex-col gap-10">
-                {courses.map((course, index) => (
-                  <CourseCardNew key={course.id} course={course} index={index} onEnroll={handleEnroll} />
-                ))}
-              </div>
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={goToPreviousPage}
+                    disabled={currentPage === 1}
+                    className="bg-[#0F0F23] border-cyan-400/50 text-cyan-400 hover:bg-cyan-500/20 hover:border-cyan-400 disabled:opacity-50 shadow-lg shadow-cyan-500/10"
+                  >
+                    <ChevronLeft className="w-4 h-4" />
+                  </Button>
 
-              {/* Pagination */}
-              {totalPages > 1 && (
-                <div className="mt-12 flex flex-col sm:flex-row items-center justify-between bg-gradient-to-r from-[#1A1A2E] to-[#16213E] border border-cyan-400/30 rounded-2xl p-6 shadow-2xl shadow-cyan-500/10">
-                  <div className="text-sm text-cyan-400 font-bold mb-4 sm:mb-0">
-                    Showing {(currentPage - 1) * limit + 1} to{' '}
-                    {Math.min(currentPage * limit, totalData)} of {totalData} courses
+                  <div className="flex items-center space-x-1">
+                    {getPageNumbers().map((pageNum) => (
+                      <Button
+                        key={pageNum}
+                        variant={currentPage === pageNum ? 'default' : 'outline'}
+                        size="sm"
+                        onClick={() => goToPage(pageNum)}
+                        className={`w-10 h-10 ${currentPage === pageNum
+                          ? 'bg-gradient-to-r from-cyan-500 to-blue-600 text-white hover:from-cyan-400 hover:to-blue-500 shadow-lg shadow-cyan-500/25 border border-cyan-400/50'
+                          : 'bg-[#0F0F23] border-cyan-400/50 text-cyan-400 hover:bg-cyan-500/20 hover:border-cyan-400 shadow-lg shadow-cyan-500/10'
+                          }`}
+                      >
+                        {pageNum}
+                      </Button>
+                    ))}
                   </div>
 
-                  <div className="flex items-center space-x-2">
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      onClick={goToFirstPage}
-                      disabled={currentPage === 1}
-                      className="hidden sm:flex bg-[#0F0F23] border-cyan-400/50 text-cyan-400 hover:bg-cyan-500/20 hover:border-cyan-400 disabled:opacity-50 shadow-lg shadow-cyan-500/10"
-                    >
-                      <ChevronsLeft className="w-4 h-4" />
-                    </Button>
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={goToNextPage}
+                    disabled={currentPage === totalPages}
+                    className="bg-[#0F0F23] border-cyan-400/50 text-cyan-400 hover:bg-cyan-500/20 hover:border-cyan-400 disabled:opacity-50 shadow-lg shadow-cyan-500/10"
+                  >
+                    <ChevronRight className="w-4 h-4" />
+                  </Button>
 
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      onClick={goToPreviousPage}
-                      disabled={currentPage === 1}
-                      className="bg-[#0F0F23] border-cyan-400/50 text-cyan-400 hover:bg-cyan-500/20 hover:border-cyan-400 disabled:opacity-50 shadow-lg shadow-cyan-500/10"
-                    >
-                      <ChevronLeft className="w-4 h-4" />
-                    </Button>
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={goToLastPage}
+                    disabled={currentPage === totalPages}
+                    className="hidden sm:flex bg-[#0F0F23] border-cyan-400/50 text-cyan-400 hover:bg-cyan-500/20 hover:border-cyan-400 disabled:opacity-50 shadow-lg shadow-cyan-500/10"
+                  >
+                    <ChevronsRight className="w-4 h-4" />
+                  </Button>
 
-                    <div className="flex items-center space-x-1">
-                      {getPageNumbers().map((pageNum) => (
-                        <Button
-                          key={pageNum}
-                          variant={currentPage === pageNum ? 'default' : 'outline'}
-                          size="sm"
-                          onClick={() => goToPage(pageNum)}
-                          className={`w-10 h-10 ${currentPage === pageNum
-                            ? 'bg-gradient-to-r from-cyan-500 to-blue-600 text-white hover:from-cyan-400 hover:to-blue-500 shadow-lg shadow-cyan-500/25 border border-cyan-400/50'
-                            : 'bg-[#0F0F23] border-cyan-400/50 text-cyan-400 hover:bg-cyan-500/20 hover:border-cyan-400 shadow-lg shadow-cyan-500/10'
-                            }`}
-                        >
-                          {pageNum}
-                        </Button>
-                      ))}
-                    </div>
-
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      onClick={goToNextPage}
-                      disabled={currentPage === totalPages}
-                      className="bg-[#0F0F23] border-cyan-400/50 text-cyan-400 hover:bg-cyan-500/20 hover:border-cyan-400 disabled:opacity-50 shadow-lg shadow-cyan-500/10"
-                    >
-                      <ChevronRight className="w-4 h-4" />
-                    </Button>
-
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      onClick={goToLastPage}
-                      disabled={currentPage === totalPages}
-                      className="hidden sm:flex bg-[#0F0F23] border-cyan-400/50 text-cyan-400 hover:bg-cyan-500/20 hover:border-cyan-400 disabled:opacity-50 shadow-lg shadow-cyan-500/10"
-                    >
-                      <ChevronsRight className="w-4 h-4" />
-                    </Button>
-
-                    {/* Quick Jump */}
-                    <div className="hidden lg:flex items-center space-x-2 ml-4 pl-4 border-l border-cyan-400/30">
-                      <span className="text-sm text-cyan-400 font-bold">Go to:</span>
-                      <Input
-                        type="number"
-                        min="1"
-                        max={totalPages}
-                        value={currentPage}
-                        onChange={(e) => {
-                          const page = parseInt(e.target.value);
+                  {/* Quick Jump */}
+                  <div className="hidden lg:flex items-center space-x-2 ml-4 pl-4 border-l border-cyan-400/30">
+                    <span className="text-xs text-cyan-400 font-bold uppercase tracking-[0.15em]">Go to:</span>
+                    <Input
+                      type="number"
+                      min="1"
+                      max={totalPages}
+                      value={currentPage}
+                      onChange={(e) => {
+                        const page = parseInt(e.target.value);
+                        if (page >= 1 && page <= totalPages) goToPage(page);
+                      }}
+                      className="w-16 h-8 text-center bg-[#0F0F23] border-cyan-400/50 text-white focus:border-cyan-400 focus:ring-cyan-400/25"
+                      onKeyPress={(e) => {
+                        if (e.key === 'Enter') {
+                          const page = parseInt((e.target as HTMLInputElement).value);
                           if (page >= 1 && page <= totalPages) goToPage(page);
-                        }}
-                        className="w-16 h-8 text-center bg-[#0F0F23] border-cyan-400/50 text-white focus:border-cyan-400 focus:ring-cyan-400/25"
-                        onKeyPress={(e) => {
-                          if (e.key === 'Enter') {
-                            const page = parseInt((e.target as HTMLInputElement).value);
-                            if (page >= 1 && page <= totalPages) goToPage(page);
-                          }
-                        }}
-                      />
-                    </div>
+                        }
+                      }}
+                    />
                   </div>
                 </div>
-              )}
-            </>
-          )}
-        </div>
+              </div>
+            )}
+          </>
+        )}
       </div>
     </div>
   );
