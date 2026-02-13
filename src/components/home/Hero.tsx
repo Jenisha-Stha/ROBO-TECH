@@ -150,6 +150,20 @@ const Hero = () => {
                     </motion.div>
                 </div>
                 <div className="hero-image">
+                    <motion.div
+                        className="hero-greeting font-oswald"
+                        initial={{ opacity: 0, scale: 0.5, y: 20 }}
+                        animate={{ opacity: 1, scale: 1, y: 0 }}
+                        transition={{
+                            duration: 0.5,
+                            delay: 1.2,
+                            type: "spring",
+                            stiffness: 260,
+                            damping: 20
+                        }}
+                    >
+                        Hi Kids!
+                    </motion.div>
                     <div className="hero-rive-container">
                         <RiveComponent />
                     </div>

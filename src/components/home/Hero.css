@@ -179,16 +179,18 @@
     z-index: 5;
     margin-top: 1.5rem;
     /* Reduced margin */
+    margin-right: -1rem;
 }
 
 @media (min-width: 1024px) {
     .hero-image {
-        flex: 0 1 36.25rem;
-        /* 580px */
+        flex: 0 1 40rem;
+        /* Increased from 580px */
         justify-content: flex-end;
         align-items: flex-end;
         margin-top: 0;
-        margin-bottom: -1.25rem;
+        margin-bottom: -2.5rem;
+        margin-right: -4rem;
     }
 }
 
@@ -215,6 +217,7 @@
     /* 550px */
     aspect-ratio: 11 / 9;
     height: auto;
+    transform: scaleX(-1);
 }
 
 @media (min-width: 768px) {
@@ -227,6 +230,54 @@
     .hero-rive-container {
         width: 34.375rem;
         height: 28.125rem;
+    }
+}
+
+.hero-greeting {
+    position: absolute;
+    top: 60px;
+    left: 10%;
+    background: white;
+    color: #1565C0;
+    padding: 0.75rem 1.75rem;
+    border-radius: 20px;
+    font-size: 1.5rem;
+    font-weight: 700;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+    pointer-events: none;
+    animation: greetingFloating 2.5s ease-in-out infinite;
+}
+
+.hero-greeting::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 70%;
+    transform: translateX(-50%);
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 10px solid white;
+}
+
+@keyframes greetingFloating {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-greeting {
+        top: 40px;
+        left: 15%;
+        font-size: 1.1rem;
+        padding: 0.5rem 1.25rem;
     }
 }
 
