@@ -170,141 +170,144 @@ const Header = () => {
     };
   }, [isMobileMenuOpen]);
 
-
-                {/* Logo Section */}
-                <Link to="/" className="navbar-logo">
-                    <img src="/images/robo-tech.jpg" alt="RoboTech" className="h-16 w-auto object-contain" />
-                </Link>
+    // return (
+    //     <nav className="navbar">
+    //         <div className="navbar-container">
+    //             {/* Logo Section */}
+    //             <Link to="/" className="navbar-logo">
+    //                 <img src="/images/robo-tech.jpg" alt="RoboTech" className="h-16 w-auto object-contain" />
+    //             </Link>
+    //           </div>
+    //     </nav>        
+    // );
 
   return (
-    <nav className="navbar">
-      <div className="navbar-container">
-        {/* Logo Section */}
-        <Link to="/" className="navbar-logo">
-          <img
-            src="/images/robo-tech.jpg"
-            alt="RoboTech"
-            className="h-12 w-auto object-contain"
-          />
-          <div className="logo-text">
-            <span className="logo-main">RoboTech</span>
-            <span className="logo-subtext">Learning Centre</span>
+    <>
+      <nav className="navbar">
+        <div className="navbar-container">
+          {/* Logo Section */}
+          <Link to="/" className="navbar-logo">
+            <img
+              src="/images/robo-tech.jpg"
+              alt="RoboTech"
+              className="h-16 w-auto object-contain"
+            />
+          </Link>
+
+          {/* Navigation Links (Desktop) */}
+          <div className="navbar-links">
+            <Link
+              to="/"
+              className={`nav-link ${location.pathname === "/" ? "active" : ""}`}
+            >
+              Home
+            </Link>
+            <Link
+              to="/about-us"
+              className={`nav-link ${location.pathname === "/about-us" ? "active" : ""}`}
+            >
+              About Us
+            </Link>
+            <Link
+              to="/our-courses"
+              className={`nav-link ${location.pathname === "/our-courses" ? "active" : ""}`}
+            >
+              Our Courses
+            </Link>
+            <Link
+              to="/become-our-partner-school"
+              className={`nav-link ${location.pathname === "/become-our-partner-school" ? "active" : ""}`}
+            >
+              Become Our Partner
+            </Link>
           </div>
-        </Link>
-main
 
-        {/* Navigation Links (Desktop) */}
-        <div className="navbar-links">
-          <Link
-            to="/"
-            className={`nav-link ${location.pathname === "/" ? "active" : ""}`}
-          >
-            Home
-          </Link>
-          <Link
-            to="/about-us"
-            className={`nav-link ${location.pathname === "/about-us" ? "active" : ""}`}
-          >
-            About Us
-          </Link>
-          <Link
-            to="/our-courses"
-            className={`nav-link ${location.pathname === "/our-courses" ? "active" : ""}`}
-          >
-            Our Courses
-          </Link>
-          <Link
-            to="/become-our-partner-school"
-            className={`nav-link ${location.pathname === "/become-our-partner-school" ? "active" : ""}`}
-          >
-            Become Our Partner
-          </Link>
-        </div>
+          {/* Auth Actions (Desktop) */}
+          <div className="navbar-actions">
+            {/* Search Bar (Desktop) */}
+            <div className="navbar-search" ref={searchRef}>
+              <div className="search-input-wrapper">
+                <Search className="search-icon w-4 h-4" />
+                <input
+                  type="text"
+                  placeholder="Search courses..."
+                  value={searchTerm}
+                  onChange={handleSearchChange}
+                />
+              </div>
 
-        {/* Auth Actions */}
-        <div className="navbar-actions">
-          {/* Search Bar (Desktop) */}
-          <div className="navbar-search" ref={searchRef}>
-            <div className="search-input-wrapper">
-              <Search className="search-icon w-4 h-4" />
-              <input
-                type="text"
-                placeholder="Search courses..."
-                value={searchTerm}
-                onChange={handleSearchChange}
-              />
+              {/* Search Results Dropdown */}
+              {showResults && (
+                <div className="search-results">
+                  {isSearching ? (
+                    <div className="p-4 text-center text-white/50">
+                      Searching...
+                    </div>
+                  ) : (
+                    <div>
+                      {searchResults?.map((course) => (
+                        <div
+                          key={course.id}
+                          onClick={() => handleCourseClick(course.id)}
+                          className="search-result-item"
+                        >
+                          <div className="w-10 h-10 bg-gradient-to-br from-[#4FC3F7] to-[#00BCD4] rounded-lg flex items-center justify-center flex-shrink-0">
+                            <BookOpen className="w-5 h-5 text-white" />
+                          </div>
+                          <div className="result-info">
+                            <span className="result-title">{course.title}</span>
+                            <span className="result-meta">
+                              {course.course_type}
+                            </span>
+                          </div>
+                          <ArrowRight className="ml-auto w-4 h-4 text-white/30" />
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              )}
             </div>
 
-            {/* Search Results Dropdown */}
-            {showResults && (
-              <div className="search-results">
-                {isSearching ? (
-                  <div className="p-4 text-center text-white/50">
-                    Searching...
+            {user && (
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <button className="user-profile-trigger">
+                    <div className="user-avatar">
+                      <User className="w-full h-full p-2 text-white/60 bg-white/10" />
+                    </div>
+                  </button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent
+                  align="end"
+                  className="bg-[#0A1628] border border-white/10 text-white min-w-[180px]"
+                >
+                  <div className="px-4 py-2 border-b border-white/5 bg-white/5">
+                    <p className="text-xs text-white/50">Signed in as</p>
+                    <p className="text-sm font-semibold truncate">
+                      {user.alias_name}
+                    </p>
                   </div>
-                ) : (
-                  <div>
-                    {searchResults?.map((course) => (
-                      <div
-                        key={course.id}
-                        onClick={() => handleCourseClick(course.id)}
-                        className="search-result-item"
-                      >
-                        <div className="w-10 h-10 bg-gradient-to-br from-[#4FC3F7] to-[#00BCD4] rounded-lg flex items-center justify-center flex-shrink-0">
-                          <BookOpen className="w-5 h-5 text-white" />
-                        </div>
-                        <div className="result-info">
-                          <span className="result-title">{course.title}</span>
-                          <span className="result-meta">
-                            {course.course_type}
-                          </span>
-                        </div>
-                        <ArrowRight className="ml-auto w-4 h-4 text-white/30" />
-                      </div>
-                    ))}
-                  </div>
-                )}
-              </div>
+                  <DropdownMenuItem
+                    onClick={() => navigate("/admin")}
+                    className="hover:bg-white/5 focus:bg-white/5 cursor-pointer py-3"
+                  >
+                    <LayoutDashboard className="w-4 h-4 mr-2" />
+                    Dashboard
+                  </DropdownMenuItem>
+                  <DropdownMenuItem
+                    onClick={async () => await signOut()}
+                    className="hover:bg-white/5 focus:bg-white/5 cursor-pointer py-3 text-red-400"
+                  >
+                    <LogOut className="w-4 h-4 mr-2" />
+                    Logout
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
             )}
           </div>
 
-          {user && (
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <button className="user-profile-trigger">
-                  <div className="user-avatar">
-                    <User className="w-full h-full p-2 text-white/60 bg-white/10" />
-                  </div>
-                </button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent
-                align="end"
-                className="bg-[#0A1628] border border-white/10 text-white min-w-[180px]"
-              >
-                <div className="px-4 py-2 border-b border-white/5 bg-white/5">
-                  <p className="text-xs text-white/50">Signed in as</p>
-                  <p className="text-sm font-semibold truncate">
-                    {user.alias_name}
-                  </p>
-                </div>
-                <DropdownMenuItem
-                  onClick={() => navigate("/admin")}
-                  className="hover:bg-white/5 focus:bg-white/5 cursor-pointer py-3"
-                >
-                  <LayoutDashboard className="w-4 h-4 mr-2" />
-                  Dashboard
-                </DropdownMenuItem>
-                <DropdownMenuItem
-                  onClick={async () => await signOut()}
-                  className="hover:bg-white/5 focus:bg-white/5 cursor-pointer py-3 text-red-400"
-                >
-                  <LogOut className="w-4 h-4 mr-2" />
-                  Logout
-                </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
-          )}
-
+          {/* Mobile Toggle Button */}
           <button onClick={toggleMobileMenu} className="mobile-toggle">
             {isMobileMenuOpen ? (
               <X className="w-6 h-6" />
@@ -313,7 +316,7 @@ main
             )}
           </button>
         </div>
-      </div>
+      </nav>
 
       {/* Mobile Menu Panel */}
       <div className={`mobile-menu-panel ${isMobileMenuOpen ? "open" : ""}`}>
@@ -404,7 +407,7 @@ main
           <span>Partner</span>
         </Link>
       </div>
-    </nav>
+    </>
   );
 };
 

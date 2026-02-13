@@ -1,4 +1,4 @@
-import React, { useRef, Suspense } from "react";
+import React, { useRef } from "react";
 import Header from "../components/layout/header";
 import {
   BookOpen,
@@ -47,18 +47,6 @@ import {
 } from "framer-motion";
 import TextType from "@/components/TextType";
 
-const Spline = React.lazy(() => import("@splinetool/react-spline"));
-
-const RobotPlaceholder = () => (
-  <div className="w-full h-full flex items-center justify-center">
-    <motion.div
-      animate={{ rotate: 360 }}
-      transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
-    >
-      <Bot className="w-16 h-16 text-white/40" />
-    </motion.div>
-  </div>
-);
 
 /* ──────────────────────────────────────────
    DECORATIVE COMPONENTS
@@ -123,26 +111,26 @@ const vp = { once: true, margin: "-80px" };
 
 // Shared animated background icons (OurCourses-style pattern)
 const backgroundIcons = [
-  { icon: Bot, x: '10%', y: '20%', size: 60, delay: 0 },
-  { icon: Rocket, x: '85%', y: '15%', size: 60, delay: 1 },
-  { icon: BookOpen, x: '15%', y: '70%', size: 60, delay: 2 },
-  { icon: Laptop, x: '80%', y: '65%', size: 60, delay: 0.5 },
-  { icon: Settings, x: '5%', y: '50%', size: 60, delay: 1.5 },
-  { icon: Zap, x: '90%', y: '80%', size: 60, delay: 2.5 },
-  { icon: Battery, x: '25%', y: '10%', size: 30, delay: 3 },
-  { icon: Plug, x: '70%', y: '5%', size: 60, delay: 1.2 },
-  { icon: Radio, x: '40%', y: '85%', size: 28, delay: 0.8 },
-  { icon: Brain, x: '60%', y: '75%', size: 50, delay: 1.8 },
-  { icon: Gamepad2, x: '12%', y: '40%', size: 66, delay: 2.2 },
-  { icon: Cpu, x: '88%', y: '35%', size: 60, delay: 0.3 },
-  { icon: Wrench, x: '35%', y: '25%', size: 20, delay: 1.1 },
-  { icon: Smartphone, x: '65%', y: '20%', size: 60, delay: 2.7 },
-  { icon: Wifi, x: '50%', y: '15%', size: 60, delay: 0.6 },
-  { icon: Search, x: '30%', y: '60%', size: 60, delay: 1.9 },
-  { icon: Ruler, x: '70%', y: '60%', size: 18, delay: 2.4 },
-  { icon: Telescope, x: '45%', y: '45%', size: 60, delay: 0.9 },
-  { icon: Microscope, x: '55%', y: '55%', size: 60, delay: 1.4 },
-  { icon: Lightbulb, x: '20%', y: '30%', size: 50, delay: 0.2 },
+  { icon: Bot, x: "10%", y: "20%", size: 60, delay: 0 },
+  { icon: Rocket, x: "85%", y: "15%", size: 60, delay: 1 },
+  { icon: BookOpen, x: "15%", y: "70%", size: 60, delay: 2 },
+  { icon: Laptop, x: "80%", y: "65%", size: 60, delay: 0.5 },
+  { icon: Settings, x: "5%", y: "50%", size: 60, delay: 1.5 },
+  { icon: Zap, x: "90%", y: "80%", size: 60, delay: 2.5 },
+  { icon: Battery, x: "25%", y: "10%", size: 30, delay: 3 },
+  { icon: Plug, x: "70%", y: "5%", size: 60, delay: 1.2 },
+  { icon: Radio, x: "40%", y: "85%", size: 28, delay: 0.8 },
+  { icon: Brain, x: "60%", y: "75%", size: 50, delay: 1.8 },
+  { icon: Gamepad2, x: "12%", y: "40%", size: 66, delay: 2.2 },
+  { icon: Cpu, x: "88%", y: "35%", size: 60, delay: 0.3 },
+  { icon: Wrench, x: "35%", y: "25%", size: 20, delay: 1.1 },
+  { icon: Smartphone, x: "65%", y: "20%", size: 60, delay: 2.7 },
+  { icon: Wifi, x: "50%", y: "15%", size: 60, delay: 0.6 },
+  { icon: Search, x: "30%", y: "60%", size: 60, delay: 1.9 },
+  { icon: Ruler, x: "70%", y: "60%", size: 18, delay: 2.4 },
+  { icon: Telescope, x: "45%", y: "45%", size: 60, delay: 0.9 },
+  { icon: Microscope, x: "55%", y: "55%", size: 60, delay: 1.4 },
+  { icon: Lightbulb, x: "20%", y: "30%", size: 50, delay: 0.2 },
 ];
 
 /* ──────────────────────────────────────────
@@ -442,7 +430,7 @@ const AboutUs = () => {
                ═══════════════════════════════════════ */}
       <section
         ref={heroRef}
-        className="relative min-h-[95vh] flex items-center justify-center overflow-hidden"
+        className="relative min-h-[auto] md:min-h-[85vh] lg:min-h-[95vh] flex items-center justify-center overflow-hidden pt-24 pb-16 md:pt-28 md:pb-20 lg:pt-0 lg:pb-0"
         style={{
           background:
             "linear-gradient(135deg, #0c3d7a 0%, #1565C0 30%, #1E88E5 60%, #42A5F5 100%)",
@@ -456,10 +444,10 @@ const AboutUs = () => {
               <motion.div
                 key={index}
                 style={{
-                  position: 'absolute',
+                  position: "absolute",
                   left: item.x,
                   top: item.y,
-                  color: 'white',
+                  color: "white",
                   opacity: 0.15,
                 }}
                 animate={{
@@ -470,7 +458,7 @@ const AboutUs = () => {
                   duration: 4 + Math.random() * 2,
                   repeat: Infinity,
                   delay: item.delay,
-                  ease: "easeInOut"
+                  ease: "easeInOut",
                 }}
               >
                 <IconComponent size={item.size} strokeWidth={1.5} />
@@ -484,14 +472,14 @@ const AboutUs = () => {
           className="container mx-auto px-4 relative z-10"
           style={{ opacity: heroOpacity }}
         >
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-9 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 lg:gap-9 items-center">
             {/* Left column — text content */}
             <div className="text-center lg:text-left">
               <motion.div
                 initial={{ opacity: 0, y: -20, scale: 0.9 }}
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 transition={{ duration: 0.5, ease: "easeOut" }}
-                className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md rounded-full px-5 py-2.5 mb-8 border border-white/20"
+                className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md rounded-full px-5 py-2.5 mb-4 md:mb-8 border border-white/20"
               >
                 <Sparkles className="w-4 h-4 text-red-600" />
                 {/* <span className="text-white/90 text-sm font-medium tracking-wide">Inspiring Future Innovators</span> */}
@@ -502,13 +490,13 @@ const AboutUs = () => {
                   initial={{ y: 80 }}
                   animate={{ y: 0 }}
                   transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                  className="mb-8"
+                  className="mb-4 md:mb-8"
                 >
                   <TextType
                     text={[
                       "About RoboTech Learning Center",
                       "Inspiring Future Innovators",
-                      "Build Tomorrow's Leaders", 
+                      "Build Tomorrow's Leaders",
                       "Learn. Code. Innovate.",
                     ]}
                     as="h1"
@@ -518,7 +506,7 @@ const AboutUs = () => {
                     showCursor
                     cursorCharacter="_"
                     cursorBlinkDuration={0.5}
-                    className="text-4xl md:text-6xl lg:text-7xl font-bold mb-4 font-oswald leading-[1.1]"
+                    className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 font-oswald leading-[1.1]"
                     textColors={["#ffffff", "#ffffff", "#ffffff", "#ffffff"]}
                     loop
                   />
@@ -529,7 +517,7 @@ const AboutUs = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.4 }}
-                className="text-lg md:text-xl text-blue-100/80 max-w-xl mx-auto lg:mx-0 leading-relaxed"
+                className="text-base sm:text-lg md:text-xl text-blue-100/80 max-w-xl mx-auto lg:mx-0 leading-relaxed"
               >
                 Join hundreds of schools already exploring the universe of
                 robotics education!
@@ -551,7 +539,7 @@ const AboutUs = () => {
 
               {/* Scroll indicator */}
               <motion.div
-                className="mt-6"
+                className="mt-4 md:mt-6 hidden md:block"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 1.2 }}
@@ -570,26 +558,63 @@ const AboutUs = () => {
               </motion.div>
             </div>
 
-            {/* Right column — 3D Spline Robot */}
-            <div className="hidden lg:flex items-center justify-center overflow-hidden relative">
-              <motion.div
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1.15 }}
-                transition={{ duration: 1, delay: 0.5, ease: "easeOut" }}
-                className="w-full relative"
-                style={{
-                  height: 550,
-                  marginBottom: -60,
-                  filter:
-                    "brightness(1.5) sepia(0.5) hue-rotate(185deg) saturate(2.5) contrast(1.1)",
+            {/* Right column — Robot Images */}
+            <div className="flex items-center justify-center overflow-hidden relative h-[300px] sm:h-[380px] md:h-[450px] lg:h-[600px]">
+              {/* Cloud background */}
+              <motion.img
+                src="/images/cloud.png"
+                alt=""
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 0.7 }}
+                transition={{ duration: 1, delay: 0.3 }}
+                className="absolute top-[10%] left-[5%] w-[60%] md:w-[65%] lg:w-[70%] pointer-events-none select-none"
+                draggable={false}
+              />
+              <motion.img
+                src="/images/cloud.png"
+                alt=""
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 0.5 }}
+                transition={{ duration: 1, delay: 0.6 }}
+                className="absolute top-[2%] right-[10%] w-[40%] md:w-[45%] lg:w-[50%] pointer-events-none select-none"
+                draggable={false}
+              />
+
+              {/* Sitting robot — main centerpiece */}
+              <motion.img
+                src="/images/robo_sittingh.png"
+                alt="Robo-Tech sitting robot"
+                initial={{ opacity: 0, scale: 0.8, y: 40 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.5, ease: "easeOut" }}
+                className="relative z-10 w-[70%] sm:w-[65%] md:w-[75%] lg:w-[90%] max-w-[240px] sm:max-w-[280px] md:max-w-[340px] lg:max-w-[400px] drop-shadow-2xl pointer-events-none select-none"
+                draggable={false}
+              />
+
+              {/* Flying robot — top right with hovering animation */}
+              <motion.img
+                src="/images/robot_flying.png"
+                alt="Flying robot"
+                initial={{ opacity: 0, x: 60, y: -40 }}
+                animate={{
+                  opacity: 1,
+                  x: 0,
+                  y: [0, -14, 0, -8, 0],
                 }}
-              >
-                <Suspense fallback={<RobotPlaceholder />}>
-                  <Spline scene="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode" />
-                </Suspense>
-              </motion.div>
-              {/* Blue tint overlay */}
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 via-transparent to-cyan-400/10 pointer-events-none" />
+                transition={{
+                  opacity: { duration: 0.6, delay: 0.8 },
+                  x: { duration: 0.6, delay: 0.8 },
+                  y: {
+                    duration: 4,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                    delay: 1.4,
+                  },
+                }}
+                className="absolute top-[2%] right-[2%] sm:right-[0%] md:right-[-1%] lg:right-[-2%] z-20 w-[35%] sm:w-[35%] md:w-[40%] lg:w-[45%] max-w-[130px] sm:max-w-[150px] md:max-w-[190px] lg:max-w-[240px] drop-shadow-xl pointer-events-none select-none"
+                style={{ rotate: "-5deg" }}
+                draggable={false}
+              />
             </div>
           </div>
         </motion.div>
@@ -928,10 +953,10 @@ const MissionVisionSection = () => {
                 <motion.div
                   key={index}
                   style={{
-                    position: 'absolute',
+                    position: "absolute",
                     left: item.x,
                     top: item.y,
-                    color: 'white',
+                    color: "white",
                     opacity: 0.15,
                   }}
                   animate={{
@@ -942,7 +967,7 @@ const MissionVisionSection = () => {
                     duration: 4 + Math.random() * 2,
                     repeat: Infinity,
                     delay: item.delay,
-                    ease: "easeInOut"
+                    ease: "easeInOut",
                   }}
                 >
                   <IconComponent size={item.size} strokeWidth={1.5} />
@@ -1468,10 +1493,10 @@ const CTASection = () => {
               <motion.div
                 key={index}
                 style={{
-                  position: 'absolute',
+                  position: "absolute",
                   left: item.x,
                   top: item.y,
-                  color: 'white',
+                  color: "white",
                   opacity: 0.15,
                 }}
                 animate={{
@@ -1482,7 +1507,7 @@ const CTASection = () => {
                   duration: 4 + Math.random() * 2,
                   repeat: Infinity,
                   delay: item.delay,
-                  ease: "easeInOut"
+                  ease: "easeInOut",
                 }}
               >
                 <IconComponent size={item.size} strokeWidth={1.5} />
