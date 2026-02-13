@@ -4,6 +4,7 @@ import FrontCourses from '@/components/FrontCourses';
 import Header from '../components/layout/header';
 import TextType from '@/components/TextType';
 import Footer from '@/components/layout/footer';
+import { useNavigate } from 'react-router';
 import {
   Bot,
   Cpu,
@@ -24,7 +25,8 @@ import {
   Ruler,
   Telescope,
   Microscope,
-  Lightbulb
+  Lightbulb,
+  ArrowRight
 } from 'lucide-react';
 
 // 1. Define specific types for your style objects to satisfy TypeScript
@@ -38,6 +40,7 @@ interface PageStyles {
 }
 
 const HomePage: React.FC = () => {
+  const navigate = useNavigate();
 
   // 2. Define the animation with specific types
   // Casting 'reverse' and 'easeInOut' as specific literals
@@ -80,7 +83,8 @@ const HomePage: React.FC = () => {
       <Header />
 
       {/* Hero Section with Kunchevsky-style Animated Pattern */}
-      <div style={styles.heroContainer}>
+      <div className="relative overflow-hidden flex flex-col lg:flex-row items-center justify-between min-h-[95vh] px-6 lg:px-[8%] pt-32 pb-40 lg:py-[120px]"
+        style={{ background: 'linear-gradient(135deg, #0c3d7a 0%, #1565C0 40%, #1E88E5 100%)' }}>
         {/* Background Animated Pattern */}
         <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
           {backgroundIcons.map((item, index) => {
@@ -171,7 +175,7 @@ const HomePage: React.FC = () => {
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 1, ease: "easeOut" }}
-          style={styles.textWrapper}
+          className="relative z-20 w-full lg:w-1/2 flex flex-col items-center lg:items-start text-center lg:text-left mb-16 lg:mb-0 max-w-[600px]"
         >
           <TextType
             text={[
@@ -194,25 +198,10 @@ const HomePage: React.FC = () => {
 
         <motion.div
           animate={floatingAnimation}
-          style={{
-            position: 'absolute',
-            right: '2%',
-            top: '4%',
-            width: '750px',
-            zIndex: 10,
-          }}
+          className="absolute -right-20 lg:right-[2%] -top-10 lg:top-[4%] w-[450px] md:w-[600px] lg:w-[750px] z-30 pointer-events-none lg:pointer-events-auto"
         >
           {/* Thought Bubble - Refined, Smaller & Centered */}
-          <div
-            style={{
-              position: 'absolute',
-              left: '12%',
-              top: '8%',
-              zIndex: 35,
-              width: '180px', // Smaller size
-              pointerEvents: 'none',
-            }}
-          >
+          <div className="absolute left-[10%] lg:left-[12%] top-[5%] lg:top-[8%] z-35 w-[110px] md:w-[140px] lg:w-[180px] pointer-events-none">
             <div className="relative flex items-center justify-center">
               <svg
                 viewBox="0 0 200 200"
@@ -240,7 +229,7 @@ const HomePage: React.FC = () => {
           </div>
 
           <div
-            className="relative overflow-hidden rounded-full"
+            className="relative overflow-hidden rounded-full opacity-50 lg:opacity-100"
             style={{
               width: '100%',
               aspectRatio: '1/1',
@@ -273,14 +262,7 @@ const HomePage: React.FC = () => {
 
         {/* Centered Bunny Mascot - Perfectly Isolated White Bunny */}
         <motion.div
-          style={{
-            position: 'absolute',
-            left: '35%',
-            top: '32%',
-            transform: 'translate(-50%, -50%)',
-            zIndex: 15,
-            width: '450px',
-          }}
+          className="absolute left-[15%] lg:left-[35%] top-[72%] lg:top-[32%] -translate-x-1/2 -translate-y-1/2 w-[280px] md:w-[350px] lg:w-[450px] z-15 pointer-events-none"
           animate={{
             y: ["-20px", "20px"],
           }}
@@ -292,7 +274,7 @@ const HomePage: React.FC = () => {
           }}
         >
           <div
-            className="relative overflow-hidden rounded-full"
+            className="relative overflow-hidden rounded-full opacity-50 lg:opacity-100"
             style={{
               width: '100%',
               aspectRatio: '1/1',
@@ -331,24 +313,27 @@ const HomePage: React.FC = () => {
         </div>
       </div>
 
-      <section className="px-6 py-16 text-slate-900 container mx-auto">
+      <section className="px-6 py-24 text-slate-900 container mx-auto">
 
 
 
         <div className="flex flex-col md:flex-row items-center md:items-start justify-between gap-12">
           {/* Left Side: PROGRAMS Text */}
-          <div className="w-full md:w-1/2 text-slate-900">
+          <div className="w-full md:w-[45%] text-slate-900">
             <h1 className="text-3xl md:text-4xl font-bold text-[#1b3664] mb-6 font-oswald uppercase leading-tight">PROGRAMS</h1>
-            <p className="text-lg text-slate-600 leading-relaxed">
+            <p className="text-lg text-slate-600 leading-relaxed mb-8">
               Our carefully structured programs introduce students to robotics, artificial intelligence, drones, and modern technology in a safe and engaging way. Through project-based learning and guided mentorship, children not only understand technology — they learn how to create with it.
             </p>
+            <button className="btn btn-primary font-oswald" onClick={() => navigate('/register')}>
+              Register Now <ArrowRight className="w-5 h-5 ml-2" />
+            </button>
           </div>
 
           {/* Right Side: Shinchan Mascot */}
           <motion.div
             animate={floatingAnimation}
-            style={{ ...styles.imageWrapper, maxWidth: '500px' }}
-            className="w-full md:w-1/2 flex justify-center md:justify-end"
+            style={{ ...styles.imageWrapper, maxWidth: '650px' }}
+            className="w-full md:w-[55%] flex justify-center md:justify-end"
           >
             {/* Shinchan Mascot Only */}
             <div style={styles.shinchanContainer}>
@@ -374,7 +359,7 @@ const HomePage: React.FC = () => {
         </div>
       </section>
 
-      <section className="bg-white py-20">
+      <section className="bg-white">
         <FrontCourses headerSearchTerm={""} />
       </section>
 
@@ -409,13 +394,13 @@ const styles: PageStyles = {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    maxWidth: '450px',
+    maxWidth: '650px',
     width: '100%',
     zIndex: 20,
   },
   shinchanContainer: {
     width: '100%',
-    maxWidth: '450px',
+    maxWidth: '650px',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
