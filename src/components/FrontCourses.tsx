@@ -11,7 +11,7 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 import { Badge } from '@/components/ui/badge';
-import { Search, Filter, X, ChevronLeft, ChevronRight, ChevronsLeft, ChevronsRight } from 'lucide-react';
+import { Search, Filter, X, ChevronLeft, ChevronRight, ChevronsLeft, ChevronsRight, Calculator, Lightbulb, FlaskConical, BarChart3, Code, Mail, Microscope, Zap, Cpu, Bot, Brain } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useNavigate } from 'react-router';
 import { motion } from 'framer-motion';
@@ -190,17 +190,18 @@ const FrontCourses: React.FC<FrontCoursesProps> = ({ headerSearchTerm }) => {
   };
 
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="container mx-auto px-4 py-24">
       <div className="w-full min-w-0">
 
-        {/* Page Header */}
-        <div className="mb-8">
-          <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-2 font-oswald uppercase leading-tight">Our Courses</h2>
+
+        {/* Page Header - Moved and Renamed */}
+        <div className="mb-12">
+          <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-2 font-oswald uppercase leading-tight">explore more courses</h2>
           <p className="text-slate-600 text-lg leading-relaxed">Explore our cutting-edge robotics curriculum</p>
         </div>
 
         {/* Search & Filter Section Wrapper */}
-        <div className="relative w-full mb-8">
+        <div className="relative w-full mb-24">
           <div
             className="border border-cyan-400/30 rounded-2xl shadow-2xl shadow-cyan-500/10 p-3 relative overflow-hidden"
             style={{ background: 'linear-gradient(135deg, #0c3d7a 0%, #1565C0 40%, #1E88E5 100%)' }}
@@ -219,7 +220,8 @@ const FrontCourses: React.FC<FrontCoursesProps> = ({ headerSearchTerm }) => {
                     placeholder="Search for amazing robot courses..."
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
-                    className="h-14 pl-10 bg-[#E31E24] border-white/20 text-white placeholder:text-white/70 focus:border-white/40 focus:ring-white/10 shadow-lg"
+                    className="h-14 pl-10 border-white/20 text-white placeholder:text-white/70 focus:border-white/40 focus:ring-white/10 shadow-lg"
+                    style={{ background: 'linear-gradient(135deg, #0c3d7a 0%, #1565C0 40%, #1E88E5 100%)' }}
                   />
                 </div>
               </div>
@@ -227,11 +229,14 @@ const FrontCourses: React.FC<FrontCoursesProps> = ({ headerSearchTerm }) => {
               {/* Tag Type Filter */}
               <div className="lg:w-48">
                 <Select value={selectedTagType} onValueChange={handleTagTypeChange}>
-                  <SelectTrigger className="bg-[#E31E24] h-14 border-white/20 text-white hover:border-white/40 focus:border-white/40 shadow-lg">
+                  <SelectTrigger
+                    className="h-14 border-white/20 text-white hover:border-white/40 focus:border-white/40 shadow-lg"
+                    style={{ background: 'linear-gradient(135deg, #0c3d7a 0%, #1565C0 40%, #1E88E5 100%)' }}
+                  >
                     <Filter className="w-4 h-4 mr-2 text-white" />
                     <SelectValue placeholder="Filter by category" />
                   </SelectTrigger>
-                  <SelectContent className="bg-[#E31E24] border-white/20">
+                  <SelectContent className="border-white/20" style={{ background: '#0c3d7a' }}>
                     <SelectItem value="all" className="text-white hover:bg-white/10">
                       All Categories
                     </SelectItem>
@@ -248,10 +253,13 @@ const FrontCourses: React.FC<FrontCoursesProps> = ({ headerSearchTerm }) => {
               {selectedTagType !== 'all' && availableTags.length > 0 && (
                 <div className="lg:w-48">
                   <Select value={selectedTag} onValueChange={handleTagChange}>
-                    <SelectTrigger className="bg-[#E31E24] border-white/20 text-white hover:border-white/40 focus:border-white/40 shadow-lg">
+                    <SelectTrigger
+                      className="border-white/20 text-white hover:border-white/40 focus:border-white/40 shadow-lg"
+                      style={{ background: 'linear-gradient(135deg, #0c3d7a 0%, #1565C0 40%, #1E88E5 100%)' }}
+                    >
                       <SelectValue placeholder="Select tag" />
                     </SelectTrigger>
-                    <SelectContent className="bg-[#E31E24] border-white/20">
+                    <SelectContent className="border-white/20" style={{ background: '#0c3d7a' }}>
                       <SelectItem value="all" className="text-white hover:bg-pink-500/20">
                         All Tags
                       </SelectItem>
