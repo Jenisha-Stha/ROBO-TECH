@@ -123,26 +123,26 @@ const vp = { once: true, margin: "-80px" };
 
 // Shared animated background icons (OurCourses-style pattern)
 const backgroundIcons = [
-  { icon: Bot, x: '10%', y: '20%', size: 60, delay: 0 },
-  { icon: Rocket, x: '85%', y: '15%', size: 60, delay: 1 },
-  { icon: BookOpen, x: '15%', y: '70%', size: 60, delay: 2 },
-  { icon: Laptop, x: '80%', y: '65%', size: 60, delay: 0.5 },
-  { icon: Settings, x: '5%', y: '50%', size: 60, delay: 1.5 },
-  { icon: Zap, x: '90%', y: '80%', size: 60, delay: 2.5 },
-  { icon: Battery, x: '25%', y: '10%', size: 30, delay: 3 },
-  { icon: Plug, x: '70%', y: '5%', size: 60, delay: 1.2 },
-  { icon: Radio, x: '40%', y: '85%', size: 28, delay: 0.8 },
-  { icon: Brain, x: '60%', y: '75%', size: 50, delay: 1.8 },
-  { icon: Gamepad2, x: '12%', y: '40%', size: 66, delay: 2.2 },
-  { icon: Cpu, x: '88%', y: '35%', size: 60, delay: 0.3 },
-  { icon: Wrench, x: '35%', y: '25%', size: 20, delay: 1.1 },
-  { icon: Smartphone, x: '65%', y: '20%', size: 60, delay: 2.7 },
-  { icon: Wifi, x: '50%', y: '15%', size: 60, delay: 0.6 },
-  { icon: Search, x: '30%', y: '60%', size: 60, delay: 1.9 },
-  { icon: Ruler, x: '70%', y: '60%', size: 18, delay: 2.4 },
-  { icon: Telescope, x: '45%', y: '45%', size: 60, delay: 0.9 },
-  { icon: Microscope, x: '55%', y: '55%', size: 60, delay: 1.4 },
-  { icon: Lightbulb, x: '20%', y: '30%', size: 50, delay: 0.2 },
+  { icon: Bot, x: "10%", y: "20%", size: 60, delay: 0 },
+  { icon: Rocket, x: "85%", y: "15%", size: 60, delay: 1 },
+  { icon: BookOpen, x: "15%", y: "70%", size: 60, delay: 2 },
+  { icon: Laptop, x: "80%", y: "65%", size: 60, delay: 0.5 },
+  { icon: Settings, x: "5%", y: "50%", size: 60, delay: 1.5 },
+  { icon: Zap, x: "90%", y: "80%", size: 60, delay: 2.5 },
+  { icon: Battery, x: "25%", y: "10%", size: 30, delay: 3 },
+  { icon: Plug, x: "70%", y: "5%", size: 60, delay: 1.2 },
+  { icon: Radio, x: "40%", y: "85%", size: 28, delay: 0.8 },
+  { icon: Brain, x: "60%", y: "75%", size: 50, delay: 1.8 },
+  { icon: Gamepad2, x: "12%", y: "40%", size: 66, delay: 2.2 },
+  { icon: Cpu, x: "88%", y: "35%", size: 60, delay: 0.3 },
+  { icon: Wrench, x: "35%", y: "25%", size: 20, delay: 1.1 },
+  { icon: Smartphone, x: "65%", y: "20%", size: 60, delay: 2.7 },
+  { icon: Wifi, x: "50%", y: "15%", size: 60, delay: 0.6 },
+  { icon: Search, x: "30%", y: "60%", size: 60, delay: 1.9 },
+  { icon: Ruler, x: "70%", y: "60%", size: 18, delay: 2.4 },
+  { icon: Telescope, x: "45%", y: "45%", size: 60, delay: 0.9 },
+  { icon: Microscope, x: "55%", y: "55%", size: 60, delay: 1.4 },
+  { icon: Lightbulb, x: "20%", y: "30%", size: 50, delay: 0.2 },
 ];
 
 /* ──────────────────────────────────────────
@@ -456,10 +456,10 @@ const AboutUs = () => {
               <motion.div
                 key={index}
                 style={{
-                  position: 'absolute',
+                  position: "absolute",
                   left: item.x,
                   top: item.y,
-                  color: 'white',
+                  color: "white",
                   opacity: 0.15,
                 }}
                 animate={{
@@ -470,7 +470,7 @@ const AboutUs = () => {
                   duration: 4 + Math.random() * 2,
                   repeat: Infinity,
                   delay: item.delay,
-                  ease: "easeInOut"
+                  ease: "easeInOut",
                 }}
               >
                 <IconComponent size={item.size} strokeWidth={1.5} />
@@ -508,7 +508,7 @@ const AboutUs = () => {
                     text={[
                       "About RoboTech Learning Center",
                       "Inspiring Future Innovators",
-                      "Build Tomorrow's Leaders", 
+                      "Build Tomorrow's Leaders",
                       "Learn. Code. Innovate.",
                     ]}
                     as="h1"
@@ -518,7 +518,7 @@ const AboutUs = () => {
                     showCursor
                     cursorCharacter="_"
                     cursorBlinkDuration={0.5}
-                    className="text-4xl md:text-6xl lg:text-7xl font-bold mb-4 font-oswald leading-[1.1]"
+                    className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 font-oswald leading-[1.1]"
                     textColors={["#ffffff", "#ffffff", "#ffffff", "#ffffff"]}
                     loop
                   />
@@ -928,10 +928,10 @@ const MissionVisionSection = () => {
                 <motion.div
                   key={index}
                   style={{
-                    position: 'absolute',
+                    position: "absolute",
                     left: item.x,
                     top: item.y,
-                    color: 'white',
+                    color: "white",
                     opacity: 0.15,
                   }}
                   animate={{
@@ -942,7 +942,7 @@ const MissionVisionSection = () => {
                     duration: 4 + Math.random() * 2,
                     repeat: Infinity,
                     delay: item.delay,
-                    ease: "easeInOut"
+                    ease: "easeInOut",
                   }}
                 >
                   <IconComponent size={item.size} strokeWidth={1.5} />
@@ -1468,10 +1468,10 @@ const CTASection = () => {
               <motion.div
                 key={index}
                 style={{
-                  position: 'absolute',
+                  position: "absolute",
                   left: item.x,
                   top: item.y,
-                  color: 'white',
+                  color: "white",
                   opacity: 0.15,
                 }}
                 animate={{
@@ -1482,7 +1482,7 @@ const CTASection = () => {
                   duration: 4 + Math.random() * 2,
                   repeat: Infinity,
                   delay: item.delay,
-                  ease: "easeInOut"
+                  ease: "easeInOut",
                 }}
               >
                 <IconComponent size={item.size} strokeWidth={1.5} />
