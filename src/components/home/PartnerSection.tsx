@@ -106,29 +106,29 @@ const PartnerSection = () => {
     return (
         <section className="partner-section" ref={containerRef}>
             <div className="partner-container">
+                <div className="partner-image">
+                    <DotLottieReact
+                        src={schoolAnimation}
+                        speed={1}
+                        loop={true}
+                        autoplay={true}
+                        dotLottieRefCallback={setDotLottie}
+                    />
+                </div>
                 <div className="partner-content">
-                    <h2 className="partner-title font-oswald">For Schools & Educators</h2>
-                    <p className="partner-subtitle font-oswald">
+                    <h2 className="partner-title font-oswald mb-6">For Schools & Educators</h2>
+                    <p className="partner-subtitle font-oswald mb-10">
                         Partner with RoboTech Learning to bring hands on robotics and coding
                         experiences to your classrooms
                     </p>
                     <div className="partner-cta">
                         <button
                             className="btn btn-primary partner-btn"
-                            onClick={() => navigate('/become-our-partner-school')}
+                            onClick={() => navigate('/register/school')}
                         >
                             Become a Partner School
                         </button>
                     </div>
-                </div>
-                <div className="partner-image">
-                    <DotLottieReact
-                        src={schoolAnimation}
-                        speed={0.5}
-                        loop={false}
-                        autoplay={false}
-                        dotLottieRefCallback={setDotLottie}
-                    />
                 </div>
             </div>
         </section>

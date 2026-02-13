@@ -158,8 +158,9 @@
     width: 100%;
   }
 
-  .oswald {
-    font-family: 'Oswald', sans-serif;
+  .oswald,
+  .font-oswald {
+    font-family: 'Oswald', sans-serif !important;
     font-weight: 700;
   }
 }

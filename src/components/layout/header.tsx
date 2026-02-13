@@ -132,11 +132,7 @@ const Header = () => {
             <div className="navbar-container">
                 {/* Logo Section */}
                 <Link to="/" className="navbar-logo">
-                    <img src="/images/robo-tech.jpg" alt="RoboTech" className="h-12 w-auto object-contain" />
-                    <div className="logo-text">
-                        <span className="logo-main">RoboTech</span>
-                        <span className="logo-subtext">Learning Centre</span>
-                    </div>
+                    <img src="/images/robo-tech.jpg" alt="RoboTech" className="h-16 w-auto object-contain" />
                 </Link>
 
                 {/* Navigation Links (Desktop) */}
