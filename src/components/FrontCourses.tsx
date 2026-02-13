@@ -195,8 +195,8 @@ const FrontCourses: React.FC<FrontCoursesProps> = ({ headerSearchTerm }) => {
 
         {/* Page Header */}
         <div className="mb-8">
-          <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mb-2 oswald">Our Courses</h1>
-          <p className="text-slate-600 text-lg">Explore our cutting-edge robotics curriculum</p>
+          <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-2 font-oswald uppercase leading-tight">Our Courses</h2>
+          <p className="text-slate-600 text-lg leading-relaxed">Explore our cutting-edge robotics curriculum</p>
         </div>
 
         {/* Search & Filter Section Wrapper */}
@@ -269,7 +269,7 @@ const FrontCourses: React.FC<FrontCoursesProps> = ({ headerSearchTerm }) => {
             {/* Active Filters */}
             {(searchTerm || selectedTagType !== 'all' || selectedTag !== 'all') && (
               <div className="mt-4 flex flex-wrap gap-2">
-                <span className="text-sm text-cyan-400 font-bold">Active filters:</span>
+                <span className="text-cyan-400 text-xs font-bold uppercase tracking-[0.2em]">Active filters:</span>
                 {searchTerm && (
                   <Badge className="flex items-center gap-1 bg-gradient-to-r from-cyan-500/20 to-blue-500/20 border border-cyan-400/50 text-cyan-300 hover:bg-cyan-500/30 transition-all duration-300">
                     Search "{searchTerm}"
@@ -370,7 +370,7 @@ const FrontCourses: React.FC<FrontCoursesProps> = ({ headerSearchTerm }) => {
             {/* Pagination */}
             {totalPages > 1 && (
               <div className="mt-12 flex flex-col sm:flex-row items-center justify-between bg-gradient-to-r from-[#1A1A2E] to-[#16213E] border border-cyan-400/30 rounded-2xl p-6 shadow-2xl shadow-cyan-500/10">
-                <div className="text-sm text-cyan-400 font-bold mb-4 sm:mb-0">
+                <div className="text-xs text-cyan-400 font-bold uppercase tracking-[0.15em] mb-4 sm:mb-0">
                   Showing {(currentPage - 1) * limit + 1} to{' '}
                   {Math.min(currentPage * limit, totalData)} of {totalData} courses
                 </div>
@@ -435,7 +435,7 @@ const FrontCourses: React.FC<FrontCoursesProps> = ({ headerSearchTerm }) => {
 
                   {/* Quick Jump */}
                   <div className="hidden lg:flex items-center space-x-2 ml-4 pl-4 border-l border-cyan-400/30">
-                    <span className="text-sm text-cyan-400 font-bold">Go to:</span>
+                    <span className="text-xs text-cyan-400 font-bold uppercase tracking-[0.15em]">Go to:</span>
                     <Input
                       type="number"
                       min="1"

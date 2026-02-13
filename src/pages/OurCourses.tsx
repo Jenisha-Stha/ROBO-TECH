@@ -186,8 +186,8 @@ const HomePage: React.FC = () => {
             showCursor
             cursorCharacter="_"
             cursorBlinkDuration={0.5}
-            className="oswald text-white text-5xl lg:text-7xl leading-[1.1] mb-6 drop-shadow-lg font-bold"
-            textColors={["#ffffff", "#E31E24", "#fbbf24"]}
+            className="oswald text-white text-4xl md:text-5xl lg:text-6xl leading-[1.1] mb-6 drop-shadow-lg font-bold"
+            textColors={["#ffffff", "#ffffff", "#ffffff"]}
             loop
           />
         </motion.div>
@@ -214,8 +214,8 @@ const HomePage: React.FC = () => {
             }}
           >
             <div className="relative flex items-center justify-center">
-              <svg 
-                viewBox="0 0 200 200" 
+              <svg
+                viewBox="0 0 200 200"
                 className="w-full h-auto drop-shadow-xl"
               >
                 {/* Clean, symmetrical hand-drawn style cloud */}
@@ -338,8 +338,8 @@ const HomePage: React.FC = () => {
         <div className="flex flex-col md:flex-row items-center md:items-start justify-between gap-12">
           {/* Left Side: PROGRAMS Text */}
           <div className="w-full md:w-1/2 text-slate-900">
-            <h1 className="text-4xl font-black tracking-tight oswald text-[#1b3664] mb-6">PROGRAMS</h1>
-            <p className="text-xl text-slate-700 leading-relaxed font-medium">
+            <h1 className="text-3xl md:text-4xl font-bold text-[#1b3664] mb-6 font-oswald uppercase leading-tight">PROGRAMS</h1>
+            <p className="text-lg text-slate-600 leading-relaxed">
               Our carefully structured programs introduce students to robotics, artificial intelligence, drones, and modern technology in a safe and engaging way. Through project-based learning and guided mentorship, children not only understand technology — they learn how to create with it.
             </p>
           </div>

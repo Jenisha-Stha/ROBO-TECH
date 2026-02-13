@@ -226,9 +226,9 @@ export default function ViewCourse() {
                         </Button>
 
                         {/* Course Overview */}
-                        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
                             {/* Course Details */}
-                            <div className="lg:col-span-2">
+                            <div className="lg:col-span-7">
                                 <Card className="bg-white border border-gray-100 shadow-xl relative overflow-hidden">
                                     {/* Animated background elements */}
                                     <div className="absolute top-2 left-2 text-xl opacity-30 animate-bounce text-cyan-500">🎮</div>
@@ -288,7 +288,12 @@ export default function ViewCourse() {
                                     </CardContent>
                                 </Card>
                                 {/* Lessons List */}
-                                <Card className="bg-white border border-gray-100 shadow-xl p-6 mt-4 relative overflow-hidden">
+                            </div>
+
+                            {/* Stats Sidebar */}
+                            <div className="lg:col-span-5 space-y-4">
+                                {/* Lessons List */}
+                                <Card className="bg-white border border-gray-100 shadow-xl p-6 relative overflow-hidden">
                                     {/* Animated background elements */}
                                     <div className="absolute top-2 left-2 text-xl opacity-30 animate-bounce text-yellow-500">📚</div>
                                     <div className="absolute top-2 right-2 text-xl opacity-30 animate-pulse text-green-500">🎓</div>
@@ -325,8 +330,8 @@ export default function ViewCourse() {
 
                                                                     {/* Lesson Info */}
                                                                     <div className="flex-1 min-w-0">
-                                                                        <h4 className="font-bold truncate text-gray-900 text-lg font-oswald">{lesson.title}</h4>
-                                                                        <div className="text-sm text-gray-600 line-clamp-1 mt-1">
+                                                                        <h4 className="font-bold line-clamp-2 text-gray-900 text-lg font-oswald">{lesson.title}</h4>
+                                                                        <div className="text-sm text-gray-600 line-clamp-2 mt-1">
                                                                             <div dangerouslySetInnerHTML={{ __html: lesson.content || '' }} />
                                                                         </div>
                                                                     </div>
@@ -344,10 +349,6 @@ export default function ViewCourse() {
                                         )}
                                     </CardContent>
                                 </Card>
-                            </div>
-
-                            {/* Stats Sidebar */}
-                            <div className="space-y-4">
                                 <div className="sticky top-20">
                                     <Card className="bg-white border border-gray-100 shadow-xl mb-5 relative overflow-hidden">
                                         {/* Animated background elements */}
